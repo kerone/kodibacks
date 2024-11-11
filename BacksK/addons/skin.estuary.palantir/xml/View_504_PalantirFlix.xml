@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+	<include name="AutoTrailerWindow">
+		<param name="visible">false</param>
+		<definition>
+			<control type="videowindow" >
+				<visible>$PARAM[visible]</visible>
+				<width>70%</width>
+				<height>70%</height>
+				<right>0</right>
+				<top>0</top>
+				<animation effect="slide" start="0,0" end="0,-90" time="2000" >Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-90" time="0" condition="!String.IsEmpty(Skin.String(TimerAutoTrailer))">Conditional</animation>
+				<animation effect="slide" start="0,0" end="90,0" time="0" condition="String.IsEqual(VideoPlayer.VideoAspect,1.37)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-50" time="0" condition="!String.IsEmpty(Skin.String(TimerAutoTrailer)) + String.IsEqual(VideoPlayer.VideoAspect,1.85) + !String.IsEmpty(VideoPlayer.VideoAspect)">Conditional</animation>
+				<animation effect="slide" start="0,0" end="0,-00" time="0" condition="!String.IsEmpty(Skin.String(TimerAutoTrailer)) + !String.IsEqual(VideoPlayer.VideoAspect,1.85) + !String.IsEqual(VideoPlayer.VideoAspect,1.78) + !String.IsEqual(VideoPlayer.VideoAspect,1.66) + !String.IsEqual(VideoPlayer.VideoAspect,1.37) + !String.IsEqual(VideoPlayer.VideoAspect,1.33) + !String.IsEmpty(VideoPlayer.VideoAspect)">Conditional</animation>
+				<animation type="WindowClose" reversible="false"> 
+					<effect type="zoom" center="auto" start="1000" end="0" time="2000" />
+				</animation>
+			</control>
+		</definition>
+	</include>
+
+	<include name="NetflixDiffuse">
+		<param name="visible">false</param>
+		<definition>
+			<control type="image">
+				<texture>Palantir/overlays/netflix_diffuse1.png</texture>
+				<height>100%</height>
+				<width>100%</width>
+				<top>0</top>
+				<right>0</right>
+				<visible>$EXP[IsPalantir] + $PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
+
+
+	
+	<include name="Clearlogo">
+		<param name="visible">false</param>
+		<param name="top">5%</param>
+		<param name="left">5%</param>
+		<param name="height">10%</param>
+		<param name="width">30%</param>
+		<param name="align">center</param>
+		<param name="aligny">center</param>
+		<param name="objeto">ListItem</param>
+		<definition>
+			<control type="group">  
+				<height>$PARAM[height]</height>
+				<left>$PARAM[left]</left>
+				<width max="$PARAM[width]">auto</width>
+				<top>$PARAM[top]</top>
+				<include>FadeConTrailer</include>
+								
+				<control type="image">
+					<description>Clearlogo</description>
+					<texture background="true">$INFO[$PARAM[objeto].Art(clearlogo)]</texture>
+					<aspectratio align="$PARAM[align]">keep</aspectratio>
+					<centerleft>50%</centerleft>
+					<aligny>$PARAM[aligny]</aligny>
+					<visible>!String.IsEmpty($PARAM[objeto].Art(clearlogo)) + !$PARAM[visible]</visible>
+				</control>				
+
+				<control type="image">
+					<description>ClearlogoTVshowPlayer</description>
+					<texture background="true">$INFO[$PARAM[objeto].Art(tvshow.clearlogo)]</texture>
+					<aspectratio align="$PARAM[align]">keep</aspectratio>
+					<centerleft>50%</centerleft>
+					<aligny>$PARAM[aligny]</aligny>
+					<visible>!String.IsEmpty(Player.Art(tvshow.clearlogo)) + !$PARAM[visible]</visible>
+				</control>
+
+				<control type="label">
+					<description>Titulo cuando no hay clearlogo</description>
+					<label>$INFO[ListItem.Property(P3Titulo)]</label>
+					<align>$PARAM[align]</align>
+					<font>font45_title</font>
+					<aligny>$PARAM[aligny]</aligny>
+					<shadowcolor>texto_sombra</shadowcolor>
+					<height>100%</height>
+					<width max="100%">auto</width>
+					<wrapmultiline>true</wrapmultiline>
+					<visible>String.IsEmpty($PARAM[objeto].Art(clearlogo)) | $PARAM[visible]</visible>
+					<autoscroll delay="1000" time="1000" repeat="1000">true</autoscroll>
+				</control>
+
+			</control>
+		</definition>
+	</include>
+	
+
+	<include name="TituloConClearlogo">
+		<param name="visible">false</param>
+		<param name="top">19%</param>
+		<param name="left">5%</param>
+		<param name="height">10%</param>
+		<param name="width">50%</param>
+		<param name="wrap">5%</param>
+		<param name="widthtext">900</param>
+		<definition>
+			<control type="grouplist">
+				<include>FadeConTrailer</include>
+				<orientation>horizontal</orientation>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<top>$PARAM[top]</top>
+				<!-- <width max="$PARAM[width]">auto</width> -->
+				<left>$PARAM[left]</left>
+				<centerleft>10%</centerleft>
+				<itemgap>20</itemgap>
+				<control type="label">
+					<description>Titulo cuando hay clearlogo</description>
+					<label>$INFO[ListItem.Property(P3Titulo)]</label>
+					<width max="$PARAM[widthtext]">auto</width>
+					<font>font30_title</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<scroll>true</scroll>
+					<scrollspeed>30</scrollspeed>	
+					<scrollsuffix>       -</scrollsuffix>
+					<visible>!String.IsEmpty(ListItem.Art(clearlogo)) + $PARAM[visible]</visible>
+				</control>
+				<control type="label">
+					<description>Titulo cuando hay clearlogo</description>
+					<label>T$INFO[ListItem.Season]</label>
+					<width>auto</width>
+					<font>font30_title</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<visible>Container.Content(seasons) | Container.Content(episodes) + !String.IsEmpty(ListItem.Art(clearlogo)) + $PARAM[visible]</visible>
+				</control>
+				<control type="label">
+					<description>Titulo cuando hay clearlogo</description>
+					<label>E$INFO[ListItem.Episode]</label>
+					<width>auto</width>
+					<font>font30_title</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<visible>Container.Content(episodes) + !String.IsEmpty(ListItem.Art(clearlogo)) + $PARAM[visible]</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+
+
+
+<include name="Infoline">
+		<param name="visible">false</param>
+		<param name="left">5%</param>
+		<param name="top">18.5%</param>
+		<param name="width">60%</param>
+		<param name="heigth">10%</param>
+		<param name="colordifus">button_focus</param>
+		<param name="objeto">ListItem</param>
+		<definition>
+			<control type="grouplist">
+				<visible>$PARAM[visible]</visible>
+				<itemgap>30</itemgap>
+				<orientation>horizontal</orientation>
+				<height>$PARAM[height]</height>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<include>FadeConTrailer</include>
+
+				<!--PALANTIR Anio-->	
+				<control type="group">
+					<width max="100">auto</width>
+					<visible>!String.IsEmpty($PARAM[objeto].year)</visible>			
+					<control type="image" description="img_year">
+						<texture colordiffuse="$PARAM[colordifus]">Palantir/icons/calendar.png</texture>
+						<height>30</height>
+						<width>30</width>
+						<aligny>center</aligny>
+						<visible>!String.IsEmpty($PARAM[objeto].year)</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[$PARAM[objeto].Year]</label>
+						<height>30</height>
+						<top>-5</top>
+						<width>auto</width>
+						<align>left</align>
+						<font>font30_title</font>
+						<left>40</left>
+						<visible>!String.IsEmpty($PARAM[objeto].year)</visible>
+					</control>
+				</control>
+				<!--PALANTIR duracion-->
+				<control type="group">
+					<width max="150">auto</width>
+					<visible>!String.IsEmpty($PARAM[objeto].Duration)</visible>					
+					<control type="image" description="img_duracion"> 
+						<texture colordiffuse="$PARAM[colordifus]">Palantir/icons/tiempo.png</texture>
+						<height>30</height>
+						<width>30</width>
+						<aligny>center</aligny>
+						<visible>!String.IsEmpty($PARAM[objeto].Duration)</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[$PARAM[objeto].Duration(H)]h $INFO[$PARAM[objeto].Duration(mm)]min</label>
+						<height>30</height>
+						<width>auto</width>
+						<top>-5</top>
+						<aligny>left</aligny>
+						<left>30</left>
+						<font>font30_title</font>
+						<visible>!String.IsEmpty($PARAM[objeto].Duration)</visible>
+					</control>
+				</control>
+					<!--Audio-->
+				<control type="group">
+					<width max="120">auto</width>
+					<visible>!String.IsEmpty($PARAM[objeto].Property(P3IdiomaStr))</visible>
+					<control type="grouplist">
+						<itemgap>0</itemgap>
+						<orientation>horizontal</orientation>
+						<height>50</height>
+						<top>0</top>
+						<aligny>center</aligny>
+						<control type="image" description="onda">
+							<texture colordiffuse="$PARAM[colordifus]">Palantir/icons/onda.png</texture>
+							<height>30</height>
+							<width>30</width>
+							<aligny>center</aligny>
+							<visible>!String.IsEmpty($PARAM[objeto].Property(P3IdiomaStr))</visible>
+						</control>
+						<control type="image" description="img_idioma">
+							<texture>Palantir/iconsIdioma/$INFO[$PARAM[objeto].Property(P3IdiomaIco)].png</texture>
+							<height>30</height>
+							<width>80</width>
+							<aligny>center</aligny>
+							<aspectratio scalediffuse="false" align="center" aligny="center">keep</aspectratio>
+							<visible>!String.IsEmpty($PARAM[objeto].Property(P3IdiomaStr))</visible>
+						</control>
+					</control>
+				</control>
+
+					<!--Calidades-->
+					<control type="group">
+						<width max="130">auto</width>
+						<visible>!String.IsEmpty($PARAM[objeto].Property(P3Calidad))</visible>
+						<control type="grouplist">
+							<left>-20</left>
+							<itemgap>5</itemgap>
+							<orientation>horizontal</orientation>
+							<height>50</height>
+							<aligny>center</aligny>
+							<control type="image" description="ojo">  <!--img year-->
+								<texture colordiffuse="$PARAM[colordifus]">Palantir/icons/ojo.png</texture>
+								<height>30</height>
+								<width>30</width>
+								<aligny>center</aligny>
+								<visible>!String.IsEmpty($PARAM[objeto].Property(P3Calidad))</visible>
+							</control>
+							<control type="image" description="img_video">
+								<texture>Palantir/iconsVideoaudio/$VAR[iconVideoInfoline]</texture>
+								<height>30</height>
+								<width>100</width>
+								<aligny>center</aligny>
+								<aspectratio scalediffuse="false" align="center" aligny="center">keep</aspectratio>
+								<visible>!String.IsEmpty($PARAM[objeto].Property(P3Calidad))</visible>
+							</control>
+						</control>
+					</control>
+
+					<!--Palantir: InfoSeries-->
+					<control type="group">
+						<width max="430">auto</width>
+						<visible>String.IsEqual($PARAM[objeto].dbType,tvshow)</visible>
+						<control type="grouplist">
+							<itemgap>30</itemgap>
+							<orientation>horizontal</orientation>
+							<height>50</height>
+							<top>-5</top>
+							<left>-20</left>
+							<aligny>top</aligny>
+							<control type="label">
+								<label>$VAR[temporadas]</label>
+								<height>30</height>
+								<width>230</width>
+								<font>font30_title</font>
+								<visible>!String.IsEmpty($PARAM[objeto].Property(P3TotalSeasons))</visible>
+							</control>
+							<control type="label">
+								<label>$INFO[$PARAM[objeto].Premiered]</label>
+								<height>30</height>
+								<width>200</width>
+								<font>font30_title</font>
+								<visible>!String.IsEmpty($PARAM[objeto].Premiered)</visible>
+							</control>
+						</control>		
+					</control>
+
+					<!--MPAA-->
+					<control type="group">
+						<width max="40">auto</width>
+						<control type="image" description="img_mpaa">  <!--img mpaa-->
+							<texture>Palantir/mpaa/$INFO[$PARAM[objeto].Mpaa].png</texture>
+							<height>30</height>
+							<width>40</width>
+							<aligny>center</aligny>
+							<visible>!String.IsEmpty($PARAM[objeto].Mpaa)</visible>
+						</control>
+					</control>
+				</control>
+		</definition>
+	</include>
+
+
+	<include name="Plot">
+		<param name="visible">false</param>
+		<param name="id">504</param>
+		<param name="objeto">ListItem</param>
+		<param name="left">5%</param>
+		<param name="top">25.5%</param>
+		<param name="height">18%</param>
+		<param name="width">50%</param>
+		<definition>
+			<control type="textbox" description="Plot">
+				<include>FadeConTrailer</include>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height max="$PARAM[height]">auto</height> 
+				<font>font25_narrow</font>
+				<label>$INFO[$PARAM[objeto].Plot]</label>
+				<shadowcolor>sombra_texto</shadowcolor>
+				<align>left</align>
+				<aligny>center</aligny>
+				<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
+
+
+	<include name="Genero">
+		<param name="visible">false</param>
+		<param name="left">5%</param>
+		<param name="top">44%</param>
+		<param name="width">50%</param>
+		<param name="height">30</param>
+		<param name="objeto">ListItem</param>
+		<param name="widthtext">900</param>
+		<definition>
+			<control type="grouplist">
+				<include>FadeConTrailer</include>
+				<visible>$PARAM[visible]</visible>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
+				<itemgap>40</itemgap>
+				<width>$PARAM[width]</width>
+				<orientation>horizontal</orientation>
+				<height>$PARAM[height]</height>
+				<!--PALANTIR GENERO-->
+				<control type="group">
+					<control type="image" description="img_Genero">  <!--img genero-->
+						<texture>Palantir/icons/genre.png</texture>
+						<height>30</height>
+						<width>30</width>
+						<aligny>center</aligny>
+						<visible>!String.IsEmpty($PARAM[objeto].Genre)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<control type="fadelabel" description="Genero"> 
+						<font>font25_title</font>
+						<width max="$PARAM[widthtext]">auto</width>
+						<height>30</height>
+						<align>left</align>
+						<aligny>center</aligny>
+						<!-- <scroll>true</scroll>
+						<scrollspeed>30</scrollspeed>	
+						<scrollsuffix>       -</scrollsuffix> -->
+						<label>$INFO[$PARAM[objeto].Genre]</label>
+					</control>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+	<include name="Ratings">
+		<param name="visible">false</param>
+		<param name="left">5%</param>
+		<param name="top">48%</param>
+		<param name="width">50%</param>
+		<param name="heigth">30</param>
+		<param name="objeto">ListItem</param>
+		<definition>
+			<control type="grouplist">
+				<include>FadeConTrailer</include>
+				<visible>$PARAM[visible]</visible>
+				<top>$PARAM[top]</top>
+				<left>$PARAM[left]</left>
+				<width>$PARAM[width]</width>
+				<heigth>$PARAM[heigth]</heigth>
+				<orientation>horizontal</orientation>
+				<itemgap>100</itemgap>
+				<control type="group">
+					<visible>!String.IsEmpty($PARAM[objeto].Rating(tmdb))</visible>
+					<control type="image" description="img_tmdb">
+						<texture>Palantir/icons/tmdb.png</texture>
+						<height>30</height>
+						<width>30</width>
+						<aligny>center</aligny>
+						<visible>!String.IsEmpty($PARAM[objeto].Rating(tmdb))</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[$PARAM[objeto].Rating(tmdb)]</label>
+						<height>30</height>
+						<width>auto</width>
+						<align>left</align>
+						<left>40</left>
+						<aligny>center</aligny>
+						<font>font25_title</font>
+						<visible>!String.IsEmpty($PARAM[objeto].Rating(tmdb))</visible>
+					</control>
+				</control>
+				<control type="group">
+					<visible>!String.IsEmpty($PARAM[objeto].Rating(trakt))</visible>
+					<control type="image" description="img_trakt">
+						<texture>Palantir/icons/trakt.png</texture>
+						<height>30</height>
+						<width>30</width>
+						<aligny>center</aligny>
+						<visible>!String.IsEmpty($PARAM[objeto].Rating(trakt))</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[$PARAM[objeto].Rating(trakt)]</label>
+						<height>30</height>
+						<width>auto</width>
+						<align>left</align>
+						<left>40</left>
+						<aligny>center</aligny>
+						<font>font25_title</font>
+						<visible>!String.IsEmpty($PARAM[objeto].Rating(trakt))</visible>
+					</control>
+				</control>
+				<control type="image" description="img_yt">
+					<texture>Palantir/icons/youtube3.png</texture>
+					<height>32</height>
+					<width>32</width>
+					<aspectratio>keep</aspectratio>
+					<visible>!String.IsEmpty($PARAM[objeto].Trailer)</visible>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+	<include name="Top">
+		<param name="top">22%</param>
+		<definition>
+			<top>$PARAM[top]</top>
+		</definition>
+	</include>
+
+
+
+
+
+
+
+	<include name="View_504_PalantirFlix">
+		<control type="group">
+			<include>OpenClose_Right</include>
+			<left>0</left>
+			<top>0</top>
+			<visible>Control.IsVisible(504)</visible>
+			<include>Visible_Right</include>
+ 
+			<control type="group" description="GeneralHome">
+				<include>FullScreenDimensions</include>
+				<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
+
+				<control type="group" description="ContenedorSuperior">
+					<control type="image" description="HomeArt">
+						<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+						<height>70%</height>
+						<width>70%</width>
+						<top>0</top>
+						<right>0</right>
+						<include>Claridad_Fanart</include>
+						<visible> !Container.Content(albums) + !Player.Playing + Control.IsVisible(504)</visible>
+						<!-- <aspectratio align="center" aligny="center">scale</aspectratio> -->
+					</control>
+
+					<include content="AutoTrailerWindow">
+						<param name="visible" value="Player.Playing"/>
+					</include>
+					
+					<include content="NetflixDiffuse">
+						<param name="visible" value="Control.IsVisible(504)" />
+					</include>
+
+					<!--PALANTIR Clearlogo /titulo-->
+				<include content="Clearlogo" condition="String.IsEqual(Skin.String(clearlogo.tamano),pequeno) | String.IsEmpty(Skin.String(clearlogo.tamano))">
+					<param name="visible" value="Skin.HasSetting(OcultarClearLogo.504)" />
+					<param name="width" value="30%" />
+				</include>
+				<include content="Clearlogo" condition="String.IsEqual(Skin.String(clearlogo.tamano),mediano)">
+					<param name="visible" value="Skin.HasSetting(OcultarClearLogo.504)" />
+					<param name="align" value="left" />
+					<param name="width" value="50%" />
+				</include>
+				<include content="Clearlogo" condition="String.IsEqual(Skin.String(clearlogo.tamano),grande)">
+					<param name="visible" value="Skin.HasSetting(OcultarClearLogo.504)" />
+					<param name="align" value="left" />
+					<param name="width" value="80%" />
+				</include>
+
+
+
+
+					<include content="TituloConClearlogo">
+							<param name="visible" value="!Skin.HasSetting(OcultarClearLogo.504) + !Skin.HasSetting(OcultarTituloInfoAudioVideo.504)" />
+					</include>
+
+					<!--Linea info Encima Plot-->
+					<include content="Infoline">
+						<param name="visible" value="true" />
+					</include>
+					<!--PALANTIR PLOT-->
+					<include content="Plot">
+						<param name="visible" value="true" />
+						<param name="id" value="504" />
+					</include>
+					
+					<!--Info Genero-->
+					<include content="Genero">
+						<param name="visible" value="true" />
+					</include>
+
+					<!--Info Ratings-->
+					<include content="Ratings">
+						<param name="visible" value="true" />
+					</include>
+
+				</control> <!--/ContenedorSuperior-->
+
+
+				<control type="group" description="ContenedorInferior"> 
+					<height>60%</height>
+					<width>100%</width>
+					<bottom>0</bottom>
+					<left>0</left>  
+
+					<control type="group" description="Widgets">
+						<height>520</height>
+						<width>100%</width>
+						<bottom>0</bottom>
+						<left>0</left>  
+
+
+						<control type="panel" id="504">
+							<left>2%</left>
+							<top>0</top>
+							<right>0</right>
+							<height>100%</height>
+							<onleft>9000</onleft>
+							<onright>531</onright>
+							<onup condition="Integer.IsGreater(Container.NumPages,1)">504</onup>
+							<onup condition="!Integer.IsGreater(Container.NumPages,1)">9000</onup>
+							<ondown>504</ondown>
+							<viewtype label="Palantir Flix">icon</viewtype>
+							<preloaditems>2</preloaditems>
+							<pagecontrol>531</pagecontrol>
+							<scrolltime tween="cubic" easing="out">500</scrolltime>
+							<visible>$EXP[Vista504]</visible>
+							<include>FadeConTrailer</include>
+							<itemlayout height="445" width="300" condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows)">
+								<control type="group">
+									<left>5%</left>
+									<top>0</top>
+									<include>InfoWallMovieLayout</include>
+								</control>
+							</itemlayout>
+							<focusedlayout height="445" width="300" condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows)">
+
+								<control type="group">
+								<include>botonFocusedLayoutVARs</include>
+									<depth>DepthContentPopout</depth>
+									<left>5%</left>
+									<top>0</top>
+									<include content="InfoWallMovieLayout">
+										<param name="focused" value="true" />
+									</include>
+								</control>
+							</focusedlayout>
+							<!--episodios.....-->
+							<itemlayout height="301" width="300" condition="Container.Content(episodes) | Container.Content(videos) | [Container.Content(musicvideos) + !Skin.HasSetting(show_musicvideoposter)]">
+								<control type="group">
+									<left>5%</left>
+									<top>0</top>
+									<include content="InfoWallEpisodeLayout">
+										<param name="focused" value="false" />
+									</include>
+								</control>
+							</itemlayout>
+							<focusedlayout height="301" width="300" condition="Container.Content(episodes) | Container.Content(videos) | [Container.Content(musicvideos) + !Skin.HasSetting(show_musicvideoposter)]">
+								<control type="group">
+								<include>botonFocusedLayoutVARs</include>
+									<depth>DepthContentPopout</depth>
+									<left>5%</left>
+									<top>0</top>
+									<include content="InfoWallEpisodeLayout">
+										<param name="focused" value="true" />
+										<param name="thumb_label" value="$INFO[ListItem.Label2]" />
+									</include>
+								</control>
+							</focusedlayout>
+							<!--artistas/albums-->
+							<itemlayout height="410" width="300" condition="Container.Content(artists) | Container.Content(albums)">
+								<control type="group">
+									<top>0</top>
+									<left>5%</left>
+									<include content="InfoWallEpisodeLayout">
+										<param name="focused" value="false" />
+										<param name="thumb_label" value="$INFO[ListItem.Label2]" />
+									</include>
+								</control>
+							</itemlayout>
+							<focusedlayout height="410" width="300" condition="Container.Content(artists) | Container.Content(albums)">
+								<control type="group">
+								<include>botonFocusedLayoutVARs</include>
+									<depth>DepthContentPopout</depth>
+									<top>0</top>
+									<left>5%</left>
+
+									<include content="InfoWallEpisodeLayout">
+										<param name="focused" value="true" />
+										<param name="thumb_label" value="$INFO[ListItem.Label2]" />
+									</include>
+								</control>
+							</focusedlayout>
+							<!--imagenes-->
+							<itemlayout height="401" width="378" condition="Container.Content(images)">
+								<control type="group">
+									<left>5%</left>
+									<top>0</top>
+									<include>InfoWallPictureLayout</include>
+								</control>
+							</itemlayout>
+							<focusedlayout height="401" width="378" condition="Container.Content(images)">
+								<control type="group">
+								<include>botonFocusedLayoutVARs</include>
+									<depth>DepthContentPopout</depth>
+									<left>0</left>
+									<top>0</top>
+									<include content="InfoWallPictureLayout">
+										<param name="focused" value="true" />
+									</include>
+								</control>
+							</focusedlayout>
+						</control>
+					</control>	
+				</control>
+			</control>
+		</control>
+	</include>
+</includes>

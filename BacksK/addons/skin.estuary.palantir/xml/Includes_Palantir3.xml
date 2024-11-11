@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <variable name="p3NameEspeciales">
+        <value>$INFO[window(home).Property(p3especialesname)]</value>
+    </variable>
+    <variable name="p3PathEspeciales">
+        <value>$INFO[window(home).Property(p3especialespath)]&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadEspeciales)]</value>
+    </variable>
+    <variable name="p3PelisFavoritasPath">
+        <value>$INFO[window(home).Property(p3PelisFavoritasPath)]&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadPelisFavoritas)]</value>
+    </variable>
+    <variable name="p3SeriesFavoritasPath">
+        <value>$INFO[window(home).Property(p3SeriesFavoritasPath)]&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSeriesFavoritas)]</value>
+    </variable>
+    <variable name="p3PathRandom">
+        <value>plugin://plugin.video.palantir3/?Ln02bk5WYy91bkFGdzlGbnAiOi42bpR3YhJye03Jt9GZuFmU0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJnAiOiwWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXb1JGbhdCI6ICduVGdu92YiAC&reload=$INFO[Window(home).Property(P3ReloadRandom)]</value>
+    </variable>
+    <variable name="p3Peliculas">
+        <value>plugin://plugin.video.palantir3/?blJWYsJCIscyctVnYsF2JgojI05WZ052bjJCIscSduVWbnAiOi42bpR3YhJye03JjNXYgQWaf1WZ0lGI5JGISVERS9EIgAjM9QWafVnbl1GIlJXZodHIzVnbl1GIt9mcmBCdyFmbhZGLsF3cs42bjlGLu9Wa0NWYswWZiFGbgQ3YlxWZzdCI6ICbxNnIgwyJdJ1TM90Qvs1chxWdj16wsVGUdBDM3QmZmZmZgI1TM90QbdCI6IC</value>
+    </variable>
+    <variable name="p3NamePeliculasNovedades">
+        <value>Peliculas Novedades</value>
+    </variable>
+    <variable name="p3PathPeliculasNovedades">
+        <value>plugin://plugin.video.palantir3/?wWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye03JhxWdjlGblB1XzlGblB3X2BSTPJlRgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxibvlGdhJXdkxiYk1GdsQWYklGbhNGLvlGZ1FGLvRmbvZGLyVGdz9GcsQ3bsBHLhh2YlZGLvxWd0lGdgQ1QFxURTdCI6ICbxNnIgwyJzVGZhRWZ29mTzFGb1NWasVGU0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1clRWYkVmdv5UXwAzNkZmZmZGIS9ETPN0WnAiOi&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadPeliculasNovedades)]</value>
+    </variable>
+    <variable name="p3NamePeliculasUltimasAnadidas">
+        <value>Peliculas Ultimas Añadidas</value>
+    </variable>
+    <variable name="p3PathPeliculasUltimasAnadidas">
+        <value>plugin://plugin.video.palantir3/?ZGIS9ETPN0WnAiOiwWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye9dyYzVGZgEGajVmZgwyYzVGZgQWZ0FGZwVHI5JGIyVGZy9GIhxWdjlGblB1XzlGblB3X2BSTPJlRgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxibvlGdhJXdkxiYk1GdsQWYklGbhNGLvlGZ1FGLvRmbvZGLyVGdz9GcsQ3bsBHLhh2YlZGLvxWd0lGdgQ1QFxURTdCI6ICbxNnIgwyJzFGZpRWYuF0ch1Wa0xWVzFGb1NWasVGU0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1chRWakFWsDHGIzFWbpRHbaOcXwAzNkZmZm&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadPeliculasUltimasAnadidas)]</value>
+    </variable>
+    <variable name="p3NamePeliculasRecomendadas">
+        <value>Peliculas Recomendadas</value>
+    </variable>
+    <variable name="p3PathPeliculasRecomendadas">
+        <value>plugin://plugin.video.palantir3/?zFGZhRmbl12bjVmcnAiOiwWYpNWZwNXZiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye9dSKzVCKg4WagIGZtRHIlJXZodHIhxWdjlGblB1XzlGblB3X2BSTPJlRgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxibvlGdhJXdkxiYk1GdsQWYklGbhNGLvlGZ1FGLvRmbvZGLyVGdz9GcsQ3bsBHLhh2YlZGLvxWd0lGdgQ1QFxURTdCI6ICbxNnIgwyJzFGZhRmbl12bjVmUzFGb1NWasVGU0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJ&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadPeliculasRecomendadas)]</value>
+    </variable>
+    <variable name="p3NamePeliculasNoFinalizadas">
+        <value>Peliculas No Finalizadas</value>
+    </variable>
+    <variable name="p3PathPeliculasNoFinalizadas">
+        <value>plugin://plugin.video.palantir3/?mepxWYulmZf9mbnAiOiwWYpNWZwNXZiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye03JpMXJoAibpBiYk1GdgUmclh2dgMXasVGcfZHIN9kUGBSYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxibvlGdhJXdkxiYk1GdsQWYklGbhNGLvlGZ1FGLvRmbvZGLyVGdz9GcsQ3bsBHLhh2YlZGLvxWd0lGdgQ1QFxURTdCI6ICbxNnIgwyJzFGZhpXasFmbpZ0bONXYsV3YpxWZQRXZnRWaXdCI6ICdldGZpdVZtFmbiACLlVncUBiOiQXZnRWaXNXaiACLnMXYkF&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadPeliculasNoFinalizadas)]</value>
+    </variable>
+    <variable name="p3Series">
+        <value>plugin://plugin.video.palantir3/?lJWYsJCIscyctVnYsF2JgojI05WZ052bjJCIscSduVWbnAiOi42bpR3YhJyeQfnM2chBCZp9VblRXagknYgIVREJ1TgACM00DZp9VduVWbgUmclh2dgMXduVWbg02byZGI0JXYuFmZswWczxibvNWas42bpR3YhxCblJWYsBCdjVGblN3JgojIsF3ciACLn0lUPx0TD9yWzVWayV2UdBDM3QmZmZmZgI1TM90QbdCI6ICb</value>
+    </variable>
+    <variable name="p3NameSeriesNuevas">
+        <value>Series Nuevas</value>
+    </variable>
+    <variable name="p3PathSeriesNuevas">
+        <value>plugin://plugin.video.palantir3/?0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJyeQfnM2clRGIkVGdhRGc1BCLjNXZkBSYoNWZmBSeiBiUFRkUPBCbhJXZuV2RfNXZpJXZz9ldg02byZGIgEWay92ZlRXYjBCLn5Wa0Fmcgwybn9GbyFWZsNGIsIXZslWYyRHIs8mcl5WZnxSYhBXbs8WakVXYgwiYk1Gdgwybk52bmBCLyVGdz9GcgwCdvxGcgwSYoNWZmBCLvxWd0lGdgACVDVETFN1JgojIsF3ciACLnMXY2VWdONXZpJXZTRXZnRWaXdCI6ICdldGZpdVZtFmbiACLn0lUPx0TD9yWzVWayV2cgMXY2VWdO1FMwcDZmZmZmBiUPx&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSeriesNuevas)]</value>
+    </variable>
+    <variable name="p3NameSeriesUltimasActualizadas">
+        <value>Series Ultimas Actualizadas</value>
+    </variable>
+    <variable name="p3PathSeriesUltimasActualizadas">
+        <value>plugin://plugin.video.palantir3/?0LbNXZu9WajFmepxWY1R3YhBych1Wa0xmmD3FMwcDZmZmZmBiUPx0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJyeQfnM0UFREIwVnLxBSeiBiUFRkUPBiYk1GduMHI9AiYk1GduEHIu9GIzBychBCbhJXZuV2RfNXZpJXZz9ldg4WavpmbcJHXxBychBSKDNVREBCc1BSeiBiUFRkUPBiYk1GdgknYgAXdvJ3ZgMXZpJXZz91clNWYs5WZg02byZGIwVHIzFGIpQWZ0FGZwVHK4FWbgwiYk1GdgQ3YlxWZzhibcJHXN9kUGBSYpJ3bnVGdhNmLzBCLn5Wa0FmcuMHIs82ZvxmchVGbj5ycgwiclxWahJHduMHIs8mcl5WZn5ycsEWYw1mLzxybpRWdh5ycsIGZtRnLzBCLvRmbvZmLzBCLyVGdz9GcuMHIsQ3bsBnLzBCLhh2YlZmLzxybsVHdpRnLzBCdjVGblN3JgojIsF3ciACLnMXYkFmepxWY1R3YBNXYtlGdsV1cllmclNFdldGZpd1JgojI0V2Zkl2Vl1WYuJCIscSXS9ETPN&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSeriesUltimasActualizadas)]</value>
+    </variable>
+    <variable name="p3NameSeriesRecomendadas">
+        <value>Series Recomendadas</value>
+    </variable>
+    <variable name="p3PathSeriesRecomendadas">
+        <value>plugin://plugin.video.palantir3/?Yk5WZt92YlJ3JgojIsFWajVGczVmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJye03JpMXJoAibpBiYk1GdgUmclh2dgwWYyVmbld0XzVWayV2cfZHIN9kUGBCIhlmcvdWZ0F2YgwyZulGdhJHIs82ZvxmchVGbjBCLyVGbpFmc0BCLvJXZuV2ZsEWYw1GLvlGZ1FGLiRWb0xybk52bmxiclR3cvBHL09GbwxSYoNWZmxybsVHdpRHIUNURMV0UnAiOiwWczJCIscychRWYk5WZt92YlJ1cllmclNFdldGZpd1JgojI0V2Zkl2Vl1WYuJCIsUWdyRFI6ICdldGZpd1cpJCIscychRW&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSeriesRecomendadas)]</value>
+    </variable>
+    <variable name="p3NameSeriesSeguimiento">
+        <value>Series En Seguimiento</value>
+    </variable>
+    <variable name="p3PathSeriesSeguimiento">
+        <value>plugin://plugin.video.palantir3/?N0WnAiOiwWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnM3dvh2c2R3JgojI05WZ052bjJCIscyUllmclN3XzlWTnAiOi42bpR3YhJyeQfnkyclgCIulGIiRWb0BSZyVGa3BycllmclN3X2BSTPJlRgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxybpRWdhxiYk1Gds8GZu9mZsIXZ0N3bwxCdvxGcsEGajVmZs8Gb1RXa0BCVDVETFN1JgojIsF3ciACLn8GduVWatlWdnV2UzVWayV2U0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1b05WZp1Wa1dWZzBiblBycllmclNVXwAzNkZmZmZGIS9ETP&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSeriesSeguimiento)]</value>
+    </variable>
+    <variable name="p3Telenovelas">
+        <value>plugin://plugin.video.palantir3/?blJWYsJCIscyctVnYsF2JgojI05WZ052bjJCIscSduVWbnAiOi42bpR3YhJye03JjNXYgQWaf1WZ0lGI5JGISVERS9EIwMTPkl2X15WZtBSZyVGa3Byc15WZtBSbvJnZgQnch5WYmxCbxNHLu92YpxibvlGdjFGLsVmYhxGI0NWZsV2cnAiOiwWczJCIscSXS9ETPN0LbNXYsVmdv5WZsVGVdBDM3QmZmZmZgI1TM90QbdCI6IC</value>
+    </variable>
+    <variable name="p3NameTelenovelasNuevas">
+        <value>Telenovelas Nuevas</value>
+    </variable>
+    <variable name="p3PathTelenovelasNuevas">
+        <value>plugin://plugin.video.palantir3/?t1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJye9dyYzVGZgEGajVmZgknYgIVREJ1TgEGblZ3bO91cllmclN3X2BSbvJnZgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxybpRWdhxiYk1Gdgwybk52bmBCLyVGdz9GcgwCdvxGcgwSYoNWZmBCLvxWd0lGdgACVDVETFN1JgojIsF3ciACLnMXY2VWdONXYsVmdv5WZsVGV0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1cllmclNHIzFmdlVnTgACIg0FMwcDZmZmZmBiUPx0TD&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadTelenovelasNuevas)]</value>
+    </variable>
+    <variable name="p3NameTelenovelasUltimasActualizadas">
+        <value>Telenovelas Ultimas Actualizadas</value>
+    </variable>
+    <variable name="p3PathTelenovelasUltimasActualizadas">
+        <value>plugin://plugin.video.palantir3/?gASXwAzNkZmZmZGIS9ETPN0WdJ1TM90Qvs1chxWZ29mblxWZU1VZxkjNyQmZmBiUPx0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJye03JDNVREBCc15ScgknYgIVREJ1TgIGZtRnLzBSPgIGZtRnLxBibvBycgMXYgEGblZ3bO91cllmclN3X2Bibp9mauxlccFHIzFGIpM0UFREIwVHI5JGISVERS9EIiRWb0BSeiBCc19mcnBycllmclN3XzV2YhxmblBSbvJnZgAXdgMXYgkCZlRXYkBXdogXYtBCLiRWb0BCdjVGblNHKuxlcc10TSZEIhlmcvdWZ0F2YuMHIscmbpRXYy5ycgwybn9GbyFWZsNmLzBCLyVGbpFmc05ycgwybyVmbldmLzxSYhBXbuMHLvlGZ1FmLzxiYk1GduMHIs8GZu9mZuMHIsIXZ0N3bw5ycgwCdvxGcuMHIsEGajVmZuMHLvxWd0lGduMHI0NWZsV2cnAiOiwWczJCIscychRWY6lGbhVHdjF0ch1Wa0xWVzFGblZ3buVGblRFdldGZpd1JgojI0V2Zkl2Vl1WYuJCIscSXS9ETPN0LbNXZu9WajFmepxWY1R3YhBych1Wa0xmmDDCI&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadTelenovelasUltimasActualizadas)]</value>
+    </variable>
+    <variable name="p3Dibujos">
+        <value>plugin://plugin.video.palantir3/?lJWYsJCIscyctVnYsF2JgojI05WZ052bjJCIscSduVWbnAiOi42bpR3YhJye03JjNXYgQWaf1WZ0lGI5JGISVERS9EIgATN9QWafVnbl1GIlJXZodHIzVnbl1GIt9mcmBCdyFmbhZGLsF3cs42bjlGLu9Wa0NWYswWZiFGbgQ3YlxWZzdCI6ICbxNnIgwyJdJ1TM90Qvs1cvpWdilGRdBDM3QmZmZmZgI1TM90QbdCI6ICb</value>
+    </variable>
+    <variable name="p3NameDibujosNovedades">
+        <value>Películas Dibujos Novedades</value>
+    </variable>
+    <variable name="p3PathDibujosNovedades">
+        <value>plugin://plugin.video.palantir3/?wWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye03JvpWdilGRfNXasVGcfZHIN9kUGBCIhlmcvdWZ0F2YgwyZulGdhJHIs82ZvxmchVGbjBCLyVGbpFmc0BCLvJXZuV2ZsEWYw1GLu9Wa0Fmc1RGLiRWb0xCZhRWasF2Ys8WakVXYs8GZu9mZsIXZ0N3bwxCdvxGcsEGajVmZs8Gb1RXa0BCVDVETFN1JgojIsF3ciACLnMXZkFGZlZ3bON3bqVnYpREdldGZpd1JgojI0V2Zkl2Vl1WYuJCIscSXS9ETPN0LbNXZkFGZlZ3bOBCIgASXwAzNkZmZmZGIS9ETPN0WnAiOi&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadDibujosNovedades)]</value>
+    </variable>
+    <variable name="p3NameDibujosUltimasAnadidas">
+        <value>Películas Dibujos Ultimas Añadidas</value>
+    </variable>
+    <variable name="p3PathDibujosUltimasAnadidas">
+        <value>plugin://plugin.video.palantir3/?OMblBVXlFTO2IDZmZGIS9ETPN0WnAiOiwWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJyeQfnM2clRGIhh2YlZGIsM2clRGIkVGdhRGc1BSeiBiclRmcvBybqVnYpR0XzlGblB3X2BSTPJlRgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxibvlGdhJXdkxiYk1GdsQWYklGbhNGLvlGZ1FGLvRmbvZGLyVGdz9GcsQ3bsBHLhh2YlZGLvxWd0lGdgQ1QFxURTdCI6ICbxNnIgwyJzFGZpRWYuF0ch1Wa0xWVz9ma1JWaERXZnRWaXdCI6ICdldGZpdVZtFmbiACLn0lUPx0TD9yWzFGZpRWYxOcYgMXYtlGdsp5wgACIg0FMwcDZmZmZmBiUPx0TDtVXS9ETPN0LbpzcvpWdilGRgUGZgMXYsV3Yt&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadDibujosUltimasAnadidas)]</value>
+    </variable>
+    <variable name="p3NameSerieDibujosNuevas">
+        <value>Series Dibujos Nuevas</value>
+    </variable>
+    <variable name="p3PathSerieDibujosNuevas">
+        <value>plugin://plugin.video.palantir3/?jNyQmZmBiUPx0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJyeQfnM2clRGIhh2YlZGI5JGISVERS9EIvpWdilGRfNXZpJXZz9ldg02byZGIgEWay92ZlRXYjBCLn5Wa0Fmcgwybn9GbyFWZsNGIsIXZslWYyRHIs8mcl5WZnxSYhBXbs8WakVXYsIGZtRHIs8GZu9mZgwiclR3cvBHIsQ3bsBHIsEGajVmZgwybsVHdpRHIgQ1QFxURTdCI6ICbxNnIgwyJzFmdlVnTz9ma1JWaEVWayV2U0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1cllmclNHIzFmdlVnTgACIg0FMwcDZmZmZmBiUPx0TDtVXS9ETPN0LbpzcvpWdilGRgUGZgMXZpJXZT1VZxk&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSerieDibujosNuevas)]</value>
+    </variable>
+    <variable name="p3NameSerieDibujosUltimasActualizadas">
+        <value>Series Dibujos Ultimas Añadidas</value>
+    </variable>
+    <variable name="p3PathSerieDibujosUltimasActualizadas">
+        <value>plugin://plugin.video.palantir3/?cDZmZmZmBiUPx0TDtVXS9ETPN0LbpzcvpWdilGRgUGZgMXZpJXZT1VZxkjNyQmZmBiUPx0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJyeQfnM0UFREIwVnLxBSeiBiUFRkUPBiYk1GduMHI9AiYk1GduEHIu9GIzBychBybqVnYpR0XzVWayV2cfZHIul2bq5GXyxVcgMXYgkyQTVERgAXdgknYgIVREJ1TgIGZtRHI5JGIwV3bydGIzVWayV2cfNXZjFGbuVGIt9mcmBCc1BychBSKkVGdhRGc1hCeh1GIsIGZtRHI0NWZsV2co4GXyxVTPJlRgEWay92ZlRXYj5ycgwyZulGdhJnLzBCLvd2bsJXYlx2YuMHIsIXZslWYyRnLzBCLvJXZuV2ZuMHLhFGct5ycs8WakVXYuMHLiRWb05ycgwybk52bm5ycgwiclR3cvBnLzBCL09Gbw5ycgwSYoNWZm5ycs8Gb1RXa05ycgQ3YlxWZzdCI6ICbxNnIgwyJzFGZhpXasFWd0NWQzFWbpRHbVN3bqVnYpRUZpJXZTRXZnRWaXdCI6ICdldGZpdVZtFmbiACLn0lUPx0TD9yWzVmbvl2YhpXasFWd0NWYgMXYtlGdsp5wgACIg0FMw&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSerieDibujosUltimasActualizadas)]</value>
+    </variable>
+    <variable name="p3Anime">
+        <value>plugin://plugin.video.palantir3/?JWYsJCIscyctVnYsF2JgojI05WZ052bjJCIscSduVWbnAiOi42bpR3YhJye9dyYzFGIkl2XtVGdpBSeiBiUFRkUPBCIwYTPkl2X15WZtBSZyVGa3Byc15WZtBSbvJnZgQnch5WYmxCbxNHLu92YpxibvlGdjFGLsVmYhxGI0NWZsV2cnAiOiwWczJCIscSXS9ETPN0LbVWbp5WQdBDM3QmZmZmZgI1TM90QbdCI6ICbl</value>
+    </variable>
+    <variable name="p3NameAnimeNovedades">
+        <value>Anime Novedades</value>
+    </variable>
+    <variable name="p3PathAnimeNovedades">
+        <value>plugin://plugin.video.palantir3/?WZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye03Jl1WauF0XzlGblB3X2BSTPJlRgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxibvlGdhJXdkxiYk1GdsQWYklGbhNGLvlGZ1FGLvRmbvZGLyVGdz9GcsQ3bsBHLhh2YlZGLvxWd0lGdgQ1QFxURTdCI6ICbxNnIgwyJzVGZhRWZ29mTl1WauFEdldGZpd1JgojI0V2Zkl2Vl1WYuJCIscSXS9ETPN0LbNXZkFGZlZ3bOBCIgASXwAzNkZmZmZGIS9ETPN0WnAiOiw&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadAnimeNovedades)]</value>
+    </variable>
+    <variable name="p3NameAnimeUltimasAnadidas">
+        <value>Anime Ultimas Añadidas</value>
+    </variable>
+    <variable name="p3PathAnimeUltimasAnadidas">
+        <value>plugin://plugin.video.palantir3/?lBVXlFTO2IDZmZGIS9ETPN0WnAiOiwWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye03JjNXZkBSYoNWZmBCLjNXZkBCZlRXYkBXdgknYgIXZkJ3bgUWbp5WQfNXasVGcfZHIN9kUGBCIhlmcvdWZ0F2YgwyZulGdhJHIs82ZvxmchVGbjBCLyVGbpFmc0BCLvJXZuV2ZsEWYw1GLu9Wa0Fmc1RGLiRWb0xCZhRWasF2Ys8WakVXYs8GZu9mZsIXZ0N3bwxCdvxGcsEGajVmZs8Gb1RXa0BCVDVETFN1JgojIsF3ciACLnMXYklGZh5WQzFWbpRHbVVWbp5WQ0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1chRWakFWsDHGIzFWbpRHbaOMIgACIdBDM3QmZmZmZgI1TM90Qb1lUPx0TD9yW6UWbp5WQgMXYsV3YtOMb&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadAnimeUltimasAnadidas)]</value>
+    </variable>
+    <variable name="p3NameSerieAnimeNuevas">
+        <value>Series Anime Nuevas</value>
+    </variable>
+    <variable name="p3PathSerieAnimeNuevas">
+        <value>plugin://plugin.video.palantir3/?QmZmBiUPx0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJye03JjNXZkBSYoNWZmBSeiBiUFRkUPBSZtlmbB91cllmclN3X2BSbvJnZgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxybpRWdhxiYk1Gdgwybk52bmBCLyVGdz9GcgwCdvxGcgwSYoNWZmBCLvxWd0lGdgACVDVETFN1JgojIsF3ciACLnMXY2VWdOVWbp5WQllmclNFdldGZpd1JgojI0V2Zkl2Vl1WYuJCIscSXS9ETPN0LbNXZpJXZzBychZXZ15EIgACIdBDM3QmZmZmZgI1TM90Qb1lUPx0TD9yW6UWbp5WQgMXZpJXZT1VZxkjNy&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSerieAnimeNuevas)]</value>
+    </variable>
+    <variable name="p3NameAnimeUltimasActualizadas">
+        <value>Series Anime Ultimas Actualizaciones</value>
+    </variable>
+    <variable name="p3PathAnimeUltimasActualizadas">
+        <value>plugin://plugin.video.palantir3/?DM3QmZmZmZgI1TM90Qb1lUPx0TD9yW6UWbp5WQgMXZpJXZT1VZxkjNyQmZmBiUPx0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJye9dyQTVERgAXduEHI5JGISVERS9EIiRWb05ycg0DIiRWb05Scg42bgMHIzFGIl1WauF0XzVWayV2cfZHIul2bq5GXyxVcgMXYgkyQTVERgAXdgknYgIVREJ1TgIGZtRHI5JGIwV3bydGIzVWayV2cfNXZjFGbuVGIt9mcmBCc1BychBSKkVGdhRGc1hCeh1GIsIGZtRHI0NWZsV2co4GXyxVTPJlRgEWay92ZlRXYj5ycgwyZulGdhJnLzBCLvd2bsJXYlx2YuMHIsIXZslWYyRnLzBCLvJXZuV2ZuMHLhFGct5ycs8WakVXYuMHLiRWb05ycgwybk52bm5ycgwiclR3cvBnLzBCL09Gbw5ycgwSYoNWZm5ycs8Gb1RXa05ycgQ3YlxWZzdCI6ICbxNnIgwyJzFGZhpXasFWd0NWQzFWbpRHbVVWbp5WQ0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1cl52bpNWY6lGbhVHdjFGIzFWbpRHbaOMIgACIdB&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadAnimeUltimasActualizadas)]</value>
+    </variable>
+    <variable name="p3Musica">
+        <value>plugin://plugin.video.palantir3/?lJWYsJCIscyctVnYsF2JgojI05WZ052bjJCIscSduVWbnAiOi42bpR3YhJye03JjNXYgQWaf1WZ0lGI5JGISVERS9EIgAzN9QWafVnbl1GIlJXZodHIzVnbl1GIt9mcmBCdyFmbhZGLsF3cs42bjlGLu9Wa0NWYswWZiFGbgQ3YlxWZzdCI6ICbxNnIgwyJdJ1TM90QvsVYjl2c6OcTdBDM3QmZmZmZgI1TM90QbdCI6ICb</value>
+    </variable>
+    <variable name="p3NameMusicaNovedades">
+        <value>Musica Novedades</value>
+    </variable>
+    <variable name="p3PathMusicaNovedades">
+        <value>plugin://plugin.video.palantir3/?wWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJyeQfnE2YpNXdN91cpxWZw9ldg00TSZEIgEWay92ZlRXYjBCLn5Wa0Fmcgwybn9GbyFWZsNGIsIXZslWYyRHIs8mcl5WZnxSYhBXbs42bpRXYyVHZsIGZtRHLkFGZpxWYjxybpRWdhxybk52bmxiclR3cvBHL09GbwxSYoNWZmxybsVHdpRHIUNURMV0UnAiOiwWczJCIscyclRWYkVmdv5UYjl2c11EdldGZpd1JgojI0V2Zkl2Vl1WYuJCIscSXS9ETPN0LbNXZkFGZlZ3bOBCIgASXwAzNkZmZmZGIS9ETPN0WnAiOi&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadMusicaNovedades)]</value>
+    </variable>
+    <variable name="p3NameMusicaUltimasAnadidas">
+        <value>Musica Ultimas Añadidas</value>
+    </variable>
+    <variable name="p3PathMusicaUltimasAnadidas">
+        <value>plugin://plugin.video.palantir3/?NUXlFTO2IDZmZGIS9ETPN0WnAiOiwWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJyeQfnM2clRGIhh2YlZGIsM2clRGIkVGdhRGc1BSeiBiclRmcvBSYjl2c110XzlGblB3X2BSTPJlRgASYpJ3bnVGdhNGIscmbpRXYyBCLvd2bsJXYlx2YgwiclxWahJHdgwybyVmbldGLhFGctxibvlGdhJXdkxiYk1GdsQWYklGbhNGLvlGZ1FGLvRmbvZGLyVGdz9GcsQ3bsBHLhh2YlZGLvxWd0lGdgQ1QFxURTdCI6ICbxNnIgwyJzFGZpRWYuF0ch1Wa0xWVhNWazVXT0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1chRWakFWsDHGIzFWbpRHbaOMIgACIdBDM3QmZmZmZgI1TM90Qb1lUPx0TD9yW6M3b0JXZpNmbv&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadMusicaUltimasAnadidas)]</value>
+    </variable>
+    <variable name="p3Documentales">
+        <value>plugin://plugin.video.palantir3/?CblJWYsJCIscyctVnYsF2JgojI05WZ052bjJCIscSduVWbnAiOi42bpR3YhJyeQfnM2chBCZp9VblRXagknYgIVREJ1TgACM40DZp9VduVWbgUmclh2dgMXduVWbg02byZGI0JXYuFmZswWczxibvNWas42bpR3YhxCblJWYsBCdjVGblN3JgojIsF3ciACLn0lUPx0TD9yWzVGbhRnbl1Wdj9GRdBDM3QmZmZmZgI1TM90QbdCI6I</value>
+    </variable>
+    <variable name="p3NameDocumentalesNovedades">
+        <value>Documentales Novedades</value>
+    </variable>
+    <variable name="p3PathDocumentalesNovedades">
+        <value>plugin://plugin.video.palantir3/?iOiwWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye03JsFGduVWb1N2bE91cpxWZw9ldg00TSZEIgEWay92ZlRXYjBCLn5Wa0Fmcgwybn9GbyFWZsNGIsIXZslWYyRHIs8mcl5WZnxSYhBXbs42bpRXYyVHZsIGZtRHLkFGZpxWYjxybpRWdhxybk52bmxiclR3cvBHL09GbwxSYoNWZmxybsVHdpRHIUNURMV0UnAiOiwWczJCIscyclRWYkVmdv50clxWY05WZtV3YvREdldGZpd1JgojI0V2Zkl2Vl1WYuJCIscSXS9ETPN0LbNXZkFGZlZ3bOBCIgASXwAzNkZmZmZGIS9ETPN0WnA&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadDocumentalesNovedades)]</value>
+    </variable>
+    <variable name="p3NameDocumentalesUltimasAnadidas">
+        <value>Documentales Ultimos Añadidos</value>
+    </variable>
+    <variable name="p3PathDocumentalesUltimasAnadidas">
+        <value>plugin://plugin.video.palantir3/?3YtOMblBVXlFTO2IDZmZGIS9ETPN0WnAiOiwWZiFGbiACLlVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye9dyYzVGZgEGajVmZgwyYzVGZgQWZ0FGZwVHI5JGIyVGZy9GIsFGduVWb1N2bE91cpxWZw9ldg00TSZEIgEWay92ZlRXYjBCLn5Wa0Fmcgwybn9GbyFWZsNGIsIXZslWYyRHIs8mcl5WZnxSYhBXbs42bpRXYyVHZsIGZtRHLkFGZpxWYjxybpRWdhxybk52bmxiclR3cvBHL09GbwxSYoNWZmxybsVHdpRHIUNURMV0UnAiOiwWczJCIscychRWakFmbBNXYtlGdsV1clxWY05WZtV3YvREdldGZpd1JgojI0V2Zkl2Vl1WYuJCIscSXS9ETPN0LbNXYklGZhF7whBych1Wa0xmmDDCIgASXwAzNkZmZmZGIS9ETPN0WdJ1TM90QvslOzVGbhRnbl1Wdj9GRgMXYsV&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadDocumentalesUltimasAnadidas)]</value>
+    </variable>
+    <variable name="p3NameSerieDocumentalNuevas">
+        <value>Series Documentales Nuevas</value>
+    </variable>
+    <variable name="p3PathSerieDocumentalNuevas">
+        <value>plugin://plugin.video.palantir3/?xkjNyQmZmBiUPx0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJye03JjNXZkBSYoNWZmBSeiBiUFRkUPBCbhRnbl1Wdj9GRfNXZpJXZz9ldg02byZGIgEWay92ZlRXYjBCLn5Wa0Fmcgwybn9GbyFWZsNGIsIXZslWYyRHIs8mcl5WZnxSYhBXbs8WakVXYsIGZtRHIs8GZu9mZgwiclR3cvBHIsQ3bsBHIsEGajVmZgwybsVHdpRHIgQ1QFxURTdCI6ICbxNnIgwyJzFmdlVnTsFGduVWb1N2bEVWayV2U0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwyJdJ1TM90Qvs1cllmclNHIzFmdlVnTgACIg0FMwcDZmZmZmBiUPx0TDtVXS9ETPN0LbpDbhRnbl1Wdj9GRgMXZpJXZT1VZ&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSerieDocumentalNuevas)]</value>
+    </variable>
+    <variable name="p3NameSerieDocumentalUltimasActualizadas">
+        <value>Series Documentales Ultimas Actualizadas</value>
+    </variable>
+    <variable name="p3PathSerieDocumentalUltimasActualizadas">
+        <value>plugin://plugin.video.palantir3/?MwcDZmZmZmBiUPx0TDtVXS9ETPN0LbpDbhRnbl1Wdj9GRgMXZpJXZT1VZxkjNyQmZmBiUPx0TDt1JgojIsVmYhxmIgwSZ1JHVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJye03JDNVREBCc15ScgknYgIVREJ1TgIGZtRnLzBSPgIGZtRnLxBibvBycgMXYgwWY05WZtV3YvR0XzVWayV2cfZHIul2bq5GXyxVcgMXYgkyQTVERgAXdgknYgIVREJ1TgIGZtRHI5JGIwV3bydGIzVWayV2cfNXZjFGbuVGIt9mcmBCc1BychBSKkVGdhRGc1hCeh1GIsIGZtRHI0NWZsV2co4GXyxVTPJlRgEWay92ZlRXYj5ycgwyZulGdhJnLzBCLvd2bsJXYlx2YuMHIsIXZslWYyRnLzBCLvJXZuV2ZuMHLhFGct5ycs8WakVXYuMHLiRWb05ycgwybk52bm5ycgwiclR3cvBnLzBCL09Gbw5ycgwSYoNWZm5ycs8Gb1RXa05ycgQ3YlxWZzdCI6ICbxNnIgwyJzFGZhpXasFWd0NWQzFWbpRHbVxWY05WZtV3YvRUZpJXZTRXZnRWaXdCI6ICdldGZpdVZtFmbiACLn0lUPx0TD9yWzVmbvl2YhpXasFWd0NWYgMXYtlGdsp5wgACIg0F&amp;limit=$VAR[VARnumItemsWidgets]&reload=$INFO[Window(home).Property(P3ReloadSerieDocumentalUltimasActualizadas)]</value>
+    </variable>
+    <variable name="p3Favoritos">
+        <value>plugin://plugin.video.palantir3/?mIgwyJz1WdixWYnAiOiQnblRnbvNmIgwyJz9GdpJ3b2FmZnAiOi42bpR3YhJye9dyYzFGIkl2XtVGdpBSeiBiUFRkUPBCIwkTPkl2X15WZtBSZyVGa3Byc15WZtBSbvJnZgQnch5WYmxCbxNHLu92YpxibvlGdjFGLsVmYhxGI0NWZsV2cnAiOiwWczJCIscSXS9ETPN0LbN3b0lmcvZXYG1FMwcDZmZmZmBiUPx0TDt1JgojIsVmYhx</value>
+    </variable>
+    <variable name="p3BusquedaPelisGeneral">
+        <value>plugin://plugin.video.palantir3/?2bjJCIscyMyF2YzVnYnAiOi42bpR3YhJyeQfnMXJgMXasVGUyF2YzVnYnAiOiwWczJCIsADI6ISZnFGciACLwATMgojI0NXaM1WZ0lEdp1WasJCIscycllmdv12JgojI05WZ05</value>
+    </variable>
+     <variable name="p3BusquedaSeriesGeneral">
+        <value>plugin://plugin.video.palantir3/?2bjJCIscyMyF2YzVnYnAiOi42bpR3YhJye9dyclAycllmclNlchN2c1J2JgojIsF3ciACLwAiOiU2ZhBnIgwCMwEDI6ICdzlGTtVGdJRXatlGbiACLnM3dvh2c2R3JgojI05WZ05</value>
+    </variable>
+    <variable name="p3PathTop10Pelis">
+        <value>plugin://plugin.video.palantir3/?lVncUBiOiQXZnRWaXNXaiACLnMXZpZ3btdCI6ICduVGdu92YiACLnMVYsV3YpxWZw91bkFGdzlGbnAiOi42bpR3YhJye03JpMXJoAibpBiYk1GdgUmclh2dgMXasVGcfZHIN9kUGBCIhlmcvdWZ0F2YgwyZulGdhJHIs82ZvxmchVGbjBCLyVGbpFmc0BCLvJXZuV2ZsEWYw1GLu9Wa0Fmc1RGLiRWb0xCZhRWasF2Ys8WakVXYs8GZu9mZsIXZ0N3bwxCdvxGcsEGajVmZs8Gb1RXa0BCVDVETFN1JgojIsF3ciACLwAiOiU2ZhBnIgwyJzlGblBFMxA3bURXZnRWaXdCI6ICdldGZpdVZtFmbiACL&reload=$INFO[Window(home).Property(P3ReloadTop10Pelis)]</value>
+    </variable>
+    <variable name="p3PathTop10Series">
+        <value>plugin://plugin.video.palantir3/?HVgojI0V2Zkl2VzlmIgwyJzd3boNnd0dCI6ICduVGdu92YiACLnMVZpJXZz91bkFGdzlGbnAiOi42bpR3YhJye9dSKzVCKg4WagIGZtRHIlJXZodHIzVWayV2cfZHIN9kUGBCIhlmcvdWZ0F2YgwyZulGdhJHIs82ZvxmchVGbjBCLyVGbpFmc0BCLvJXZuV2ZsEWYw1GLvlGZ1FGLiRWb0xybk52bmxiclR3cvBHL09GbwxSYoNWZmxybsVHdpRHIUNURMV0UnAiOiwWczJCIsADI6ISZnFGciACLnMXZpJXZTBTMw9GV0V2Zkl2VnAiOiQXZnRWaXVWbh5mIgwSZ1J&reload=$INFO[Window(home).Property(P3ReloadTop10Series)]</value>
+    </variable>
+    <variable name="p3PathTrakt">
+        <value>plugin://plugin.video.palantir3/?av8iOsFWajVGczdCI6ICdyFmbhZmIgwyJz1WdixWYnAiOiQnblRnbvNmIgwyJ0tWYyR3XzFGdzlGbnAiOi42bpR3YhJyeQfl52bOBiOiwWczJCIscid05CdrFmcUBychR3cpx0JgojI09GbwJCIsADI6ISZnFGciACLnYHduQ3ahJHVgMXY0NXaMdCI6ICblJWYsJCIscyZuBnL0tWYyR3LhlGZl12LzV2YyV3bzVmcvMjcpRnbhxWYw5yblRWa25ibpdWdsB3Lz52bkRWYvUWbvh2LvoDbhl2YlB3cnAiOi42bjlmIgwyJml2ZuQnch5WYm9yMylGduFGbhBnLvVGZpZnLul2Z1xGcvMnbvRGZh9SZt9G</value>
+    </variable>
+
+</includes>

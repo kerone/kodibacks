@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timers>
+
+    <timer>
+        <name>splashtimer</name>
+        <description>Timer for displaying the splash screen while skin starts up</description>
+        <start reset="true">Window.IsActive(startup)</start>
+        <stop>
+            Integer.IsGreater(Skin.TimerElapsedSecs(splashtimer),1) + !Player.HasMedia + [!System.AddonIsEnabled(plugin.video.palantir3) | String.IsEqual(Window(startup).Property(P3Updated),true)] |
+            Integer.IsGreater(Skin.TimerElapsedSecs(splashtimer), 180)
+        </stop>
+        <onstart>PlayMedia(special://skin/extras/video.mp4,1)</onstart>
+        <onstop>ReplaceWindow($INFO[System.StartupWindow])</onstop>
+    </timer>
+
+    <timer>
+        <name>autoclosevideoosd</name>
+        <description>Timer to auto close the video OSD (if enabled in the skin settings)</description>
+        <start reset="true">Window.IsActive(videoosd) + Skin.HasSetting(OSDAutoClose) + !String.IsEqual(window(home).Property(settingslist_content),osd) + !Window.IsActive(osdsubtitlesettings) + !Window.IsActive(osdaudiosettings) + !Window.IsActive(osdvideosettings) + !Window.IsActive(OSDCMSSettings)</start>
+        <reset>Window.IsActive(videoosd) + !System.IdleTime(1) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autoclosevideoosd), 1) | String.IsEqual(window(home).Property(settingslist_content),osd) | Window.IsActive(osdsubtitlesettings) | Window.IsActive(osdaudiosettings) | Window.IsActive(osdvideosettings) | Window.IsActive(OSDCMSSettings)</reset>
+        <stop>!Window.IsActive(videoosd) | String.IsEmpty(Skin.String(OSDAutoCloseTime)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autoclosevideoosd), 4) | !String.IsEmpty(Skin.String(OSDAutoCloseTime)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autoclosevideoosd),Skin.Numeric(OSDAutoCloseTime))</stop>
+        <onstop condition="!Player.Paused">Dialog.Close(videoosd)</onstop>
+    </timer>
+
+    <timer>
+        <name>autotrailer</name>
+        <start reset="true"> !Player.HasMedia + !String.IsEmpty(ListItem.Trailer) + !Window.IsActive(DialogBusy.xml) + !Window.IsActive(DialogSelect.xml) + !Window.IsActive(Custom_1193_Context.xml) +
+            [String.IsEqual(ListItem.DBTYPE,movie) | String.IsEqual(ListItem.DBTYPE,tvshow)] +
+            [
+               [Control.HasFocus(50) | Control.HasFocus(502)  | Control.HasFocus(504)] |
+               [Window.IsVisible(home) + [Integer.IsGreater(system.currentcontrolid,220000) + Integer.IsLess(system.currentcontrolid,230000)] | [Integer.IsGreater(system.currentcontrolid,260000) + Integer.IsLess(system.currentcontrolid,280000)]]
+            ]+
+               !String.IsEmpty(Skin.String(timerautotrailer)) +
+                [
+                    [System.IdleTime(7) + String.IsEqual(Skin.String(timerautotrailer),7)] |
+                    [System.IdleTime(10) + String.IsEqual(Skin.String(timerautotrailer),10)] |
+                    [System.IdleTime(15) + String.IsEqual(Skin.String(timerautotrailer),15)] |
+                    [System.IdleTime(20) + String.IsEqual(Skin.String(timerautotrailer),20)] |
+                    [System.IdleTime(30) + String.IsEqual(Skin.String(timerautotrailer),30)]
+                ]
+        </start>
+        <stop>!System.IdleTime(1) + [Player.HasMedia | !Player.HasMedia + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autotrailer), 15)]</stop>
+        <onstart>PlayMedia($ESCINFO[ListItem.Trailer],1)</onstart>
+        <onstart>Setproperty(videoInWindow,true,home)</onstart>
+        <onstop>ClearProperty(videoInWindow,home)</onstop>
+        <onstop>Stop</onstop>
+    </timer>
+
+    <timer>
+        <name>autoscroll_spotlight</name>
+        <start reset="true">String.IsEqual(Container(9000).ListItem.Property(widget),PalantirSpotlight) + Integer.IsGreater(system.currentcontrolid,250000) + !Window.IsActive(DialogSelect.xml) + !Window.IsActive(Custom_1193_Context.xml)</start>
+        <reset>!System.IdleTime(1)</reset>
+        <stop>Integer.IsLess(system.currentcontrolid,250000) | Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autoscroll_spotlight), 15)</stop>
+        <onstart>Action(right)</onstart>
+    </timer>
+</timers>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="OSDButton">
+		<param name="texturefocus">osd/fullscreen/buttons/button-fo.png</param>
+		<param name="height">76</param>
+		<param name="width">76</param>
+		<param name="radioheight">74</param>
+		<param name="radiowidth">74</param>
+		<param name="radioposx">1</param>
+		<param name="radioposy">0</param>
+		<definition>
+			<textureradioonfocus colordiffuse="white">$PARAM[texture]</textureradioonfocus>
+			<textureradioonnofocus>$PARAM[texture]</textureradioonnofocus>
+			<textureradioofffocus colordiffuse="white">$PARAM[texture]</textureradioofffocus>
+			<textureradiooffnofocus>$PARAM[texture]</textureradiooffnofocus>
+			<textureradioondisabled colordiffuse="disabled">$PARAM[texture]</textureradioondisabled>
+			<textureradiooffdisabled colordiffuse="disabled">$PARAM[texture]</textureradiooffdisabled>
+			<texturefocus colordiffuse="button_focus">$PARAM[texturefocus]</texturefocus>
+			<width>$PARAM[width]</width>
+			<animation center="38,38" effect="zoom" end="100" reversible="false" start="95" time="480" tween="back">Focus</animation>
+			<height>$PARAM[height]</height>
+			<radiowidth>$PARAM[radiowidth]</radiowidth>
+			<radioheight>$PARAM[radioheight]</radioheight>
+			<font></font>
+			<texturenofocus>$PARAM[texturenofocus]</texturenofocus>
+			<radioposx>$PARAM[radioposx]</radioposx>
+			<radioposy>$PARAM[radioposy]</radioposy>
+		</definition>	
+	</include>
+	<include name="InfoDialogMetadata">
+		<param name="onclick_condition">false</param>
+		<param name="onclick">noop</param>
+		<param name="altclick_condition">false</param>
+		<param name="altclick">noop</param>
+		<definition>
+			<control type="togglebutton" id="$PARAM[control_id]">
+				<width>472</width>
+				<height>49</height>
+				<textoffsetx>16</textoffsetx>
+				<aligny>center</aligny>
+				<font>font12</font>
+				<texturefocus colordiffuse="button_focus">lists/focus.png</texturefocus>
+				<alttexturefocus colordiffuse="button_focus">lists/focus.png</alttexturefocus>
+				<texturenofocus />
+				<alttexturenofocus />
+				<onclick>noop</onclick>
+				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick]</onclick>
+				<altclick>noop</altclick>
+				<altclick condition="$PARAM[altclick_condition]">$PARAM[altclick]</altclick>
+				<label>$PARAM[label]</label>
+				<altlabel>$PARAM[altlabel]</altlabel>
+				<usealttexture>Control.HasFocus($PARAM[control_id])</usealttexture>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
+	<include name="DefaultSettingButton">
+		<param name="height">70</param>
+		<param name="textoffsetx">40</param>
+		<param name="font">font25_title</param>
+		<param name="texture">Palantir/lists/focus2.png</param>
+		<param name="texturenofocus"></param>
+		<param name="colordiffuse">button_focus</param>
+		<param name="colordiffusenofocus">button_focus</param>
+		<param name="top">0</param>
+		<definition>
+			<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+			<top>$PARAM[top]</top>
+			<height>$PARAM[height]</height>
+			<aligny>center</aligny>
+			<invalidcolor>invalid</invalidcolor>
+			<selectedcolor>selected</selectedcolor>
+			<texturefocus colordiffuse="$PARAM[colordiffuse]">$PARAM[texture]</texturefocus>
+			<texturenofocus colordiffuse="$PARAM[colordiffusenofocus]">$PARAM[texturenofocus]</texturenofocus>
+			<font>$PARAM[font]</font>
+		</definition>
+	</include>
+	<include name="DialogSettingButton">
+		<param name="height">70</param>
+		<param name="textoffsetx">40</param>
+		<definition>
+			<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+			<top>0</top>
+			<height>$PARAM[height]</height>
+			<aligny>center</aligny>
+			<invalidcolor>invalid</invalidcolor>
+			<selectedcolor>selected</selectedcolor>
+			<texturefocus colordiffuse="button_focus_flix">Palantir/lists/focus2.png</texturefocus>
+			<texturenofocus colordiffuse="dialog_tint">colors/white.png</texturenofocus>
+		</definition>
+	</include>
+	<include name="DefaultSettingLabel">
+		<left>0</left>
+		<top>0</top>
+		<height>75</height>
+		<label></label>
+		<align>center</align>
+		<aligny>center</aligny>
+		<font>font25_title</font>
+		<textcolor>grey</textcolor>
+	</include>
+	<include name="SettingsItemCommon">
+		<texturenofocus colordiffuse="IconsMenuNoFocus">Palantir/masks/dialogconfirm.png</texturenofocus>
+		<texturefocus  colordiffuse="button_focus">Palantir/masks/dialogconfirm.png</texturefocus>
+		<height>$PARAM[height]</height>
+		<aligny>center</aligny>
+		<align>left</align>
+		<!-- <textoffsetx>40</textoffsetx> -->
+		<alttexturefocus  colordiffuse="button_focus">Palantir/masks/dialogconfirm.png</alttexturefocus>
+		<alttexturenofocus  colordiffuse="IconsMenuNoFocus">Palantir/masks/dialogconfirm.png</alttexturenofocus>
+	</include>
+	<include name="SettingsLabelCommon">
+		<height>50</height>
+		<font>font12</font>
+		<textoffsetx>30</textoffsetx>
+		<textoffsety>10</textoffsety>
+		<textcolor>button_focus</textcolor>
+	</include>
+	
+	<include name="DefaultDialogButton">
+		<param name="width">180</param>
+		<param name="height">50</param>
+		<param name="wrapmultiline">false</param>
+		<param name="font">font25_title</param>
+		<param name="onclick"></param>
+		<param name="visible">true</param>
+		<definition>
+			<control type="button" id="$PARAM[id]">
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<label>$PARAM[label]</label>
+				<font>$PARAM[font]</font>
+				<textoffsetx>20</textoffsetx>
+				<textoffsety>20</textoffsety>
+				<onclick>$PARAM[onclick]</onclick>
+				<wrapmultiline>$PARAM[wrapmultiline]</wrapmultiline>
+				<align>center</align>
+				<aligny>center</aligny>
+				<texturefocus colordiffuse="button_focus">Palantir/masks/dialogconfirm.png</texturefocus>
+				<texturenofocus colordiffuse="IconsMenuNoFocus">Palantir/masks/dialogconfirm.png</texturenofocus>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
+
+	<include name="KeyboardButton">
+		<width>120</width>
+		<height>120</height>
+		<textoffsety>27</textoffsety>
+		<focusedcolor>button_focus</focusedcolor>
+		<texturefocus colordiffuse="button_focus_flix">Palantir/lists/focus2.png</texturefocus>
+		<texturenofocus />
+		<align>center</align>
+		<aligny>top</aligny>
+		<font>font40_title</font>
+	</include>
+
+	<include name="PlaylistWindowButton">
+		<param name="width">100%</param>
+		<param name="widthmax">100%</param>
+		<param name="textoffsetx">40</param>
+		<param name="textoffsety">35</param>
+		<param name="height">110</param>
+		<definition>
+			<control type="button" id="$PARAM[control_id]">
+				<width max="$PARAM[widthmax]">$PARAM[width]</width>
+				<height>$PARAM[height]</height>
+				<align>left</align>
+				<aligny>top</aligny>
+				<focusedcolor>button_focus</focusedcolor>
+				<texturefocus colordiffuse="button_focus_flix">Palantir/lists/focus2.png</texturefocus>
+				<texturenofocus />
+				<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+				<textoffsety>$PARAM[textoffsety]</textoffsety>
+				<label>$PARAM[label]</label>
+				<onclick>$PARAM[onclick]</onclick>
+				<selectedcolor>white</selectedcolor>
+			</control>
+		</definition>
+	</include>
+
+	<include name="IconButton">
+		<param name="height">120</param>
+		<param name="width">120</param>
+		<param name="visible">true</param>
+		<param name="colordiffuse">button_focus</param>
+		<param name="colordiffusenofocus">white</param>
+		<param name="colordiffuse2">grey</param>
+		<param name="colordiffuse3">grey</param>
+		<param name="texturefocus">buttons/roundbutton-fo.png</param>
+		<param name="onfocus">noop</param>
+		<param name="focusedcolor">button_focus</param>
+		<param name="radioposx">40</param>
+		<param name="radioposy">0</param>
+		<param name="radiowidth">40</param>
+		<param name="radioheight">40</param>
+		<param name="texturenofocus"/>
+		<param name="enable">true</param>
+		<definition>
+			<control type="radiobutton" id="$PARAM[control_id]">
+				<width>$PARAM[width]</width>
+				<focusedcolor>$PARAM[colordiffuse]</focusedcolor>
+				<height>$PARAM[height]</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<onclick>$PARAM[onclick]</onclick>
+				<onclick>$PARAM[onclick_2]</onclick>
+				<onfocus>$PARAM[onfocus]</onfocus>
+				<font></font>
+				<label>$PARAM[label]</label>
+				<texturefocus colordiffuse="$PARAM[colordiffuse]">$PARAM[texturefocus]</texturefocus>
+				<texturenofocus colordiffuse="$PARAM[colordiffusenofocus]">$PARAM[texturenofocus]</texturenofocus>
+				<radioposx>$PARAM[radioposx]</radioposx>
+				<radioposy>$PARAM[radioposy]</radioposy>
+				<radiowidth>$PARAM[radiowidth]</radiowidth>
+				<radioheight>$PARAM[radioheight]</radioheight>
+				<textureradioonfocus>$PARAM[icon]</textureradioonfocus>
+				<textureradioonnofocus colordiffuse="$PARAM[colordiffuse2]">$PARAM[icon]</textureradioonnofocus>
+				<textureradioofffocus>$PARAM[icon]</textureradioofffocus>
+				<textureradiooffnofocus colordiffuse="$PARAM[colordiffuse3]">$PARAM[icon]</textureradiooffnofocus>
+				<visible>$PARAM[visible]</visible>
+				<enable>$PARAM[enable]</enable>
+			</control>
+		</definition>
+	</include>
+
+	<include name="BottomMainMenuToggleItem">
+		<param name="height">120</param>
+		<definition>
+			<control type="radiobutton" id="$PARAM[control_id]">
+				<width>120</width>
+				<height>$PARAM[height]</height>
+				<align>center</align>
+				<aligny>center</aligny>
+				<onclick>$PARAM[onclick]</onclick>
+				<font></font>
+				<label>$PARAM[label]</label>
+				<texturefocus colordiffuse="button_focus">buttons/roundbutton-fo.png</texturefocus>
+				<texturenofocus />
+				<radioposx>40</radioposx>
+				<radioposy>0</radioposy>
+				<radiowidth>40</radiowidth>
+				<radioheight>40</radioheight>
+				<textureradioonfocus>$PARAM[icon_on]</textureradioonfocus>
+				<textureradioonnofocus colordiffuse="grey">$PARAM[icon_on]</textureradioonnofocus>
+				<textureradioofffocus>$PARAM[icon_off]</textureradioofffocus>
+				<textureradiooffnofocus colordiffuse="grey">$PARAM[icon_off]</textureradiooffnofocus>
+				<selected>$PARAM[selected]</selected>
+			</control>
+		</definition>
+	</include>
+
+	<include name="VideoInfoButtonsCommon">
+		<param name="width">264</param>
+		<definition>
+			<width>$PARAM[width]</width>
+			<height>142</height>
+			<align>center</align>
+			<aligny>top</aligny>
+			<texturefocus border="21" colordiffuse="button_focus">buttons/button-fo.png</texturefocus>
+			<texturenofocus border="21">buttons/button-nofo.png</texturenofocus>
+			<textoffsetx>22</textoffsetx>
+			<textoffsety>78</textoffsety>
+			<radioposx>108</radioposx>
+			<radioposy>13</radioposy>
+			<radiowidth>48</radiowidth>
+			<font>font12</font>
+			<textureradioonfocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioonfocus>
+			<textureradioonnofocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioonnofocus>
+			<textureradioofffocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradioofffocus>
+			<textureradiooffnofocus colordiffuse="D0FFFFFF">$PARAM[icon]</textureradiooffnofocus>
+			<textureradiooffdisabled colordiffuse="disabled">$PARAM[icon]</textureradiooffdisabled>
+			<textureradioondisabled colordiffuse="disabled">$PARAM[icon]</textureradioondisabled>
+		</definition>
+	</include>
+
+	<include name="InfoDialogButton">
+        <param name="width">264</param>
+		<param name="height">142</param>
+        <param name="onclick_1_condition">true</param>
+        <param name="onclick_2_condition">true</param>
+        <param name="onclick_3_condition">true</param>
+        <param name="onclick_4_condition">true</param>
+        <param name="onclick_5_condition">true</param>
+		<param name="radioposx">108</param>
+		<param name="radioposy">16</param>
+		<param name="radiowidth">80</param>
+		<param name="radioheight">80</param>
+		<param name="colordiffuseonfocus">button_focus</param>
+		<param name="colordiffuseonnofocus">D0FFFFFF</param>
+		<param name="colordiffuseofffocus">button_focus</param>
+		<param name="colordiffuseoffnofocus">D0FFFFFF</param>
+		<param name="textoffsetx">50</param>
+		<param name="textoffsety">100</param>
+		<param name="iconon">$PARAM[icon]</param>
+		<param name="iconoff">$PARAM[icon]</param>
+        <definition>
+            <control type="radiobutton" id="$PARAM[id]">
+                <width>$PARAM[width]</width>
+              <height>$PARAM[height]</height>
+                <align>center</align>
+                <aligny>top</aligny>
+				<focusedcolor>button_focus</focusedcolor>
+                <textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+                <textoffsety>$PARAM[textoffsety]</textoffsety>
+              	<radioposx>$PARAM[radioposx]</radioposx>
+				<radioposy>$PARAM[radioposy]</radioposy>
+				<radiowidth>$PARAM[radiowidth]</radiowidth>
+				<radioheight>$PARAM[radioheight]</radioheight>
+                <font>font25_title</font>
+				<texturefocus colordiffuse="$PARAM[colordiffuse]">$PARAM[texturefocus]</texturefocus>
+				<texturenofocus colordiffuse="$PARAM[colordiffusenofocus]">$PARAM[texturenofocus]</texturenofocus>
+				<selected>$PARAM[selected]</selected>
+                <textureradioonfocus colordiffuse="$PARAM[colordiffuseonfocus]">$PARAM[iconon]</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="$PARAM[colordiffuseonnofocus]">$PARAM[iconon]</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="$PARAM[colordiffuseofffocus]">$PARAM[iconoff]</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="$PARAM[colordiffuseoffnofocus]">$PARAM[iconoff]</textureradiooffnofocus>
+                <textureradiooffdisabled colordiffuse="disabled">$PARAM[icon]</textureradiooffdisabled>
+                <textureradioondisabled colordiffuse="disabled">$PARAM[icon]</textureradioondisabled>
+                <label>$PARAM[label]</label>
+                <onclick condition="$PARAM[onclick_1_condition]">$PARAM[onclick_1]</onclick>
+                <onclick condition="$PARAM[onclick_2_condition]">$PARAM[onclick_2]</onclick>
+                <onclick condition="$PARAM[onclick_3_condition]">$PARAM[onclick_3]</onclick>
+                <onclick condition="$PARAM[onclick_4_condition]">$PARAM[onclick_4]</onclick>
+                <onclick condition="$PARAM[onclick_5_condition]">$PARAM[onclick_5]</onclick>
+                <visible>$PARAM[visible]</visible>
+                <animation effect="fade" start="100" end="0" time="300" delay="300">Hidden</animation>
+            </control>
+        </definition>
+    </include>
+
+	<include name="InfoDialogToggleButton">
+		<param name="width">262</param>
+		<definition>
+			<control type="radiobutton" id="$PARAM[id]">
+				<width>$PARAM[width]</width>
+				<height>142</height>
+				<align>center</align>
+				<aligny>top</aligny>
+				<texturefocus border="21" colordiffuse="button_focus">buttons/button-fo.png</texturefocus>
+				<texturenofocus border="21">buttons/button-nofo.png</texturenofocus>
+				<textoffsetx>35</textoffsetx>
+				<textoffsety>78</textoffsety>
+				<radioposx>108</radioposx>
+				<radioposy>16</radioposy>
+				<radiowidth>48</radiowidth>
+				<font>font12</font>
+				<textureradioonfocus colordiffuse="D0FFFFFF">$PARAM[icon_on]</textureradioonfocus>
+				<textureradioonnofocus colordiffuse="D0FFFFFF">$PARAM[icon_on]</textureradioonnofocus>
+				<textureradioofffocus colordiffuse="D0FFFFFF">$PARAM[icon_off]</textureradioofffocus>
+				<textureradiooffnofocus colordiffuse="D0FFFFFF">$PARAM[icon_off]</textureradiooffnofocus>
+				<textureradiooffdisabled colordiffuse="disabled">$PARAM[icon_off]</textureradiooffdisabled>
+				<textureradioondisabled colordiffuse="disabled">$PARAM[icon_on]</textureradioondisabled>
+				<selected>$PARAM[selected]</selected>
+				<label>$PARAM[label]</label>
+				<onclick>$PARAM[onclick_1]</onclick>
+				<onclick>$PARAM[onclick_2]</onclick>
+				<visible>$PARAM[visible]</visible>
+			</control>
+		</definition>
+	</include>
+
+	<include name="ButtonMenuList">
+		<left>50</left>
+		<top>100</top>
+		<width>600</width>
+		<height>700</height>
+		<onleft>9000</onleft>
+		<onright>9000</onright>
+		<onup>9000</onup>
+		<ondown>9000</ondown>
+		<orientation>vertical</orientation>
+		<itemlayout height="60" width="600">
+			<control type="label">
+				<left>0</left>
+				<textoffsetx>20</textoffsetx>
+				<top>0</top>
+				<width>600</width>
+				<height>60</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<font>font25_title</font>
+				<textcolor>grey</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</itemlayout>
+		<focusedlayout height="60" width="600">
+			<control type="button">
+				<focusedcolor>button_focus</focusedcolor>
+				<textcolor>button_focus</textcolor>
+				<label>$INFO[Container(9001).ListItem.Label]</label>
+				<include content="DefaultSettingButton">
+					<param name="texture" value="Palantir/lists/focus2.png"/>
+					<param name="colordiffuse" value="button_focus_flix" />
+					<param name="height" value="60" />
+					<param name="textoffsetx" value="0" />
+					<param name="texturenofocus" value="Palantir/lists/focus2.png"/>
+					<param name="colordiffusenofocus" value="button_focus_flix" />
+				</include>
+				<width max="550">auto</width>
+				<left>20</left>
+			</control>
+		</focusedlayout>
+	</include>
+
+	<include name="SetButton">
+		<param name="height">40</param>
+		<param name="width">400</param>
+		<param name="visible">true</param>
+		<param name="colordiffuse">button_focus</param>
+		<param name="colordiffusenofocus">white</param>
+		<param name="colorradioon">green</param>
+		<param name="colorradiooff">red</param>
+		<param name="texturefocus">noop</param>
+		<param name="textureradioon">Palantir/overlays/poster-checkmark2.png</param>
+		<param name="textureradioff">Palantir/overlays/x.png</param>
+		<param name="onfocus">noop</param>
+		<param name="focusedcolor">button_focus</param>
+		<param name="radioposx">40</param>
+		<param name="radioposy">0</param>
+		<param name="radiowidth">40</param>
+		<param name="radioheight">40</param>
+		<param name="onclick"/>
+		<param name="label">--</param>
+		<param name="align">center</param>
+		<definition>
+			<control type="radiobutton" id="$PARAM[control_id]">
+				<width>$PARAM[width]</width>
+				<focusedcolor>$PARAM[focusedcolor]</focusedcolor>
+				<height>$PARAM[height]</height>
+				<align>$PARAM[align]</align>
+				<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+				<aligny>center</aligny>
+				<onclick>Skin.ToggleSetting(vista$PARAM[type].$PARAM[id])</onclick>
+				<onfocus>$PARAM[onfocus]</onfocus>
+				<selected>$PARAM[negacion]Skin.HasSetting(vista$PARAM[type].$PARAM[id])</selected>
+				<font>font25_title</font>
+				<label>$PARAM[label]</label>
+				<texturefocus colordiffuse="$PARAM[colordiffuse]">$PARAM[texturefocus]</texturefocus>
+				<texturenofocus colordiffuse="$PARAM[colordiffusenofocus]">$PARAM[texturenofocus]</texturenofocus>
+				<radioposx>$PARAM[radioposx]</radioposx>
+				<radioposy>$PARAM[radioposy]</radioposy>
+				<radiowidth>$PARAM[radiowidth]</radiowidth>
+				<radioheight>$PARAM[radioheight]</radioheight>
+				<visible>$PARAM[visible]</visible>		
+			</control>
+		</definition>
+	</include>
+</includes>

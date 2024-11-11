@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>211</defaultcontrol>
+	
+	<backgroundcolor>background</backgroundcolor>
+	<controls>
+		<include>DefaultBackground</include>
+		<control type="image">
+			<texture>Palantir/startup.png</texture>
+			<height>100%</height>
+			<width>100%</width>
+		</control>
+		<control type="image">
+			<texture>Palantir/overlays/menubgdiff.png</texture>
+			<height>100%</height>
+			<width>100%</width>
+		</control>
+		<control type="group">
+			<depth>DepthContentPanel</depth>
+			<include>OpenClose_Left</include>
+			<include>LogoSp</include>
+			<control type="list" id="211">
+				<left>3%</left>
+				<top>330</top>
+				<width>482</width>
+				<bottom>-10</bottom>
+				<onright>700</onright>
+				<onleft>noop</onleft>
+				<onup>211</onup>
+				<ondown>211</ondown>
+				<scrolltime tween="cubic" easing="out">500</scrolltime>
+				<itemlayout height="60">
+					<control type="image">
+						<texture colordiffuse="IconsMenuNoFocus" background="true">$INFO[ListItem.Icon]</texture>
+						<height>40</height>
+						<width>40</width>	
+						<left>1%</left>
+						<visible>true</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[ListItem.Label]</label>
+						<height>60</height>
+						<width>100%</width>
+						<align>left</align>
+						<left>12%</left>
+						<font>font25_title</font>
+						<visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[ListItem.Label] (Desac)</label>
+						<height>60</height>
+						<width>100%</width>
+						<align>left</align>
+						<left>12%</left>
+						<font>font25_title</font>
+						<textcolor>grey</textcolor>
+						<scroll>true</scroll>
+						<visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+					</control>
+				</itemlayout>
+				<focusedlayout height="60" condition="!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)">
+					<control type="image">
+						<texture colordiffuse="IconsMenuFocus" background="true">$INFO[ListItem.Icon]</texture>
+						<height>40</height>
+						<width>40</width>
+						<top>0</top>
+						<left>1%</left>
+					</control>
+					<control type="button">
+						<focusedcolor>button_focus</focusedcolor>
+						<textcolor>button_focus</textcolor>
+						<label>$INFO[Container(211).ListItem.Label]</label>
+						<left>12%</left>
+						<include content="DefaultSettingButton">
+							<param name="texture" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffuse" value="button_focus_flix" />
+							<param name="height" value="60" />
+							<param name="textoffsetx" value="0" />
+							<param name="texturenofocus" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffusenofocus" value="button_focus_flix" />
+							<param name="top" value="-12"/>
+						</include>
+						<width max="420">auto</width>
+						<visible>Control.HasFocus(211)</visible>
+					</control>
+
+					<control type="button">
+						<left>12%</left>
+						<label>$INFO[Container(211).ListItem.Label]</label>
+						<include content="DefaultSettingButton">
+							<param name="texture" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffuse" value="button_focus_flix" />
+							<param name="height" value="60" />
+							<param name="textoffsetx" value="0" />
+							<param name="texturenofocus" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffusenofocus" value="button_focus_flix" />
+							<param name="top" value="-12"/>
+						</include>
+						<width max="420">auto</width>
+						<visible>!Control.HasFocus(211)</visible>
+					</control>
+				</focusedlayout>
+				<!--Menu sin foco-->
+				<focusedlayout height="60" condition="String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)">
+					<control type="image">
+						<texture colordiffuse="grey" background="true">$INFO[ListItem.Icon]</texture>
+						<height>40</height>
+						<width>40</width>
+						<left>1%</left>
+					</control>
+
+					<control type="button">
+						<focusedcolor>button_focus</focusedcolor>
+						<textcolor>button_focus</textcolor>
+						<label>$INFO[Container(211).ListItem.Label] (Desac)</label>
+						<left>12%</left>
+						<include content="DefaultSettingButton">
+							<param name="texture" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffuse" value="button_focus_flix" />
+							<param name="height" value="60" />
+							<param name="textoffsetx" value="0" />
+							<param name="texturenofocus" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffusenofocus" value="button_focus_flix" />
+							<param name="top" value="-12"/>
+						</include>
+						<width max="420">auto</width>
+						<visible></visible>
+						<visible>Control.HasFocus(211) + String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+					</control>
+
+					<control type="button">
+						<left>12%</left>
+						<textcolor>grey</textcolor>
+						<label>$INFO[Container(211).ListItem.Label] (Desac)</label>
+						<include content="DefaultSettingButton">
+							<param name="texture" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffuse" value="button_focus_flix" />
+							<param name="height" value="60" />
+							<param name="textoffsetx" value="0" />
+							<param name="texturenofocus" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffusenofocus" value="button_focus_flix" />
+							<param name="top" value="-12"/>
+						</include>
+						<width max="420">auto</width>
+						<visible>!Control.HasFocus(211) + String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+					</control>
+				</focusedlayout>
+			</control>
+			
+			<control type="grouplist" id="700">
+				<orientation>vertical</orientation>
+				<itemgap>60</itemgap>
+				<centertop>50%</centertop>
+				<left>432</left>
+				<top>295</top>
+				<height>1080</height>
+				<onup>700</onup>
+				<ondown>700</ondown>
+				<onleft>211</onleft>
+				<onright>90001</onright>
+				<include content="IconButton">
+					<param name="control_id" value="303" />
+					<param name="icon" value="noop" />
+					<param name="texturenofocus" value="icons/up.png" />
+					<param name="texturefocus" value="icons/up.png" />
+					<param name="width" value="50"/>
+					<param name="height" value="50"/>
+					<!-- <param name="visible" value="!String.IsEqual(Container(211).ListItem.Property(defaultID),menuhomepalantir)"/> -->
+				</include>
+				<include content="IconButton">
+					<param name="control_id" value="304" />
+					<param name="icon" value="noop" />
+					<param name="texturenofocus" value="icons/down.png" />
+					<param name="texturefocus" value="icons/down.png" />
+					<param name="width" value="50"/>
+					<param name="height" value="50"/>
+					<!-- <param name="visible" value="!String.IsEqual(Container(211).ListItem.Property(defaultID),menuhomepalantir)"/> -->
+				</include>
+				<include content="IconButton">
+					<param name="control_id" value="301" />
+					<param name="icon" value="noop" />
+					<param name="texturenofocus" value="icons/add.png" />
+					<param name="texturefocus" value="icons/add.png" />
+					<param name="width" value="50"/>
+					<param name="height" value="50"/>
+				</include>
+				<include content="IconButton">
+					<param name="control_id" value="302" />
+					<param name="icon" value="noop" />
+					<param name="texturenofocus" value="Palantir/icons/delete.png" />
+					<param name="texturefocus" value="Palantir/icons/delete.png" />
+					<param name="radioposx">0</param>
+					<param name="radioposy">0</param>
+					<param name="width" value="50"/>
+					<param name="height" value="50"/>
+					<!-- <param name="visible" value="!String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirFavoritos) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menuhomepalantir) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)"/> -->
+				</include>
+				<include content="IconButton">
+					<param name="control_id" value="313" />
+					<param name="icon" value="noop" />
+					<param name="texturenofocus" value="Palantir/icons/novisible.png" />
+					<param name="texturefocus" value="Palantir/icons/novisible.png" />
+					<param name="width" value="50"/>
+					<param name="height" value="50"/>
+					<param name="visible" value="!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)" />
+				</include>
+				<include content="IconButton">
+					<param name="control_id" value="313" />
+					<param name="icon" value="noop" />
+					<param name="texturenofocus" value="Palantir/icons/visible.png" />
+					<param name="texturefocus" value="Palantir/icons/visible.png" />
+					<param name="width" value="50"/>
+					<param name="height" value="50"/>
+					<param name="visible" value="String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)" />
+				</include>
+			</control>
+		</control>
+		<control type="group">
+			<left>560</left>
+			<include>OpenClose_Right</include>
+			<control type="grouplist" id="90001">
+				<left>0</left>
+				<top>168</top>
+				<right>0</right>
+				<bottom>142</bottom>
+				<onleft>700</onleft>
+				<onright>60</onright>
+				<onup>90001</onup>
+				<ondown>90001</ondown>
+				<pagecontrol>60</pagecontrol>
+				<control type="label" id="400">
+					<label>Ajustes del shortcut</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>amarillopalantir</textcolor>			
+				</control>
+				<control type="button" id="401">
+					<description>Choose shortcut</description>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>	$ADDON[script.skinshortcuts 32048]</label>
+					<label2> $INFO[Container(211).ListItem.lock] $INFO[Container(211).ListItem.Label]</label2>
+					<visible>!String.IsEqual(Container(211).ListItem.Property(defaultID),libreelec)</visible>
+				</control>
+				<control type="button" id="307">
+					<description>Change action</description>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>	$ADDON[script.skinshortcuts 32027]</label>
+					<label2>$INFO[Container(211).ListItem.Property(displaypath)]</label2>
+					<visible>!String.IsEqual(Container(211).ListItem.Property(defaultID),libreelec)</visible>
+				</control>
+				<control type="button" id="305">
+					<description>Change label</description>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>	$ADDON[script.skinshortcuts 32025]</label>
+					<label2>$INFO[Container(211).ListItem.Label]</label2>
+					<visible>!String.IsEqual(Container(211).ListItem.Property(defaultID),libreelec)</visible>
+				</control>
+				<!-- <control type="button" id="311"> -->
+				<control type="button" id="306">
+					<description>Browse for thumbnail</description>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>	$ADDON[script.skinshortcuts 32026]</label>
+					<label2>$INFO[Container(211).ListItem.Icon]</label2>
+				</control>
+				<control type="button" id="310">
+					<description>Browse for background</description>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>	$ADDON[script.skinshortcuts 32045]</label>
+					<label2>$VAR[Label_SkinSetting_Backgrounds]</label2>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+				</control>
+				<control type="button" id="405">
+                   <description>Edit submenu</description>
+                   <focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+                   <label>	$LOCALIZE[32001]</label>
+				   <visible>false</visible>
+                   <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                   <visible>!String.IsEqual(Container(211).ListItem.Property(defaultID),libreelec) + !String.IsEqual(Container(211).ListItem.Property(widget),PicturesWidget) + !String.IsEqual(Container(211).ListItem.Property(widget),GamesWidget) + !String.IsEqual(Container(211).ListItem.Property(widget),FavoritesWidget) + !String.IsEqual(Container(211).ListItem.Property(widget),WeatherWidget)</visible>
+                </control>
+                <control type="radiobutton" id="3129">
+                    <label>  			$LOCALIZE[32001]</label>
+                    <focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<visible>false</visible>
+                    <selected>!String.IsEmpty(Container(211).ListItem.Property(HideSubMenu))</selected>
+                    <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) | String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetPanel)</visible>
+                </control>
+				<control type="button" id="312">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label></label>
+					<label2></label2>
+					<visible>false</visible>
+				</control>
+				<control type="label" id="3130">
+					<label>Ajustes del widget</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>amarillopalantir</textcolor>			
+				</control>
+				<control type="button" id="10005">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>	$LOCALIZE[32002]</label>
+					<label2>$VAR[Label_SkinSetting_Widget]</label2>
+					<onclick>Skin.Reset(widgetAnimation1)</onclick>
+					<onclick>Skin.Reset(widgetAnimation2)</onclick>
+					<onclick>Skin.Reset(widgetAnimation3)</onclick>
+					<onclick>Skin.Reset(widgetAnimation4)</onclick>
+					<onclick>Skin.Reset(widgetAnimation5)</onclick>
+					<onclick>Skin.Reset(widgetAnimation6)</onclick>
+					<onclick>Skin.Reset(widgetAnimation7)</onclick>
+					<onclick>Skin.Reset(widgetAnimation8)</onclick>
+					<onclick>Skin.Reset(widgetAnimation9)</onclick>
+					<onclick>SetProperty(WidgetVisibility,True,home)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>!String.IsEqual(Container(211).ListItem.Property(defaultID),libreelec)</visible>
+					<enable>!String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirFavoritos) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirtop10)</enable>
+				</control>
+				<control type="button" id="10006">
+					<label>	$LOCALIZE[31298]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>ActivateWindow(1123)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),MoviesWidget)</visible>
+				</control>
+				<control type="radiobutton" id="10014">
+					<label>	$LOCALIZE[31133]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<selected>!Skin.HasSetting(HomeBanner)</selected>
+					<onclick>Skin.ToggleSetting(HomeBanner)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),TVShowsWidget)</visible>
+				</control>
+				<control type="button" id="10007">
+					<label>	$LOCALIZE[31299]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>ActivateWindow(1124)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),TVShowsWidget)</visible>
+				</control>
+				<control type="button" id="10008">
+					<label>	$LOCALIZE[31300]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>ActivateWindow(1125)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),MusicWidget)</visible>
+				</control>
+				<control type="button" id="1009">
+					<label>	$LOCALIZE[31301]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>ActivateWindow(1126)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),MusicVideosWidget)</visible>
+				</control>
+				<control type="button" id="10010">
+					<label>	$LOCALIZE[31302]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>ActivateWindow(1127)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),LiveTVWidget)</visible>
+				</control>
+				<control type="button" id="10011">
+					<label>	$LOCALIZE[31303]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>ActivateWindow(1128)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),RadioWidget)</visible>
+				</control>
+				<control type="button" id="10012">
+					<label>	$LOCALIZE[31304]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>ActivateWindow(1129)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),AddonsWidget)</visible>
+				</control>
+				<control type="button" id="10013">
+					<label>	$LOCALIZE[31305]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>ActivateWindow(1130)</onclick>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),VideoWidget)</visible>
+				</control>			
+				<control type="button" id="1475">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		Seleccionar contenido para widget 1</label>
+					<label2>$VAR[Widget1Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,1)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)</visible>
+				</control>
+				<!-- <control type="button" id="14751">
+					<label>  			$LOCALIZE[31337] 1</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence1Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation1)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.1))]</visible>
+				</control>
+				<control type="button" id="14752">
+					<label>  			$LOCALIZE[31367] 1</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy1Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.1))]</visible>
+				</control>
+				<control type="button" id="14753">
+					<label>  			$LOCALIZE[31368] 1</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection1Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.1))]</visible>
+				</control> -->
+				<control type="button" id="1476">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		Seleccionar contenido para widget 2</label>
+					<label2>$VAR[Widget2Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,2)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)</visible>
+				</control>
+				<!--<control type="button" id="14761">
+					<label>  			$LOCALIZE[31337] 2</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence2Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation2)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.2))]</visible>
+				</control>
+				 <control type="button" id="14762">
+					<label>  			$LOCALIZE[31367] 2</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy2Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.2))]</visible>
+				</control>
+				<control type="button" id="14763">
+					<label>  			$LOCALIZE[31368] 2</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection2Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.2))]</visible>
+				</control> -->
+				<control type="button" id="1477">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		Seleccionar contenido para widget 3</label>
+					<label2>$VAR[Widget3Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,3)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)</visible>
+				</control>
+				<!-- <control type="button" id="14771">
+					<label>  			$LOCALIZE[31337] 3</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence3Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation3)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.3))]</visible>
+				</control>
+				<control type="button" id="14772">
+					<label>  			$LOCALIZE[31367] 3</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy3Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.3))]</visible>
+				</control>
+				<control type="button" id="14773">
+					<label>  			$LOCALIZE[31368] 3</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection3Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.3))]</visible>
+				</control>			 -->
+				<control type="button" id="1478">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		Seleccionar contenido para widget 4</label>
+					<label2>$VAR[Widget4Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,4)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)</visible>
+				</control>
+				<!-- <control type="button" id="14781">
+					<label>  			$LOCALIZE[31337] 4</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence4Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation4)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.4))]</visible>
+				</control>
+				<control type="button" id="14782">
+					<label>  			$LOCALIZE[31367] 4</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy4Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.4))]</visible>
+				</control>
+				<control type="button" id="14783">
+					<label>  			$LOCALIZE[31368] 4</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection4Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.4))]</visible>
+				</control> -->
+				<control type="button" id="1479">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		Seleccionar contenido para widget 5</label>
+					<label2>$VAR[Widget5Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,5)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)</visible>
+				</control>
+				<!-- <control type="button" id="14791">
+					<label>  			$LOCALIZE[31337] 5</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence5Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation5)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.5))]</visible>
+				</control>
+				<control type="button" id="14792">
+					<label>  			$LOCALIZE[31367] 5</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy5Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.5))]</visible>
+				</control>
+				<control type="button" id="14793">
+					<label>  			$LOCALIZE[31368] 5</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection5Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.5))]</visible>
+				</control>			 -->
+				<control type="button" id="1480">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		Seleccionar contenido para widget 6</label>
+					<label2>$VAR[Widget6Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,6)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)</visible>
+				</control>
+				<!-- <control type="button" id="14801">
+					<label>  			$LOCALIZE[31337] 6</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence6Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation6)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.6))]</visible>
+				</control>
+				<control type="button" id="14802">
+					<label>  			$LOCALIZE[31367] 6</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy6Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.6))]</visible>
+				</control>
+				<control type="button" id="14803">
+					<label>  			$LOCALIZE[31368] 6</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection6Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.6))]</visible>
+				</control>				 -->
+				<control type="button" id="1481">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		Seleccionar contenido para widget 7</label>
+					<label2>$VAR[Widget7Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,7)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)</visible>
+				</control>
+				<!-- <control type="button" id="14811">
+					<label>  			$LOCALIZE[31337] 7</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence7Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation7)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.7))]</visible>
+				</control>
+				<control type="button" id="14812">
+					<label>  			$LOCALIZE[31367] 7</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy7Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.7))]</visible>
+				</control>
+				<control type="button" id="14813">
+					<label>  			$LOCALIZE[31368] 7</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection7Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.7))]</visible>
+				</control>				 -->
+				<control type="button" id="1482">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		Seleccionar contenido para widget 8</label>
+					<label2>$VAR[Widget8Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,8)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEqual(Container(211).ListItem.Property(defaultID),menupalantirEspeciales)</visible>
+				</control>
+				<!-- <control type="button" id="14821">
+					<label>  			$LOCALIZE[31337] 8</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence8Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation8)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.8))]</visible>
+				</control>
+				<control type="button" id="14822">
+					<label>  			$LOCALIZE[31367] 8</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy8Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.8))]</visible>
+				</control>
+				<control type="button" id="14823">
+					<label>  			$LOCALIZE[31368] 8</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection8Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetList) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.8))]</visible>
+				</control>	 -->
+				<control type="button" id="1483">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		$ADDON[script.skinshortcuts 32044]</label>
+					<label2>$VAR[Widget9Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<onclick>SetProperty(widgetID,9)</onclick>
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetPanel) | String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetPanelTOP10)</visible>
+				</control>
+				<!--PALANTIR #Spotligth-->
+				<!-- <control type="button" id="1484">
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label>		$ADDON[script.skinshortcuts 32044]</label>
+					<label2>$VAR[Widget10Label2Var]</label2>
+					<onclick>ClearProperty(WidgetVisibility,home)</onclick>
+					<!- - <onclick>SetProperty(widgetID,10)</onclick> - ->
+					<onclick>SendClick(312)</onclick>
+					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>String.IsEqual(Container(211).ListItem.Property(widget),PalantirSpotlight)</visible>
+				</control> -->
+				<!-- <control type="button" id="14831">
+					<label>  			$LOCALIZE[31337]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence9Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation9)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetPanel) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.9))]</visible>
+				</control>
+				<control type="button" id="14832">
+					<label>  			$LOCALIZE[31367]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy9Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetPanel) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.9))]</visible>
+				</control>
+				<control type="button" id="14833">
+					<label>  			$LOCALIZE[31368]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection9Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PersonalWidgetPanel) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.9))]</visible>
+				</control>	 -->
+
+				<!--PALANTIR #Spotligth-->
+				<!-- <control type="button" id="14841">
+					<label>  			$LOCALIZE[31337]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetsAppearence10Label2Var]</label2>
+					<onclick>Skin.ToggleSetting(widgetAnimation9)</onclick>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PalantirSpotlight) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.10))]</visible>
+				</control>
+				<control type="button" id="14842">
+					<label>  			$LOCALIZE[31367]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortBy10Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PalantirSpotlight) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.10))]</visible>
+				</control>
+				<control type="button" id="14843">
+					<label>  			$LOCALIZE[31368]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<label2>$VAR[WidgetSortDirection10Label2Var]</label2>
+					<visible>[String.IsEqual(Container(211).ListItem.Property(widget),PalantirSpotlight) + !String.IsEmpty(Container(211).ListItem.Property(widgetPath.10))]</visible>
+				</control>	-->		
+			</control> 
+			<control type="image">
+				<description>Dialog Header image</description>
+				<left>0</left>
+				<top>160</top>
+				<right>0</right>
+				<height>3</height>
+				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+			<control type="image">
+				<description>Dialog Header image</description>
+				<left>0</left>
+				<bottom>134</bottom>
+				<right>0</right>
+				<height>3</height>
+				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+		</control>
+		<include content="TopBar2">
+			<param name="breadcrumbs_label" value="$LOCALIZE[31306]" />
+			<param name="visible" value="Skin.HasSetting(MostrarBarraSuperior)" />
+		</include>
+		<include>BottomBar</include>
+		<control type="textbox" id="6">
+			<include>OpenClose_Right</include>
+			<description>description area</description>
+			<left>600</left>
+			<bottom>27</bottom>
+			<width>1260</width>
+			<height>100</height>
+			<font>font12</font>
+			<align>justify</align>
+			<textcolor>button_focus</textcolor>
+			<label>$VAR[SkinSettingsHelpTextVar]</label>
+			<autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+		</control>
+	</controls>
+</window>

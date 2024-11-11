@@ -1,0 +1,35 @@
+[COLOR goldenrod][B]v1.5.7[/B]
+* Fixed Trakt
+
+[COLOR goldenrod][B]v1.5.5[/B]
+* Fixed TMDB
+
+[COLOR goldenrod][B]v1.5.4[/B]
+* Fixed Windows Defender Issue
+
+[COLOR goldenrod][B]v1.5.2[/B]
+* New Layout On Menu Items
+
+[COLOR goldenrod][B]v1.5.1[/B]
+* Added New Scrpers
+*Added New Play Button Centered Count Down Time
+
+[COLOR goldenrod][B]v1.5.0[/B]
+* Fixed Subtitle Error Issue
+
+[COLOR goldenrod][B]v1.4.8[/B]
+* Fixed YouTube issue. Thanks Loki
+
+[COLOR goldenrod][B]v1.4.6[/B]
+* Trakt bug fix.
+
+[COLOR goldenrod][B]v1.4.5[/B]
+* Changed Asgard to a faster base code.
+
+[COLOR goldenrod][B]v1.4.4[/B]
+* Fixed Colour Code in Menu Sections.
+
+[COLOR goldenrod][B]v1.4.3[/B]
+* Fixed percentage played title.
+* Fixed scraper name search title.
+* New Layout On Menu Items

@@ -1,0 +1,80 @@
+<sources>
+    <programs>
+        <default pathversion="1"></default>
+    </programs>
+    <video>
+        <default pathversion="1"></default>
+        <source>
+            <name>Movies</name>
+            <path pathversion="1">/Users/calbiach/Movies/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Video Playlists</name>
+            <path pathversion="1">special://videoplaylists/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </video>
+    <music>
+        <default pathversion="1"></default>
+        <source>
+            <name>Music</name>
+            <path pathversion="1">/Users/calbiach/Music/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Music Playlists</name>
+            <path pathversion="1">special://musicplaylists/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </music>
+    <pictures>
+        <default pathversion="1"></default>
+        <source>
+            <name>Pictures</name>
+            <path pathversion="1">/Users/calbiach/Pictures/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </pictures>
+    <files>
+        <default pathversion="1"></default>
+        <source>
+            <name>Palantir</name>
+            <path pathversion="1">https://palantir.5g.in/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>repository.peno64</name>
+            <path pathversion="1">https://peno64.github.io/repository.peno64/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Lost Soul</name>
+            <path pathversion="1">https://mylostsoulspace.co.uk/repo/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Balandro</name>
+            <path pathversion="1">https://repobal.github.io/base/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>Elementum</name>
+            <path pathversion="1">https://repo.gaiakodi.com/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>home</name>
+            <path pathversion="1">special://home</path>
+            <allowsharing>true</allowsharing>
+        </source>
+        <source>
+            <name>P3</name>
+            <path pathversion="1">/Users/calbiach/Desktop/P3/</path>
+            <allowsharing>true</allowsharing>
+        </source>
+    </files>
+    <games>
+        <default pathversion="1"></default>
+    </games>
+</sources>

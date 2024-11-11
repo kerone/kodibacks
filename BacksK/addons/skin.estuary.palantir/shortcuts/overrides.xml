@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<overrides>
+    
+    <!-- Power menu: close before opening other window -->
+    <groupoverride group="powermenu" condition="Window.IsActive(DialogButtonMenu.xml)">Close</groupoverride>
+     
+    <override action="dialog.close(all,true)">
+        <action>System.LogOff</action>
+    </override>
+    
+    <!-- Settings -->
+    <widgetRename>True</widgetRename>
+
+
+    <!-- Icons overrides -->
+    <icon image="DefaultShortcut.png">special://skin/media/Palantir/icons/info.png</icon>
+    <icon labelID="livetv">DefaultTVGuide.png</icon>
+    <icon labelID="radio">DefaultRadioGuide.png</icon>
+    
+    <!-- Default Widgets -->
+    <widgetdefault labelID="disc">disc</widgetdefault>
+    <widgetdefault labelID="movies">movies</widgetdefault>
+    <widgetdefault labelID="tvshows">tvshows</widgetdefault>
+    <widgetdefault labelID="music">music</widgetdefault>
+    <widgetdefault labelID="musicvideos">musicvideos</widgetdefault>
+    <widgetdefault labelID="livetv">livetv</widgetdefault>
+    <widgetdefault labelID="radio">radio</widgetdefault>
+    <widgetdefault labelID="games">games</widgetdefault>
+    <widgetdefault labelID="addons">addons</widgetdefault>
+    <widgetdefault labelID="pictures">pictures</widgetdefault>
+    <widgetdefault labelID="video">video</widgetdefault>
+    <widgetdefault labelID="favorites">favorites</widgetdefault>
+    <widgetdefault labelID="weather">weather</widgetdefault>
+
+    <widgetdefault labelID="documentalespalantir" group="mainmenu">widgetDocumentales</widgetdefault>
+
+
+<!--AJUSTES PARA PALANTIR-->
+    <!--Ajuste propiedades para menu palantir 1 - home -->
+        <widgetdefaultnode labelID="menuhomepalantir" label="PalantirSpotlight" path="$VAR[p3PathRandom]" target="video">WidgetRandom</widgetdefaultnode>
+        <propertydefault labelID="menuhomepalantir" property="onclick_condition">ListItem.IsResumable</propertydefault>
+        <propertydefault labelID="menuhomepalantir" property="onclick_action">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</propertydefault>
+        <propertydefault labelID="menuhomepalantir" property="LOCKED">True</propertydefault>
+
+     <!--Ajuste propiedades para menu palantir especiales -->
+        <widgetdefaultnode labelID="menupalantirEspeciales" label="PersonalWidgetList" path="$VAR[p3PathEspeciales]" target="video">WidgetEspeciales</widgetdefaultnode>
+        <propertydefault labelID="menupalantirEspeciales" property="onclick_condition">ListItem.IsResumable</propertydefault>
+        <propertydefault labelID="menupalantirEspeciales" property="onclick_action">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</propertydefault>
+        <propertydefault labelID="menupalantirEspeciales" property="widget.1">Addon</propertydefault>
+        <propertydefault labelID="menupalantirEspeciales" property="widgetType.1">movies</propertydefault>
+        <propertydefault labelID="menupalantirEspeciales" property="widgetTarget.1">videos</propertydefault>
+        <propertydefault labelID="menupalantirEspeciales" property="widgetAspect.1">31338</propertydefault>
+        <propertydefault labelID="menupalantirEspeciales" property="widgetName.1">$VAR[p3NameEspeciales]</propertydefault>
+        <propertydefault labelID="menupalantirEspeciales" property="widgetPath.1">$VAR[p3PathEspeciales]</propertydefault>
+        <propertydefault labelID="menupalantirEspeciales" property="LOCKED">True</propertydefault>
+    <!--Ajuste propiedades para menu palantir 2 - pelis -->
+        <widgetdefaultnode labelID="menupalantir2" label="PersonalWidgetList" path="path2" target="videos">WidgetPelis</widgetdefaultnode>
+        <propertydefault labelID="menupalantir2" property="onclick_condition">ListItem.IsResumable</propertydefault>
+        <propertydefault labelID="menupalantir2" property="onclick_action">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</propertydefault>
+
+        <propertydefault labelID="menupalantir2" property="widget.1">Addon</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetType.1">movies</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetTarget.1">videos</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetAspect.1">31338</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetName.1">$VAR[p3NamePeliculasNovedades]</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetPath.1">$VAR[p3PathPeliculasNovedades]</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widget.2">Addon</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetType.2">movies</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetTarget.2">videos</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetAspect.2">31338</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetName.2">$VAR[p3NamePeliculasUltimasAnadidas]</propertydefault>
+        <propertydefault labelID="menupalantir2" property="widgetPath.2">$VAR[p3PathPeliculasUltimasAnadidas]</propertydefault>
+
+
+    <!--Ajuste propiedades para menu palantir 3- series-->
+        <widgetdefaultnode labelID="menupalantir3" label="PersonalWidgetList" path="path3" target="videos">WidgetSeries</widgetdefaultnode>
+        <propertydefault labelID="menupalantir3" property="onclick_condition">ListItem.IsResumable</propertydefault>
+        <propertydefault labelID="menupalantir3" property="onclick_action">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</propertydefault>
+
+        <propertydefault labelID="menupalantir3" property="widget.1">Addon</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetType.1">movies</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetTarget.1">videos</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetAspect.1">31338</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetName.1">$VAR[p3NameSeriesNuevas]</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetPath.1">$VAR[p3PathSeriesNuevas]</propertydefault>
+
+        <propertydefault labelID="menupalantir3" property="widget.2">Addon</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetType.2">movies</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetTarget.2">videos</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetAspect.2">31338</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetName.2">$VAR[p3NameSeriesUltimasActualizadas]</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetPath.2">$VAR[p3PathSeriesUltimasActualizadas]</propertydefault>
+
+        <propertydefault labelID="menupalantir3" property="widget.3">Addon</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetType.3">movies</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetTarget.3">videos</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetAspect.3">31338</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetName.3">$VAR[p3NameSeriesSeguimiento]</propertydefault>
+        <propertydefault labelID="menupalantir3" property="widgetPath.3">$VAR[p3PathSeriesSeguimiento]</propertydefault>
+
+
+    <!--Ajuste propiedades para menu palantir 4- dibujos-->
+        <widgetdefaultnode labelID="menupalantir4" label="PersonalWidgetList" path="path4" target="videos">WidgetDibus</widgetdefaultnode>
+        <propertydefault labelID="menupalantir4" property="onclick_condition">ListItem.IsResumable</propertydefault>
+        <propertydefault labelID="menupalantir4" property="onclick_action">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</propertydefault>
+
+        <propertydefault labelID="menupalantir4" property="widget.1">Addon</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetType.1">movies</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetTarget.1">videos</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetAspect.1">31338</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetName.1">$VAR[p3NameDibujosNovedades]</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetPath.1">$VAR[p3PathDibujosNovedades]</propertydefault>
+
+
+        <propertydefault labelID="menupalantir4" property="widget.2">Addon</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetType.2">movies</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetTarget.2">videos</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetAspect.2">31338</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetName.2">$VAR[p3NameSerieDibujosUltimasActualizadas]</propertydefault>
+        <propertydefault labelID="menupalantir4" property="widgetPath.2">$VAR[p3PathSerieDibujosUltimasActualizadas]</propertydefault>
+
+
+    <!--Ajuste propiedades para menu palantir 5- anime-->
+        <widgetdefaultnode labelID="menupalantir5" label="PersonalWidgetList" path="path5" target="videos">WidgetAnime</widgetdefaultnode>
+        <propertydefault labelID="menupalantir5" property="onclick_condition">ListItem.IsResumable</propertydefault>
+        <propertydefault labelID="menupalantir5" property="onclick_action">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</propertydefault>
+
+        <propertydefault labelID="menupalantir5" property="widget.1">Addon</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetType.1">movies</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetTarget.1">videos</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetAspect.1">31338</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetName.1">$VAR[p3NameAnimeNovedades]</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetPath.1">$VAR[p3PathAnimeNovedades]</propertydefault>
+
+
+        <propertydefault labelID="menupalantir5" property="widget.2">Addon</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetType.2">movies</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetTarget.2">videos</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetAspect.2">31338</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetName.2">$VAR[p3NameAnimeUltimasActualizadas]</propertydefault>
+        <propertydefault labelID="menupalantir5" property="widgetPath.2">$VAR[p3PathAnimeUltimasActualizadas]</propertydefault>
+    
+    <!--Ajuste propiedades para menu palantir favoritos -->
+        <widgetdefaultnode labelID="menupalantirFavoritos" label="PersonalWidgetListFavoritos" path="path6" target="videos">WidgetFavoritos</widgetdefaultnode>
+        <propertydefault labelID="menupalantirFavoritos" property="onclick_condition">ListItem.IsResumable</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="onclick_action">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="limite">$VAR[VARnumItemsWidgets]</propertydefault>
+
+        <propertydefault labelID="menupalantirFavoritos" property="widget.1">Addon</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetType.1">movies</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetTarget.1">videos</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetAspect.1">31338</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetName.1">Películas Favoritas</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetPath.1">$VAR[p3PelisFavoritasPath]</propertydefault>
+
+        <propertydefault labelID="menupalantirFavoritos" property="widget.2">Addon</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetType.2">movies</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetTarget.2">videos</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetAspect.2">31338</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetName.2">Series Favoritas</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="widgetPath.2">$VAR[p3SeriesFavoritasPath]</propertydefault>
+        <propertydefault labelID="menupalantirFavoritos" property="LOCKED">True</propertydefault>
+
+        <!--Ajuste propiedades para menu palantir top10 -->
+        <widgetdefaultnode labelID="menupalantirtop10" label="Palantir10most" path="path7" target="videos">WidgetTop10</widgetdefaultnode>
+        <propertydefault labelID="menupalantirtop10" property="onclick_condition">ListItem.IsResumable</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="onclick_action">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</propertydefault>
+
+        <propertydefault labelID="menupalantirtop10" property="widget.1">Addon</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetType.1">movies</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetTarget.1">videos</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetAspect.1">31338</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetName.1">[I][B][COLOR azulpalantir]Top10 Semanal[/COLOR][/B] Películas más vistas[/I]</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetPath.1">$VAR[TOP10PathPelis]</propertydefault>
+
+        <propertydefault labelID="menupalantirtop10" property="widget.2">Addon</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetType.2">movies</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetTarget.2">videos</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetAspect.2">31338</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetName.2">[I][B][COLOR azulpalantir]Top10 Semanal[/COLOR][/B] Series más vistas[/I]</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="widgetPath.2">$VAR[TOP10PathSeries]</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="LOCKED">True</propertydefault>
+        <propertydefault labelID="menupalantirtop10" property="browse">never</propertydefault>
+
+
+    <!-- Additionnal Widgets -->
+    <widget label="427" icon="Palantir/iconsmenu/disc.png">disc</widget>
+    <widget label="342" icon="Palantir/iconsmenu/movies.png">movies</widget>
+    <widget label="20343" icon="Palantir/iconsmenu/tv.png">tvshows</widget>
+    <widget label="2" icon="Palantir/iconsmenu/music.png" >music</widget>
+    <widget label="20389" icon="Palantir/iconsmenu/musicvideos.png">musicvideos</widget>
+    <widget label="19020" icon="Palantir/iconsmenu/livetv.png">livetv</widget>
+    <widget label="19021" icon="Palantir/iconsmenu/radio.png">radio</widget>
+    <widget label="15016" icon="Palantir/iconsmenu/games.png">games</widget>
+    <widget label="24001" icon="Palantir/iconsmenu/addons.png">addons</widget>
+    <widget label="1" icon="Palantir/iconsmenu/pictures.png">pictures</widget>
+    <widget label="3" icon="Palantir/iconsmenu/videos.png">video</widget>
+    <widget label="10134" icon="Palantir/iconsmenu/favourites.png">favorites</widget>
+    <widget label="8" icon="Palantir/iconsmenu/weather.png">weather</widget>
+    <widget label="31427" icon="Palantir/spot.png">PalantirSpotlight</widget>
+    <widget label="31366" icon="icons/PersonalList.png">PersonalWidgetList</widget>
+    <widget label="31367" icon="icons/PersonalList.png">PersonalWidgetListFavoritos</widget>
+    <widget label="31405" icon="icons/PersonalPanel.png">PersonalWidgetPanel</widget>
+    
+
+    <!-- Default Backgrounds -->
+    <backgrounddefault labelID="disc">special://skin/extras/home-images/disc.jpg</backgrounddefault>
+    <backgrounddefault labelID="movies">special://skin/extras/home-images/movies.jpg</backgrounddefault>
+    <backgrounddefault labelID="tvshows">special://skin/extras/home-images/tvshows.jpg</backgrounddefault>
+    <backgrounddefault labelID="music">special://skin/extras/home-images/music.jpg</backgrounddefault>
+    <backgrounddefault labelID="musicvideos">special://skin/extras/home-images/musicvideos.jpg</backgrounddefault>
+    <backgrounddefault labelID="livetv">special://skin/extras/home-images/livetv.jpg</backgrounddefault>
+    <backgrounddefault labelID="radio">special://skin/extras/home-images/radio.jpg</backgrounddefault>
+    <backgrounddefault labelID="games">special://skin/extras/home-images/games.jpg</backgrounddefault>
+    <backgrounddefault labelID="addons">special://skin/extras/home-images/addons.jpg</backgrounddefault>
+    <backgrounddefault labelID="pictures">special://skin/extras/home-images/pictures.jpg</backgrounddefault>
+    <backgrounddefault labelID="video">special://skin/extras/home-images/video.jpg</backgrounddefault>
+    <backgrounddefault labelID="favorites">special://skin/extras/home-images/favorites.jpg</backgrounddefault>
+    <backgrounddefault labelID="weather">special://skin/extras/home-images/weather.jpg</backgrounddefault>
+    <backgrounddefault labelID="libreelec">special://skin/extras/home-images/libreelec.png</backgrounddefault>
+    <backgrounddefault labelID="coreelec">special://skin/extras/home-images/coreelec.png</backgrounddefault>
+    
+    <!-- Background -->
+    <background label="smartshortcuts">||BROWSE||special://skin/extras/home-images</background>
+    <backgroundBrowse default="protocol://">True</backgroundBrowse>
+
+    <!-- Icons Directory -->
+    <thumbnailBrowseDefault>special://skin/media/Palantir/iconsmenu/</thumbnailBrowseDefault>
+
+     <!-- Context Menu -->
+    <contextmenu>
+        <enableon>211</enableon>
+        <item control="303">subir $LOCALIZE[31328]</item>
+        <item control="304">bajar $LOCALIZE[31329]</item>
+        <item control="313" condition="String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)">3 $LOCALIZE[31332]</item>
+        <item control="313" condition="String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)">4 $LOCALIZE[31333]</item>
+        <item control="301">5 $LOCALIZE[31330]</item>
+        <item control="302">6 $LOCALIZE[31331]</item>
+    </contextmenu>
+
+    <!-- Widgets Settings -->
+    <propertySettings property="widgetAspect.1" buttonID="14751" showNone="False" title="$LOCALIZE[31337] 1" />
+	<property property="widgetAspect.1">$LOCALIZE[31338]</property>
+	<property property="widgetAspect.1">$LOCALIZE[31339]</property>
+	<property property="widgetAspect.1">$LOCALIZE[31321]</property>
+	<property property="widgetAspect.1">$LOCALIZE[31340]</property>
+	<property property="widgetAspect.1">$LOCALIZE[31410]</property>
+	<property property="widgetAspect.1">$LOCALIZE[135]</property>
+	<propertySettings property="widgetAspect.2" buttonID="14761" showNone="False" title="$LOCALIZE[31337] 2" />
+	<property property="widgetAspect.2">$LOCALIZE[31338]</property>
+	<property property="widgetAspect.2">$LOCALIZE[31339]</property>
+	<property property="widgetAspect.2">$LOCALIZE[31321]</property>
+	<property property="widgetAspect.2">$LOCALIZE[31340]</property>
+	<property property="widgetAspect.2">$LOCALIZE[31410]</property>
+	<property property="widgetAspect.2">$LOCALIZE[135]</property>
+	<propertySettings property="widgetAspect.3" buttonID="14771" showNone="False" title="$LOCALIZE[31337] 3" />
+	<property property="widgetAspect.3">$LOCALIZE[31338]</property>
+	<property property="widgetAspect.3">$LOCALIZE[31339]</property>
+	<property property="widgetAspect.3">$LOCALIZE[31321]</property>
+	<property property="widgetAspect.3">$LOCALIZE[31340]</property>
+	<property property="widgetAspect.3">$LOCALIZE[31410]</property>
+	<property property="widgetAspect.3">$LOCALIZE[135]</property>
+	<propertySettings property="widgetAspect.4" buttonID="14781" showNone="False" title="$LOCALIZE[31337] 4" />
+	<property property="widgetAspect.4">$LOCALIZE[31338]</property>
+	<property property="widgetAspect.4">$LOCALIZE[31339]</property>
+	<property property="widgetAspect.4">$LOCALIZE[31321]</property>
+	<property property="widgetAspect.4">$LOCALIZE[31340]</property>
+	<property property="widgetAspect.4">$LOCALIZE[31410]</property>
+	<property property="widgetAspect.4">$LOCALIZE[135]</property>
+	<propertySettings property="widgetAspect.5" buttonID="14791" showNone="False" title="$LOCALIZE[31337] 5" />
+	<property property="widgetAspect.5">$LOCALIZE[31338]</property>
+	<property property="widgetAspect.5">$LOCALIZE[31339]</property>
+	<property property="widgetAspect.5">$LOCALIZE[31321]</property>
+	<property property="widgetAspect.5">$LOCALIZE[31340]</property>
+	<property property="widgetAspect.5">$LOCALIZE[31410]</property>
+	<property property="widgetAspect.5">$LOCALIZE[135]</property>
+	<propertySettings property="widgetAspect.6" buttonID="14801" showNone="False" title="$LOCALIZE[31337] 6" />
+	<property property="widgetAspect.6">$LOCALIZE[31338]</property>
+	<property property="widgetAspect.6">$LOCALIZE[31339]</property>
+	<property property="widgetAspect.6">$LOCALIZE[31321]</property>
+	<property property="widgetAspect.6">$LOCALIZE[31340]</property>
+	<property property="widgetAspect.6">$LOCALIZE[31410]</property>
+	<property property="widgetAspect.6">$LOCALIZE[135]</property>
+	<propertySettings property="widgetAspect.7" buttonID="14811" showNone="False" title="$LOCALIZE[31337] 7" />
+	<property property="widgetAspect.7">$LOCALIZE[31338]</property>
+	<property property="widgetAspect.7">$LOCALIZE[31339]</property>
+	<property property="widgetAspect.7">$LOCALIZE[31321]</property>
+	<property property="widgetAspect.7">$LOCALIZE[31340]</property>
+	<property property="widgetAspect.7">$LOCALIZE[31410]</property>
+	<property property="widgetAspect.7">$LOCALIZE[135]</property>
+	<propertySettings property="widgetAspect.8" buttonID="14821" showNone="False" title="$LOCALIZE[31337] 8" />
+	<property property="widgetAspect.8">$LOCALIZE[31338]</property>
+	<property property="widgetAspect.8">$LOCALIZE[31339]</property>
+	<property property="widgetAspect.8">$LOCALIZE[31321]</property>
+	<property property="widgetAspect.8">$LOCALIZE[31340]</property>
+	<property property="widgetAspect.8">$LOCALIZE[31410]</property>
+	<property property="widgetAspect.8">$LOCALIZE[135]</property>
+	<propertySettings property="widgetAspect.9" buttonID="14831" showNone="False" title="$LOCALIZE[31337]" />
+	<property property="widgetAspect.9">$LOCALIZE[31403]</property>
+	<property property="widgetAspect.9">$LOCALIZE[31406]</property>
+	<property property="widgetAspect.9">$LOCALIZE[31407]</property>
+	<property property="widgetAspect.9">$LOCALIZE[31408]</property>
+	<property property="widgetAspect.9">$LOCALIZE[31409]</property>
+	<property property="widgetAspect.9">$LOCALIZE[31411]</property>
+	<property property="widgetAspect.9">$LOCALIZE[31466]</property>
+    <propertySettings property="widgetAspect.10" buttonID="14841" showNone="False" title="$LOCALIZE[31337] 10" />
+
+	<propertySettings property="widgetSortBy.1" buttonID="14752" showNone="True" title="$LOCALIZE[31367] 1" />
+	<property property="widgetSortBy.1">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.1">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.1">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.1">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.1">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.1">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.1">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.1">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.1">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.1">$LOCALIZE[590]</property>
+    <propertySettings property="widgetSortBy.2" buttonID="14762" showNone="True" title="$LOCALIZE[31367] 2" />
+	<property property="widgetSortBy.2">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.2">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.2">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.2">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.2">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.2">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.2">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.2">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.2">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.2">$LOCALIZE[590]</property>
+    <propertySettings property="widgetSortBy.3" buttonID="14772" showNone="True" title="$LOCALIZE[31367] 3" />
+	<property property="widgetSortBy.3">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.3">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.3">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.3">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.3">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.3">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.3">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.3">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.3">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.3">$LOCALIZE[590]</property>
+    <propertySettings property="widgetSortBy.4" buttonID="14782" showNone="True" title="$LOCALIZE[31367] 4" />
+	<property property="widgetSortBy.4">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.4">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.4">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.4">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.4">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.4">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.4">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.4">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.4">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.4">$LOCALIZE[590]</property>
+    <propertySettings property="widgetSortBy.5" buttonID="14792" showNone="True" title="$LOCALIZE[31367] 5" />
+	<property property="widgetSortBy.5">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.5">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.5">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.5">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.5">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.5">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.5">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.5">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.5">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.5">$LOCALIZE[590]</property>
+    <propertySettings property="widgetSortBy.6" buttonID="14802" showNone="True" title="$LOCALIZE[31367] 6" />
+	<property property="widgetSortBy.6">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.6">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.6">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.6">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.6">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.6">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.6">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.6">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.6">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.6">$LOCALIZE[590]</property>
+    <propertySettings property="widgetSortBy.7" buttonID="14812" showNone="True" title="$LOCALIZE[31367] 7" />
+	<property property="widgetSortBy.7">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.7">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.7">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.7">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.7">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.7">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.7">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.7">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.7">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.7">$LOCALIZE[590]</property>
+    <propertySettings property="widgetSortBy.8" buttonID="14822" showNone="True" title="$LOCALIZE[31367] 8" />
+	<property property="widgetSortBy.8">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.8">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.8">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.8">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.8">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.8">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.8">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.8">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.8">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.8">$LOCALIZE[590]</property>
+    <propertySettings property="widgetSortBy.9" buttonID="14832" showNone="True" title="$LOCALIZE[31367]" />
+	<property property="widgetSortBy.9">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.9">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.9">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.9">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.9">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.9">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.9">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.9">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.9">$LOCALIZE[135]</property>
+    <property property="widgetSortBy.9">$LOCALIZE[590]</property>
+
+    <propertySettings property="widgetSortBy.10" buttonID="14842" showNone="True" title="$LOCALIZE[31367] 10" />
+	<property property="widgetSortBy.10">$LOCALIZE[551]</property>
+	<property property="widgetSortBy.10">$LOCALIZE[562]</property>
+	<property property="widgetSortBy.10">$LOCALIZE[563]</property>
+	<property property="widgetSortBy.10">$LOCALIZE[180]</property>
+	<property property="widgetSortBy.10">$LOCALIZE[570]</property>
+    <property property="widgetSortBy.10">$LOCALIZE[567]</property>
+    <property property="widgetSortBy.10">$LOCALIZE[568]</property>
+    <property property="widgetSortBy.10">$LOCALIZE[12012]</property>
+    <property property="widgetSortBy.10">$LOCALIZE[135]</property>
+    <!-- <property property="widgetSortBy.10">$LOCALIZE[590]</property> -->
+ 
+
+    <propertySettings property="widgetSortDirection.1" buttonID="14753" showNone="True" title="$LOCALIZE[31368] 1" />
+    <property property="widgetSortDirection.1">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.1">$LOCALIZE[585]</property>
+    <propertySettings property="widgetSortDirection.2" buttonID="14763" showNone="True" title="$LOCALIZE[31368] 2" />
+    <property property="widgetSortDirection.2">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.2">$LOCALIZE[585]</property>
+    <propertySettings property="widgetSortDirection.3" buttonID="14773" showNone="True" title="$LOCALIZE[31368] 3" />
+    <property property="widgetSortDirection.3">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.3">$LOCALIZE[585]</property>
+    <propertySettings property="widgetSortDirection.4" buttonID="14783" showNone="True" title="$LOCALIZE[31368] 4" />
+    <property property="widgetSortDirection.4">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.4">$LOCALIZE[585]</property>
+    <propertySettings property="widgetSortDirection.5" buttonID="14793" showNone="True" title="$LOCALIZE[31368] 5" />
+    <property property="widgetSortDirection.5">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.5">$LOCALIZE[585]</property>
+    <propertySettings property="widgetSortDirection.6" buttonID="14803" showNone="True" title="$LOCALIZE[31368] 6" />
+    <property property="widgetSortDirection.6">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.6">$LOCALIZE[585]</property>
+    <propertySettings property="widgetSortDirection.7" buttonID="14813" showNone="True" title="$LOCALIZE[31368] 7" />
+    <property property="widgetSortDirection.7">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.7">$LOCALIZE[585]</property>
+    <propertySettings property="widgetSortDirection.8" buttonID="14823" showNone="True" title="$LOCALIZE[31368] 8" />
+    <property property="widgetSortDirection.8">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.8">$LOCALIZE[585]</property>
+    <propertySettings property="widgetSortDirection.9" buttonID="14833" showNone="True" title="$LOCALIZE[31368]" />
+    <property property="widgetSortDirection.9">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.9">$LOCALIZE[585]</property>
+
+    <!-- <propertySettings property="widgetSortDirection.10" buttonID="14843" showNone="True" title="$LOCALIZE[31368] 10" />
+    <property property="widgetSortDirection.10">$LOCALIZE[584]</property>
+    <property property="widgetSortDirection.10">$LOCALIZE[585]</property> -->
+       
+	<propertySettings toggle="HideSubMenu" buttonID="3129" templateonly="True" />
+
+	<propertySettings property="ParentalControl" buttonID="993" title="$LOCALIZE[31386]" showNone="False" imageBrowse="False" />
+	<property property="ParentalControl" label="$LOCALIZE[106]" icon="icons/parental-control/lock_no.png">No</property>
+	<property property="ParentalControl" label="$LOCALIZE[107]" icon="icons/parental-control/lock_yes.png">Yes</property>
+	<alwaysReset>True</alwaysReset>
+
+    <!-- Groupings -->
+    <groupings>
+    
+        <node label="Secciones de Palantir">
+            <shortcut label="Home Palantir" type="32014" icon="Palantir/iconsmenu/icon.png">ActivateWindow(videos,plugin://plugin.video.palantir3,return)</shortcut>
+            <shortcut label="Peliculas Palantir" type="32014" icon="Palantir/iconsmenu/peliculas.png">ActivateWindow(videos,$VAR[p3Peliculas],return)</shortcut>
+            <shortcut label="Series Palantir" type="32014" icon="Palantir/iconsmenu/series.png">ActivateWindow(videos,$VAR[p3Series],return)</shortcut>
+            <shortcut label="Telenovelas Palantir" type="32014" icon="Palantir/iconsmenu/series.png">ActivateWindow(videos,$VAR[p3Telenovelas],return)</shortcut>
+            <shortcut label="Dibujos Palantir" type="32014" icon="Palantir/iconsmenu/dibujos.png">ActivateWindow(videos,$VAR[p3Dibujos],return)</shortcut>
+            <shortcut label="Anime Palantir" type="32014" icon="Palantir/iconsmenu/anime.png">ActivateWindow(videos,$VAR[p3Anime],return)</shortcut>
+            <shortcut label="Musica Palantir" type="32014" icon="Palantir/iconsmenu/musica.png">ActivateWindow(videos,$VAR[p3Musica],return)</shortcut>
+            <shortcut label="Documentales Palantir" type="32014" icon="Palantir/iconsmenu/documentales.png">ActivateWindow(videos,$VAR[p3Documentales],return)</shortcut>
+            <shortcut label="Listas Trakt Palantir" type="32014" icon="Palantir/iconsmenu/trakt.png">ActivateWindow(videos,$VAR[p3PathTrakt],return)</shortcut>
+        </node>
+        
+        <node label="Secciones de Kodi" >
+            <shortcut label="Favoritos Kodi"  condition="String.Contains(System.BuildVersionCode,20.)" type="32014" icon="DefaultAddonVideo.png">ActivateWindow(favourites,videos,return)</shortcut>
+            <shortcut label="Favoritos Kodi" type="32014"  condition="String.Contains(System.BuildVersionCode,21.)"   icon="DefaultAddonVideo.png">ActivateWindow(favouritesbrowser,videos,return)</shortcut>
+            <node label="32054">
+                <shortcut label="20183" type="32054" icon="ReloadSkin.png">ReloadSkin()</shortcut>
+                <content>commands</content>
+            </node>
+            <node label="32030">
+                <content>video</content>
+                <node label="32040">
+                    <content>playlist-video</content>
+                </node>
+                <node label="32010">
+                    <shortcut label="1037" type="32014" icon="DefaultAddonVideo.png">ActivateWindow(Videos,Addons,return)</shortcut>
+                    <content>addon-video</content>
+                </node>
+                <node label="32075">
+                    <content>videosources</content>
+                    <content>upnp-video</content>
+                </node>
+            </node>
+            <node label="32031">
+                <content>music</content>
+                <node label="32040">
+                    <content>playlist-audio</content>
+                </node>
+                <node label="32011">
+                    <shortcut label="1038" type="32019" icon="DefaultAddonMusic.png">ActivateWindow(MusicLibrary,Addons,return)</shortcut>
+                    <content>addon-audio</content>
+                </node>
+                <node label="32075">
+                    <content>musicsources</content>
+                    <content>upnp-music</content>
+                </node>
+            </node>
+            <node label="32017" condition="System.GetBool(pvrmanager.enabled)" version="13">
+                <content>pvr</content>
+                <node label="19023">
+                    <content>pvr-tv</content>
+                </node>
+                <node label="19024">
+                    <content>pvr-radio</content>
+                </node>
+            </node>
+            <node label="32017" condition="PVR.HasTVChannels">
+                <content>pvr</content>
+                <node label="19023">
+                    <content>pvr-tv</content>
+                </node>
+            </node>
+            <node label="32087" condition="PVR.HasRadioChannels">
+                <content>radio</content>
+                <node label="19024">
+                    <content>pvr-radio</content>
+                </node>
+            </node>
+            <node label="32020">
+                <content>picturesources</content>
+            </node>
+            <node label="32007">
+                <node label="32009">
+                    <shortcut label="10001" type="32021" icon="DefaultAddonProgram.png">ActivateWindow(Programs,Addons,return)</shortcut>
+                    <shortcut label="20244" type="32021" icon="DefaultAddonProgram.png" condition="System.Platform.Android">ActivateWindow(Programs,androidapp://sources/apps,return)</shortcut>
+                    <content>addon-program</content>
+                </node>
+                <node label="32010">
+                    <shortcut label="1037" type="32014" icon="DefaultAddonVideo.png">ActivateWindow(Videos,Addons,return)</shortcut>
+                    
+                    <content>addon-video</content>
+                </node>
+                <node label="32011">
+                    <shortcut label="1038" type="32019" icon="DefaultAddonMusic.png">ActivateWindow(MusicLibrary,Addons,return)</shortcut>
+                    <content>addon-audio</content>
+                </node>
+                <node label="32012">
+                    <shortcut label="1039" type="32020" icon="DefaultAddonPicture.png">ActivateWindow(Pictures,Addons,return)</shortcut>
+                    <content>addon-image</content>
+                </node>
+                
+            </node>
+            <node label="32006">
+                <content>favourite</content>
+            </node>
+            <node label="10004">
+                <content>settings</content>
+            </node>
+            
+        </node>
+        
+    </groupings>
+
+    <widget-groupings>
+        <shortcut condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))" label="Widget Multilinea" icon="Palantir/icons/menu.png" widget="PersonalWidgetList">PersonalWidgetList</shortcut>
+        <node label="Widget pantalla completa (Spotlight)" icon="Palantir/icons/Palantirw.png" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+              <shortcut label="Palantir Random" type="video" icon="Palantir/OSD/randomoff.png" widget="PalantirSpotlight" widgetName="SpotLight Palantir Random" widgetType="videos" widgetTarget="video">$VAR[p3PathRandom]</shortcut>
+                <node label="Sección de Peliculas" icon="special://skin/media/Palantir/iconsmenu/peliculas.png" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">               
+                    <shortcut label="$VAR[p3NamePeliculasNovedades]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PalantirSpotlight" widgetName="$VAR[p3NamePeliculasNovedades,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathPeliculasNovedades]</shortcut>
+                    <shortcut label="$VAR[p3NamePeliculasUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PalantirSpotlight" widgetName="$VAR[p3NamePeliculasUltimasAnadidas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathPeliculasUltimasAnadidas]</shortcut>  
+                    <shortcut label="$VAR[p3NamePeliculasRecomendadas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PalantirSpotlight" widgetName="$VAR[p3NamePeliculasRecomendadas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathPeliculasRecomendadas]</shortcut>  
+                    <shortcut label="$VAR[p3NamePeliculasNoFinalizadas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PalantirSpotlight" widgetName="$VAR[p3NamePeliculasNoFinalizadas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathPeliculasNoFinalizadas]</shortcut>  
+                </node>
+                <node label="Sección de Series" icon="Palantir/iconsmenu/series.png" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameSeriesNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSeriesNuevas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSeriesNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSeriesUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSeriesUltimasActualizadas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSeriesUltimasActualizadas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSeriesRecomendadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSeriesRecomendadas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSeriesRecomendadas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSeriesSeguimiento]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSeriesSeguimiento,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSeriesSeguimiento]</shortcut>  
+                </node>
+                <node label="Sección Telenovelas" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                        <shortcut label="$VAR[p3NameTelenovelasNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameTelenovelasNuevas,SpotLight ,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathTelenovelasNuevas]</shortcut>  
+                        <shortcut label="$VAR[p3NameTelenovelasUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameTelenovelasUltimasActualizadas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathTelenovelasUltimasActualizadas]</shortcut>  
+                </node>
+                <node label="Sección Dibujos" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameDibujosNovedades]" type="video" icon="Palantir/iconsmenu/dibujos.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameDibujosNovedades,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathDibujosNovedades]</shortcut>  
+                    <shortcut label="$VAR[p3NameDibujosUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/dibujos.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameDibujosUltimasAnadidas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathDibujosUltimasAnadidas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieDibujosNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSerieDibujosNuevas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieDibujosNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieDibujosUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSerieDibujosUltimasActualizadas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieDibujosUltimasActualizadas]</shortcut>  
+                 </node>
+                <node label="Sección Anime" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameAnimeNovedades]" type="video" icon="Palantir/iconsmenu/anime.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameAnimeNovedades,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathAnimeNovedades]</shortcut>  
+                    <shortcut label="$VAR[p3NameAnimeUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/anime.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameAnimeUltimasAnadidas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathAnimeUltimasAnadidas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieAnimeNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSerieAnimeNuevas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieAnimeNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameAnimeUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameAnimeUltimasActualizadas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathAnimeUltimasActualizadas]</shortcut>  
+                </node>
+                <node label="Sección Música" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameMusicaNovedades]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameMusicaNovedades,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathMusicaNovedades]</shortcut>  
+                    <shortcut label="$VAR[p3NameMusicaUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameMusicaUltimasAnadidas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathMusicaUltimasAnadidas]</shortcut>  
+                  </node>
+                <node label="Sección Documentales" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameDocumentalesNovedades]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameDocumentalesNovedades,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathDocumentalesNovedades]</shortcut>  
+                    <shortcut label="$VAR[p3NameDocumentalesUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameDocumentalesUltimasAnadidas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathDocumentalesUltimasAnadidas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieDocumentalNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSerieDocumentalNuevas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieDocumentalNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieDocumentalUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PalantirSpotlight" widgetName="$VAR[p3NameSerieDocumentalUltimasActualizadas,Spotlight ]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieDocumentalUltimasActualizadas]</shortcut>  
+                </node>
+            </node>
+        <node label="Widgets básicos de Kodi" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+            <shortcut label="10134" icon="Palantir/iconsmenu/favourites.png" widget="favorites">favorites</shortcut>
+            <shortcut label="19020" icon="Palantir/iconsmenu/livetv.png" widget="livetv">livetv</shortcut>
+            <shortcut label="20343" icon="Palantir/iconsmenu/tv.png" widget="tvshows">tvshows</shortcut>
+            <shortcut label="24001" icon="Palantir/iconsmenu/addons.png" widget="addons">addons</shortcut>
+            <shortcut label="427" icon="Palantir/iconsmenu/disc.png" widget="disc" condition="System.HasMediaDVD">disc</shortcut>
+            <shortcut label="342" icon="Palantir/iconsmenu/movies.png" widget="movies">movies</shortcut>
+            <shortcut label="2" icon="Palantir/iconsmenu/music.png" widget="music">music</shortcut>
+            <shortcut label="20389" icon="Palantir/iconsmenu/musicvideos.png" widget="musicvideos">musicvideos</shortcut>
+            <shortcut label="19021" icon="Palantir/iconsmenu/radio.png" widget="radio">radio</shortcut>
+            <shortcut label="15016" icon="Palantir/iconsmenu/games.png" widget="games" condition="System.GetBool(gamesgeneral.enable)">games</shortcut>
+            <shortcut label="1" icon="Palantir/iconsmenu/pictures.png" widget="pictures">pictures</shortcut>
+            <shortcut label="3" icon="Palantir/iconsmenu/videos.png" widget="video">video</shortcut>
+            <shortcut label="8" icon="Palantir/iconsmenu/weather.png" widget="weather">weather</shortcut>
+        </node>
+        <!-- <node label="33001" condition="!String.IsEmpty(Window(home).Property(WidgetVisibility))">
+            <shortcut label="33002" icon="icons/PersonalList.png" widget="PersonalWidgetList">PersonalWidgetList</shortcut>
+            <shortcut label="33003" icon="icons/PersonalPanel.png" widget="PersonalWidgetPanel">PersonalWidgetPanel</shortcut>
+        </node> -->
+            <node label="Widgets de Palantir (Multi)" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                <node label="Sección de Películas" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NamePeliculasNovedades]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PersonalWidgetList " widgetName="$VAR[p3NamePeliculasNovedades]" widgetType="videos" widgetTarget="video">$VAR[p3PathPeliculasNovedades]</shortcut>
+                    <shortcut label="$VAR[p3NamePeliculasUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PersonalWidgetList " widgetName="$VAR[p3NamePeliculasUltimasAnadidas]" widgetType="videos" widgetTarget="video">$VAR[p3PathPeliculasUltimasAnadidas]</shortcut>  
+                    <shortcut label="$VAR[p3NamePeliculasRecomendadas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PersonalWidgetList " widgetName="$VAR[p3NamePeliculasRecomendadas]" widgetType="videos" widgetTarget="video">$VAR[p3PathPeliculasRecomendadas]</shortcut>  
+                    <shortcut label="$VAR[p3NamePeliculasNoFinalizadas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PersonalWidgetList " widgetName="$VAR[p3NamePeliculasNoFinalizadas]" widgetType="videos" widgetTarget="video">$VAR[p3PathPeliculasNoFinalizadas]</shortcut>  
+                </node>
+                <node label="Sección de Series" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">             
+                    <shortcut label="$VAR[p3NameSeriesNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameSeriesNuevas]" widgetType="videos" widgetTarget="video">$VAR[p3PathSeriesNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSeriesUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameSeriesUltimasActualizadas]" widgetType="videos" widgetTarget="video">$VAR[p3PathSeriesUltimasActualizadas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSeriesRecomendadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameSeriesRecomendadas]" widgetType="videos" widgetTarget="video">$VAR[p3PathSeriesRecomendadas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSeriesSeguimiento]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameSeriesSeguimiento]" widgetType="videos" widgetTarget="video">$VAR[p3PathSeriesSeguimiento]</shortcut>  
+                </node>
+                <node label="Sección de Telenovelas" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameTelenovelasNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameTelenovelasNuevas,Multiwidget  ]" widgetType="videos" widgetTarget="video">$VAR[p3PathTelenovelasNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameTelenovelasUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList " widgetName="$VAR[p3NameTelenovelasUltimasActualizadas]" widgetType="videos" widgetTarget="video">$VAR[p3PathTelenovelasUltimasActualizadas]</shortcut>  
+                </node>
+                <node label="Sección de Dibujos" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameDibujosNovedades]" type="video" icon="Palantir/iconsmenu/dibujos.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameDibujosNovedades]" widgetType="videos" widgetTarget="video">$VAR[p3PathDibujosNovedades]</shortcut>  
+                    <shortcut label="$VAR[p3NameDibujosUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/dibujos.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameDibujosUltimasAnadidas]" widgetType="videos" widgetTarget="video">$VAR[p3PathDibujosUltimasAnadidas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieDibujosNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameSerieDibujosNuevas]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieDibujosNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieDibujosUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameSerieDibujosUltimasActualizadas]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieDibujosUltimasActualizadas]</shortcut>  
+                </node>
+                <node label="Sección de Anime" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameAnimeNovedades]" type="video" icon="Palantir/iconsmenu/anime.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameAnimeNovedades]" widgetType="videos" widgetTarget="video">$VAR[p3PathAnimeNovedades]</shortcut>  
+                    <shortcut label="$VAR[p3NameAnimeUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/anime.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameAnimeUltimasAnadidas]" widgetType="videos" widgetTarget="video">$VAR[p3PathAnimeUltimasAnadidas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieAnimeNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameSerieAnimeNuevas]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieAnimeNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameAnimeUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameAnimeUltimasActualizadas]" widgetType="videos" widgetTarget="video">$VAR[p3PathAnimeUltimasActualizadas]</shortcut>  
+                </node>
+                <node label="Sección de Música" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameMusicaNovedades]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameMusicaNovedades]" widgetType="videos" widgetTarget="video">$VAR[p3PathMusicaNovedades]</shortcut>  
+                    <shortcut label="$VAR[p3NameMusicaUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameMusicaUltimasAnadidas]" widgetType="videos" widgetTarget="video">$VAR[p3PathMusicaUltimasAnadidas]</shortcut>  
+                </node>
+                <node label="Sección de Documentales" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <shortcut label="$VAR[p3NameDocumentalesNovedades]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PersonalWidgetList" widgetName="$VAR[p3NameDocumentalesNovedades]" widgetType="videos" widgetTarget="video">$VAR[p3PathDocumentalesNovedades]</shortcut>  
+                    <shortcut label="$VAR[p3NameDocumentalesUltimasAnadidas]" type="video" icon="Palantir/iconsmenu/peliculas.png" widget="PersonalWidgetList " widgetName="$VAR[p3NameDocumentalesUltimasAnadidas]" widgetType="videos" widgetTarget="video">$VAR[p3PathDocumentalesUltimasAnadidas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieDocumentalNuevas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList " widgetName="$VAR[p3NameSerieDocumentalNuevas]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieDocumentalNuevas]</shortcut>  
+                    <shortcut label="$VAR[p3NameSerieDocumentalUltimasActualizadas]" type="video" icon="Palantir/iconsmenu/series.png" widget="PersonalWidgetList " widgetName="$VAR[p3NameSerieDocumentalUltimasActualizadas]" widgetType="videos" widgetTarget="video">$VAR[p3PathSerieDocumentalUltimasActualizadas]</shortcut>  
+                </node>
+            </node>
+
+
+            <node label="Widgets de Kodi (Multi)" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                <node label="32030" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <content>video</content>
+                    <node label="32040">
+                        <content>playlist-video</content>
+                    </node>
+                    <node label="32010">
+                        <content>addon-video</content>
+                    </node>
+                    <node label="32075">
+                        <content>videosources</content>
+                    </node>
+                </node>
+                <node label="32031" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <content>music</content>
+                    <node label="32040">
+                        <content>playlist-audio</content>
+                    </node>
+                    <node label="32011">
+                        <content>addon-audio</content>
+                    </node>
+                    <node label="32075">
+                        <content>musicsources</content>
+                    </node>
+                </node>
+                <node label="32020" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <content>picturesources</content>
+                </node>
+                <node label="32007" condition="String.IsEmpty(Window(home).Property(WidgetVisibility))">
+                    <node label="32009">
+                        <content>addon-program-plugin</content>
+                    </node>
+                    <node label="32010">
+                        <content>addon-video</content>
+                    </node>
+                    <node label="32011">
+                        <content>addon-audio</content>
+                    </node>
+                    <node label="32012">
+                        <content>addon-image</content>
+                    </node>
+                    <shortcut label="10001" type="32021" icon="DefaultAddonProgram.png" widget="addon" widgetType="program" widgetTarget="programs">addons://sources/executable</shortcut>
+                    <shortcut label="20244" type="32021" icon="DefaultAddonProgram.png" widget="addon" widgetType="program" widgetTarget="programs" condition="System.Platform.Android">androidapp://sources/apps</shortcut>
+                    <shortcut label="1037" type="32014" icon="DefaultAddonVideo.png" widget="addon" widgetType="video" widgetTarget="video">addons://sources/video</shortcut>
+                    <shortcut label="1038" type="32019" icon="DefaultAddonMusic.png" widget="addon" widgetType="music" widgetTarget="music">addons://sources/audio</shortcut>
+                    <shortcut label="1039" type="32020" icon="DefaultAddonPicture.png" widget="addon" widgetType="picture" widgetTarget="pictures">addons://sources/image</shortcut>
+                </node>
+            </node>
+       
+    </widget-groupings>
+
+    
+        
+
+</overrides>

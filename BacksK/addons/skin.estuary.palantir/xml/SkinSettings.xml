@@ -1,0 +1,1275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;group=mainmenu)</onunload>
+	
+	<defaultcontrol>9000</defaultcontrol>
+	<backgroundcolor>background</backgroundcolor>
+	<onload condition="String.IsEmpty(Skin.String(background_overlay))">Skin.SetString(background_overlay,1)</onload>
+	<controls>
+		<include>DefaultBackground</include>
+		<control type="multiimage">
+			<depth>DepthBackground</depth>
+			<include>FullScreenDimensions</include>
+			<aspectratio>scale</aspectratio>
+			<fadetime>600</fadetime>
+			<animation effect="zoom" center="auto" end="102,102" time="0" condition="Integer.IsGreater(System.StereoscopicMode,0)">conditional</animation>
+			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+			<animation effect="fade" time="400">VisibleChange</animation>
+			<imagepath background="true" colordiffuse="bg_overlay">$INFO[Skin.String(HomeFanart.path)]settings$INFO[Skin.String(HomeFanart.ext)]</imagepath>
+			<visible>!Player.HasMedia + !String.IsEmpty(Skin.String(HomeFanart.path))</visible>
+		</control>
+		<control type="group" id="10000">
+			<left>470</left>
+			<include>OpenClose_Right</include>
+
+
+			<!-- opciones menu general -->
+			<control type="grouplist" id="610">
+				<top>143</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>600</onup>
+				<ondown>600</ondown>
+				<pagecontrol>60</pagecontrol>
+				<visible>Container(9000).HasFocus(1)</visible>
+				<control type="label" id="601" description="General">
+					<label>General</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>encabezadosSettings</textcolor>			
+				</control>
+				<control type="button" id="6010"><!--PALANTIR: tiempo Trailer -->
+					<label>	Activar/temporizar el autotrailer</label>
+					<label2>$VAR[VARTimerAutoTrailer]</label2>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<!--onclick condition="String.IsEmpty(Skin.String(TimerAutoTrailer))">Skin.SetBool(NotPlayTrailers,false)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(TimerAutoTrailer),30)">Skin.SetBool(NotPlayTrailers,true)</onclick-->
+					<onclick condition="String.IsEmpty(Skin.String(TimerAutoTrailer))">Skin.SetString(TimerAutoTrailer,7)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(TimerAutoTrailer),7)">Skin.SetString(TimerAutoTrailer,10)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(TimerAutoTrailer),10)">Skin.SetString(TimerAutoTrailer,15)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(TimerAutoTrailer),15)">Skin.SetString(TimerAutoTrailer,20)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(TimerAutoTrailer),20)">Skin.SetString(TimerAutoTrailer,30)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(TimerAutoTrailer),30)">Skin.SetString(TimerAutoTrailer,)</onclick>
+				</control>
+				<control type="radiobutton" id="6011">
+					<label>	Oscurecer info con Trailer</label>
+					<focusedcolor>button_focus</focusedcolor>
+						<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(oscurecercontrailer)</onclick>
+					<selected>!Skin.HasSetting(oscurecercontrailer)</selected>
+				</control>
+				<control type="button" id="6012">
+					<label>	Tamaño Clearlogo</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick condition="String.IsEmpty(Skin.String(clearlogo.tamano))  | String.IsEqual(Skin.String(clearlogo.tamano),pequeno)">Skin.SetString(clearlogo.tamano,mediano)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(clearlogo.tamano),mediano)">Skin.SetString(clearlogo.tamano,grande)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(clearlogo.tamano),grande)">Skin.SetString(clearlogo.tamano,pequeno)</onclick>
+					<label2>$VAR[ClearlogoTamano]</label2>
+				</control>
+				<control type="radiobutton" id="6013">
+					<label>	$LOCALIZE[31002]</label>
+					<focusedcolor>button_focus</focusedcolor>
+						<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(no_fanart)</onclick>
+					<selected>Skin.HasSetting(no_fanart)</selected>
+				</control>
+				<control type="button" id="6014">
+					<label>	Luminosidad del Fanart</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick condition="String.IsEmpty(Skin.String(claridad_art)) | String.IsEqual(Skin.String(claridad_art),50)">Skin.SetString(claridad_art,75)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(claridad_art),75)">Skin.SetString(claridad_art,100)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(claridad_art),100)">Skin.SetString(claridad_art,50)</onclick>
+					<label2>$VAR[VARLuminosidadFanart] %</label2>
+				</control>
+				<control type="radiobutton" id="6015">
+					<label>	Foco en Caratula estilo Palantir</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(focusEstiloPalantir)</onclick>
+					<selected>!Skin.HasSetting(focusEstiloPalantir)</selected>
+				</control>
+				<control type="radiobutton" id="6016">
+					<label>	Menu Contextual Palantir</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(contextEstiloPalantir)</onclick>
+					<selected>!Skin.HasSetting(contextEstiloPalantir)</selected>
+				</control>
+
+				<control type="radiobutton" id="7011">
+					<label>	$LOCALIZE[31095]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<selected>!Skin.HasSetting(no_slide_animations)</selected>
+					<onclick>Skin.ToggleSetting(no_slide_animations)</onclick>
+				</control>
+				<control type="radiobutton" id="7012">
+					<label>	$LOCALIZE[20189]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(autoscroll)</onclick>
+					<selected>Skin.HasSetting(autoscroll)</selected>
+				</control>
+				<control type="radiobutton" id="7013">
+					<label>	$LOCALIZE[31158]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(touchmode)</onclick>
+					<selected>Skin.HasSetting(touchmode)</selected>
+					<enable>false</enable>
+				</control>
+				<!-- desactivado selector select dialog palantir/normal -->
+				<!-- <control type="radiobutton" id="7014">
+					<label>	Estetica de Dialogo de Selección tipo Palantir</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(dialogselecpalantir)</onclick>
+					<selected>!Skin.HasSetting(dialogselecpalantir)</selected>
+				</control> -->
+
+				<control type="radiobutton" id="702">
+					<label>Mostrar Elementos Barra Superior</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(MostrarBarraSuperior)</onclick>
+					<onclick condition="Skin.HasSetting(MostrarBarraSuperior) + Skin.HasSetting(MostrarPathTopBar) ">Skin.SetBool(MostrarPathTopBar,false)</onclick>
+					<onclick condition="Skin.HasSetting(MostrarBarraSuperior) + Skin.HasSetting(MostrarSublabelTopBar) ">Skin.SetBool(MostrarSublabelTopBar,false)</onclick>
+					<onclick condition="Skin.HasSetting(MostrarBarraSuperior) + Skin.HasSetting(MostrarReloj) ">Skin.SetBool(MostrarReloj,false)</onclick>
+					<selected>Skin.HasSetting(MostrarBarraSuperior)</selected>
+					<textcolor>encabezadosSettings</textcolor>
+				</control>
+				<control type="radiobutton" id="7021">
+					<label>	 Mostrar Rutas</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(MostrarPathTopBar)</onclick>
+					<selected>Skin.HasSetting(MostrarPathTopBar)</selected>
+					<visible>Skin.HasSetting(MostrarBarraSuperior)</visible>
+				</control>
+				<control type="radiobutton" id="7022">
+					<label>	 Mostrar SubInfo</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(MostrarSublabelTopBar)</onclick>
+					<selected>Skin.HasSetting(MostrarSublabelTopBar)</selected>
+					<visible>Skin.HasSetting(MostrarBarraSuperior)</visible>
+				</control>
+				<control type="radiobutton" id="7023">
+					<label>	 Mostrar Reloj</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(MostrarReloj)</onclick>
+					<selected>Skin.HasSetting(MostrarReloj)</selected>
+					<visible>Skin.HasSetting(MostrarBarraSuperior)</visible>
+				</control>
+				<control type="radiobutton" id="703"> 
+					<label>Mostrar Elementos Barra Inferior</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(MostrarBarraInferior)</onclick>
+					<selected>Skin.HasSetting(MostrarBarraInferior)</selected>
+					<textcolor>encabezadosSettings</textcolor>
+				</control>
+			</control>
+
+			<!-- opciones 2 -->
+			<control type="grouplist" id="650">
+				<top>143</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>650</onup>
+				<ondown>650</ondown>
+				<pagecontrol>60</pagecontrol>
+				<visible>Container(9000).HasFocus(2)</visible>
+				<control type="label" id="651" description="Menu principal">
+					<label>Menu principal</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>encabezadosSettings</textcolor>			
+				</control>
+							<control type="button" id="6511"> <!--menu ssc-->
+								<label>	Configurar Elementos del menú principal de home</label>
+								<focusedcolor>button_focus</focusedcolor>
+								<include content="DefaultSettingButton">
+									<param name="texture" value="noop"/>
+									<param name="colordiffuse" value="noop" />
+									<param name="height" value="50" />
+								</include>
+								<onclick condition="!System.HasAddon(script.skinshortcuts)">InstallAddon(script.skinshortcuts)</onclick>
+								<onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+							</control>
+							<control type="button" id="6512">
+								<label>	Valores por defecto del menú principal de home</label><!--$LOCALIZE[31206]</label>-->
+								<textcolor>warnSettings</textcolor>
+								<focusedcolor>button_focus</focusedcolor>
+								<include content="DefaultSettingButton">
+									<param name="texture" value="noop"/>
+									<param name="colordiffuse" value="noop" />
+									<param name="height" value="50" />
+								</include>
+								<onclick condition="!System.HasAddon(script.skinshortcuts)">InstallAddon(script.skinshortcuts)</onclick>
+								<onclick>Skin.Reset(widgetAnimation1)</onclick>
+								<onclick>Skin.Reset(widgetAnimation2)</onclick>
+								<onclick>Skin.Reset(widgetAnimation3)</onclick>
+								<onclick>Skin.Reset(widgetAnimation4)</onclick>
+								<onclick>Skin.Reset(widgetAnimation5)</onclick>
+								<onclick>Skin.Reset(widgetAnimation6)</onclick>
+								<onclick>Skin.Reset(widgetAnimation7)</onclick>
+								<onclick>Skin.Reset(widgetAnimation8)</onclick>
+								<onclick>Skin.Reset(widgetAnimation9)</onclick>
+								<onclick>Skin.Reset(HomeBanner)</onclick>
+								<onclick>RunScript(script.skinshortcuts,type=resetall)</onclick>
+							</control>
+							<control type="radiobutton" id="6513">
+								<label>	Mostrar ClearLogo en Home</label>
+								<focusedcolor>button_focus</focusedcolor>
+								<include content="DefaultSettingButton">
+									<param name="texture" value="noop"/>
+									<param name="colordiffuse" value="noop" />
+									<param name="height" value="50" />
+								</include>
+								<onclick>Skin.ToggleSetting(OcultarClearLogo.10000)</onclick>
+								<!--<onclick>Skin.setBool(MostrarInfoAudioVideo.10000,false)</onclick>-->
+								<selected>!Skin.HasSetting(OcultarClearLogo.10000)</selected>
+							</control>
+							<control type="radiobutton" id="6514">
+								<label>	Mostrar Titulo con Clearlogo en Home</label>
+								<focusedcolor>button_focus</focusedcolor>
+								<include content="DefaultSettingButton">
+									<param name="texture" value="noop"/>
+									<param name="colordiffuse" value="noop" />
+									<param name="height" value="50" />
+								</include>
+								<onclick>Skin.ToggleSetting(OcultarTituloInfoAudioVideo.10000)</onclick>
+								<!--<onclick>Skin.setBool(MostrarClearLogo.10000,false)</onclick>-->
+								<selected>!Skin.HasSetting(OcultarTituloInfoAudioVideo.10000)</selected>
+								<visible>!Skin.HasSetting(OcultarClearLogo.10000)</visible>
+							</control>
+				<control type="label" id="652">
+					<label>Personalización de widgets Palantir</label>
+					<textcolor>encabezadosSettings</textcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<!-- <visible>Skin.HasSetting(skinshortcuts-widget-PalantirSpotlight)  + Skin.HasSetting(skinshortcuts-widget-WidgetRandom)</visible> -->
+				</control>
+					<control type="button" id="653000">
+						<label>	Numero de items en cada widget</label>
+						<focusedcolor>button_focus</focusedcolor>
+						<label2>$VAR[VARnumItemsWidgets]</label2>
+						<include content="DefaultSettingButton">
+							<param name="texture" value="noop"/>
+							<param name="colordiffuse" value="noop" />
+							<param name="height" value="50" />
+						</include>
+						<onclick>Skin.SetNumeric(NumWidgetsItems)</onclick>
+											<!-- <visible>Control.IsVisible(6520)</visible>				 -->
+						<!-- <visible>Skin.HasSetting(skinshortcuts-widget-PalantirSpotlight)  + Skin.HasSetting(skinshortcuts-widget-WidgetRandom) </visible> -->
+					</control>
+					<control type="radiobutton" id="653001">
+						<label>	Mostrar widget Especiales Palantir</label>
+						<focusedcolor>button_focus</focusedcolor>
+						<!-- <label2>$VAR[VARnumItemsWidgets]</label2> -->
+						<include content="DefaultSettingButton">
+							<param name="texture" value="noop"/>
+							<param name="colordiffuse" value="noop" />
+							<param name="height" value="50" />
+						</include>
+						<selected>!Skin.HasSetting(OcultarWidgetEspeciales)</selected>
+						<onclick>Skin.ToggleSetting(OcultarWidgetEspeciales)</onclick>
+					</control>
+					<control type="radiobutton" id="653002">
+						<label>	Mostrar widget Top10 Palantir</label>
+						<focusedcolor>button_focus</focusedcolor>
+						<!-- <label2>$VAR[VARnumItemsWidgets]</label2> -->
+						<include content="DefaultSettingButton">
+							<param name="texture" value="noop"/>
+							<param name="colordiffuse" value="noop" />
+							<param name="height" value="50" />
+						</include>
+						<selected>!Skin.HasSetting(OcultarWidgetTop10)</selected>
+						<onclick>Skin.ToggleSetting(OcultarWidgetTop10)</onclick>
+					</control>
+					<control type="radiobutton" id="653003">
+						<label>	Mostrar widget Favoritos Palantir</label>
+						<focusedcolor>button_focus</focusedcolor>
+						<!-- <label2>$VAR[VARnumItemsWidgets]</label2> -->
+						<include content="DefaultSettingButton">
+							<param name="texture" value="noop"/>
+							<param name="colordiffuse" value="noop" />
+							<param name="height" value="50" />
+						</include>
+						<selected>!Skin.HasSetting(OcultarWidgetFavoritosPalantir)</selected>
+						<onclick>Skin.ToggleSetting(OcultarWidgetFavoritosPalantir)</onclick>
+					</control>
+				<control type="label" id="6520">
+					<label>	Spotlight Palantir</label>
+					<textcolor>subencabezadosSettings</textcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<!-- <visible>String.IsEqual(Window(10000).Property(WidgetRandom),$VAR[p3PathRandom])</visible> -->
+				</control>
+									<control type="radiobutton" id="6521">
+											<label>		Incluir Peliculas</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightPelis_Pelicula)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightPelis_Pelicula)</onclick>
+											<visible>Control.IsVisible(6520)</visible>						
+									</control>
+									<control type="radiobutton" id="6522">
+											<label>		Incluir Peliculas Dibujos</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightPelis_Dibujo)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightPelis_Dibujo)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+									<control type="radiobutton" id="6523">
+											<label>		Incluir Peliculas Documental</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightPelis_Documental)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightPelis_Documental)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+									<control type="radiobutton" id="6524">
+											<label>		Incluir Peliculas Anime</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightPelis_Anime)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightPelis_Anime)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+									<control type="radiobutton" id="6525">
+											<label>		Incluir Series</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightSeries_General)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightSeries_General)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+									<control type="radiobutton" id="6526">
+											<label>		Incluir Series Dibujos</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightSeries_Dibujo)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightSeries_Dibujo)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+									<control type="radiobutton" id="6527">
+											<label>		Incluir Series Documental</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightSeries_Documental)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightSeries_Documental)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+									<control type="radiobutton" id="6528">
+											<label>		Incluir Series Anime</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightSeries_Anime)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightSeries_Anime)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+									<control type="radiobutton" id="6531">
+											<label>		Incluir Series Clasicas</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightSeries_Retro)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightSeries_Retro)</onclick>
+											<visible>Control.IsVisible(6520)</visible>	
+									</control>
+									<control type="radiobutton" id="6529">
+											<label>		Incluir Musica</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightPelis_Musica)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightPelis_Musica)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+									<control type="radiobutton" id="6530">
+											<label>		Incluir Telenovelas</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<selected>!Skin.HasSetting(HideSpotLightSeries_Novela)</selected>
+											<onclick>Skin.ToggleSetting(HideSpotLightSeries_Novela)</onclick>
+											<visible>Control.IsVisible(6520)</visible>							
+									</control>
+
+				<control type="label" id="654">
+					<label>Personalización de widgets videoteca</label>
+					<textcolor>encabezadosSettings</textcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<visible>Skin.HasSetting(skinshortcuts-widget-movies) | Skin.HasSetting(skinshortcuts-widget-tvshows) |  Skin.HasSetting(skinshortcuts-widget-addons) | Skin.HasSetting(skinshortcuts-widget-music)</visible>
+				</control>
+						<control type="radiobutton" id="6541">
+							<label>	$LOCALIZE[31008] Videoteca</label>
+							<focusedcolor>button_focus</focusedcolor>
+							<include content="DefaultSettingButton">
+								<param name="texture" value="noop"/>
+								<param name="colordiffuse" value="noop" />
+								<param name="height" value="50" />
+							</include>
+							<selected>!Skin.HasSetting(home_no_categories_widget)</selected>
+							<onclick>Skin.ToggleSetting(home_no_categories_widget)</onclick>
+							<visible>Skin.HasSetting(skinshortcuts-widget-movies) | Skin.HasSetting(skinshortcuts-widget-tvshows) |  Skin.HasSetting(skinshortcuts-widget-addons) | Skin.HasSetting(skinshortcuts-widget-music)</visible>
+						</control>
+						<control type="label" id="6542">
+							<label>	Widget $LOCALIZE[342] Videoteca</label>
+							<focusedcolor>button_focus</focusedcolor>
+							<include content="DefaultSettingButton">
+								<param name="texture" value="noop"/>
+								<param name="colordiffuse" value="noop" />
+								<param name="height" value="50" />
+							</include>
+							<visible>Skin.HasSetting(skinshortcuts-widget-movies)</visible>
+							<!--<selected>!Skin.HasSetting(HomeMenuNoMovieButton)</selected>-->
+							<!--<onclick>Skin.ToggleSetting(HomeMenuNoMovieButton)</onclick>-->
+						</control>
+										<control type="button" id="65421">
+											<label>	 	$LOCALIZE[31157]</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<onclick condition="System.AddonIsEnabled(plugin.library.node.editor)">ActivateWindow(programs,plugin://plugin.library.node.editor/?ltype=video,return)</onclick>
+											<onclick condition="System.HasAddon(plugin.library.node.editor) + !System.AddonIsEnabled(plugin.library.node.editor)">EnableAddon(plugin.library.node.editor)</onclick>
+											<onclick condition="!System.HasAddon(plugin.library.node.editor)">InstallAddon(plugin.library.node.editor)</onclick>
+											<visible>Skin.HasSetting(skinshortcuts-widget-movies)</visible>
+										</control>
+										<control type="button" id="65422">
+											<label>	 	$LOCALIZE[31176]</label>
+											<focusedcolor>button_focus</focusedcolor>
+											<include content="DefaultSettingButton">
+												<param name="texture" value="noop"/>
+												<param name="colordiffuse" value="noop" />
+												<param name="height" value="50" />
+											</include>
+											<onclick>Skin.SelectBool(31176, 37015|movieset_onclick_browse, 13362|movieset_onclick_continuewatching, 12021|movieset_onclick_playfrombeginning, 10008|movieset_onclick_playnext, 13347|movieset_onclick_queue)</onclick>
+											<label2>$VAR[MovieSetOnClickActionLabel2Var]</label2>
+											<visible>Skin.HasSetting(skinshortcuts-widget-movies)</visible>
+										</control>
+				<control type="label" id="6543">
+					<label>	Widget $LOCALIZE[20343] Videoteca</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<visible>Skin.HasSetting(skinshortcuts-widget-tvshows)</visible>
+					<!--<selected>!Skin.HasSetting(HomeMenuNoTVShowButton)</selected>
+					<onclick>Skin.ToggleSetting(HomeMenuNoTVShowButton)</onclick>-->
+				</control>
+									<control type="button" id="65431">
+										<label>	 	$LOCALIZE[31157]</label>
+										<focusedcolor>button_focus</focusedcolor>
+										<include content="DefaultSettingButton">
+											<param name="texture" value="noop"/>
+											<param name="colordiffuse" value="noop" />
+											<param name="height" value="50" />
+										</include>
+										<onclick condition="System.AddonIsEnabled(plugin.library.node.editor)">ActivateWindow(programs,plugin://plugin.library.node.editor/?ltype=video,return)</onclick>
+										<onclick condition="System.HasAddon(plugin.library.node.editor) + !System.AddonIsEnabled(plugin.library.node.editor)">EnableAddon(plugin.library.node.editor)</onclick>
+										<onclick condition="!System.HasAddon(plugin.library.node.editor)">InstallAddon(plugin.library.node.editor)</onclick>
+										<visible>Skin.HasSetting(skinshortcuts-widget-tvshows)</visible>
+									</control>
+									<control type="button" id="65432">
+										<label>	 	$LOCALIZE[31175]</label>
+										<focusedcolor>button_focus</focusedcolor>
+										<include content="DefaultSettingButton">	
+											<param name="texture" value="noop"/>
+											<param name="colordiffuse" value="noop" />
+											<param name="height" value="50" />
+										</include>
+										<onclick>Skin.SelectBool(31175, 37015|tvshow_onclick_browse, 13362|tvshow_onclick_continuewatching, 12021|tvshow_onclick_playfrombeginning, 10008|tvshow_onclick_playnext, 13347|tvshow_onclick_queue)</onclick>
+										<label2>$VAR[TVShowOnClickActionLabel2Var]</label2>
+										<visible>Skin.HasSetting(skinshortcuts-widget-tvshows)</visible>
+									</control>
+				<control type="label" id="6544">
+					<label>	Widget $LOCALIZE[2] Videoteca</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<visible>Skin.HasSetting(skinshortcuts-widget-music)</visible>
+					<!--<selected>!Skin.HasSetting(HomeMenuNoMusicButton)</selected>
+					<onclick>Skin.ToggleSetting(HomeMenuNoMusicButton)</onclick>-->
+				</control>
+							<control type="button" id="65441">
+								<label>	 	$LOCALIZE[31157]</label>
+								<focusedcolor>button_focus</focusedcolor>
+								<include content="DefaultSettingButton">
+									<param name="texture" value="noop"/>
+									<param name="colordiffuse" value="noop" />
+									<param name="height" value="50" />
+								</include>
+								<onclick condition="System.AddonIsEnabled(plugin.library.node.editor)">ActivateWindow(programs,plugin://plugin.library.node.editor/?ltype=music,return)</onclick>
+								<onclick condition="System.HasAddon(plugin.library.node.editor) + !System.AddonIsEnabled(plugin.library.node.editor)">EnableAddon(plugin.library.node.editor)</onclick>
+								<onclick condition="!System.HasAddon(plugin.library.node.editor)">InstallAddon(plugin.library.node.editor)</onclick>
+								<visible>Skin.HasSetting(skinshortcuts-widget-music)</visible>
+							</control>
+							<control type="button" id="65442">
+								<label>	 	$LOCALIZE[31174]</label>
+								<focusedcolor>button_focus</focusedcolor>
+								<include content="DefaultSettingButton">
+									<param name="texture" value="noop"/>
+									<param name="colordiffuse" value="noop" />
+									<param name="height" value="50" />
+								</include>
+								<onclick>Skin.SelectBool(31174, 37015|album_onclick_browse, 208|album_onclick_play, 10008|album_onclick_playnext, 13347|album_onclick_queue)</onclick>
+								<label2>$VAR[AlbumOnClickActionLabel2Var]</label2>
+								<visible>Skin.HasSetting(skinshortcuts-widget-music)</visible>
+							</control>
+			</control>
+
+			<!-- opciones 3 -->
+			<control type="group" description="Cuadro General">
+			<visible>Container(9000).HasFocus(3)</visible>
+			<width>704</width>
+			<height>402</height>
+			<top>143</top>
+			<left>300</left>
+			<control type="image">                         
+					<width>700</width>
+					<height>400</height>
+					<aligny>center</aligny>
+					<align>center</align>
+					<aspectratio align="center" aligny="center">keep</aspectratio>
+					<colordiffuse></colordiffuse>
+					<texture diffuse="Palantir/masks/dialog-bg-squareish.png" background="true" fallback="Palantir/logo.png">special://skin/extras/views/$VAR[VarImagenVista].png</texture>
+					<visible>Container(9000).HasFocus(3)</visible>
+				</control>
+			<control type="image" description="Fondo cuadro -marco">
+				<left>0</left>
+				<top>0</top>
+				<right>0</right>
+				<bottom>0</bottom>
+				<texture colordiffuse="button_focus">Palantir/background/box.png</texture>
+				<visible>Control.HasFocus(756)|Control.HasFocus(752)|Control.HasFocus(753)|Control.HasFocus(754)|Control.HasFocus(755)</visible>
+			</control>
+			
+			</control>
+			
+			<control type="grouplist" id="750">
+				<top>580</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>750</onup>
+				<ondown>750</ondown>
+				<pagecontrol>60</pagecontrol>
+				<itemgap>5</itemgap>
+				<visible>Container(9000).HasFocus(3)</visible>
+				<control type="label" id="751">
+					<label>Vistas Palantir</label>
+					<textcolor>encabezadosSettings</textcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+				</control>
+				<control type="button" id="752">
+					<label>	Menús</label>
+					<label2>$VAR[VarVistaPalantir]</label2>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick condition="String.IsEmpty(Skin.String(VistaPalantir)) | String.IsEqual(Skin.String(VistaPalantir),Mayusc)">Skin.SetString(VistaPalantir,Lista)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPalantir),Lista)">Skin.SetString(VistaPalantir,Amplia)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPalantir),Amplia)">Skin.SetString(VistaPalantir,Muro)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPalantir),Muro)">Skin.SetString(VistaPalantir,Mayusc)</onclick>
+				</control>
+				
+				<control type="button" id="753">
+					<label>	Peliculas</label>
+					<label2>$VAR[VarVistaPelis]</label2>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick condition="String.IsEmpty(Skin.String(VistaPeliculas)) | String.IsEqual(Skin.String(VistaPeliculas),Flix)">Skin.SetString(VistaPeliculas,Mayusc)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPeliculas),Mayusc)">Skin.SetString(VistaPeliculas,Lista)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPeliculas),Lista)">Skin.SetString(VistaPeliculas,Poster)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPeliculas),Poster)">Skin.SetString(VistaPeliculas,InfoWall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPeliculas),InfoWall)">Skin.SetString(VistaPeliculas,IconWall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPeliculas),IconWall)">Skin.SetString(VistaPeliculas,Amplia)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPeliculas),Amplia)">Skin.SetString(VistaPeliculas,Muro)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPeliculas),Muro)">Skin.SetString(VistaPeliculas,FanArt)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaPeliculas),FanArt)">Skin.SetString(VistaPeliculas,Flix)</onclick>
+				</control>
+
+				<control type="button" id="754">
+					<label>	Series</label>
+					<label2>$VAR[VarVistaSeries]</label2>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick condition="String.IsEmpty(Skin.String(VistaSeries)) | String.IsEqual(Skin.String(VistaSeries),Flix)">Skin.SetString(VistaSeries,Mayusc)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaSeries),Mayusc)">Skin.SetString(VistaSeries,Lista)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaSeries),Lista)">Skin.SetString(VistaSeries,Poster)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaSeries),Poster)">Skin.SetString(VistaSeries,InfoWall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaSeries),InfoWall)">Skin.SetString(VistaSeries,IconWall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaSeries),IconWall)">Skin.SetString(VistaSeries,Amplia)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaSeries),Amplia)">Skin.SetString(VistaSeries,Muro)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaSeries),Muro)">Skin.SetString(VistaSeries,FanArt)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaSeries),FanArt)">Skin.SetString(VistaSeries,Flix)</onclick>
+				</control>
+
+				<control type="button" id="755">
+					<label>	Temporadas</label>
+					<label2>$VAR[VarVistaTemporadas]</label2>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick condition="String.IsEmpty(Skin.String(VistaTemporadas)) | String.IsEqual(Skin.String(VistaTemporadas),FlixSeasons) ">Skin.SetString(VistaTemporadas,FlixSeasons2)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),FlixSeasons2) ">Skin.SetString(VistaTemporadas,Flix)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),Flix)">Skin.SetString(VistaTemporadas,Mayusc)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),Mayusc)">Skin.SetString(VistaTemporadas,Lista)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),Lista)">Skin.SetString(VistaTemporadas,Poster)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),Poster)">Skin.SetString(VistaTemporadas,InfoWall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),InfoWall)">Skin.SetString(VistaTemporadas,IconWall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),IconWall)">Skin.SetString(VistaTemporadas,Amplia)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),Amplia)">Skin.SetString(VistaTemporadas,Muro)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),Muro)">Skin.SetString(VistaTemporadas,FanArt)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaTemporadas),FanArt)">Skin.SetString(VistaTemporadas,FlixSeasons)</onclick>
+				</control>
+
+				<control type="button" id="756">
+					<label>	Episodios</label>
+					<label2>$VAR[VarVistaEpisodios]</label2>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick condition="String.IsEmpty(Skin.String(VistaEpisodios)) | String.IsEqual(Skin.String(VistaEpisodios),FlixEpisodes)">Skin.SetString(VistaEpisodios,Flix)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),Flix)">Skin.SetString(VistaEpisodios,Mayusc)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),Mayusc)">Skin.SetString(VistaEpisodios,Lista)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),Lista)">Skin.SetString(VistaEpisodios,Poster)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),Poster)">Skin.SetString(VistaEpisodios,InfoWall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),InfoWall)">Skin.SetString(VistaEpisodios,IconWall)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),IconWall)">Skin.SetString(VistaEpisodios,Amplia)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),Amplia)">Skin.SetString(VistaEpisodios,Muro)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),Muro)">Skin.SetString(VistaEpisodios,FanArt)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(VistaEpisodios),FanArt)">Skin.SetString(VistaEpisodios,FlixEpisodes)</onclick>
+				</control>
+
+				<control type="button" id="758">
+					<label>Resetear Vistas</label>
+					<textcolor>warnSettings</textcolor>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<onclick>Skin.SetString(VistaEpisodios,)</onclick>
+					<onclick>Skin.SetString(VistaTemporadas,)</onclick>
+					<onclick>Skin.SetString(VistaSeries,)</onclick>
+					<onclick>Skin.SetString(VistaPeliculas,)</onclick>
+					<onclick>Skin.SetString(VistaPalantir,)</onclick>
+				</control>
+				<!-- <control type="label" id="759">
+					<label>Previsualizacion:</label>
+					<textcolor>encabezadosSettings</textcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+				</control> -->
+			</control>
+
+			<!-- opciones 4 -->
+			<control type="grouplist" id="600">
+				<top>143</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>600</onup>
+				<ondown>600</ondown>
+				<pagecontrol>60</pagecontrol>
+				<visible>Container(9000).HasFocus(4)</visible>
+				<control type="label" id="602" description="Flix">
+					<label>Vista Palantir Flix</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>encabezadosSettings</textcolor>			
+				</control>
+				<control type="radiobutton" id="6021">
+					<label>	Mostrar ClearLogo en Flix</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(OcultarClearLogo.504)</onclick>
+					<selected>!Skin.HasSetting(OcultarClearLogo.504)</selected>
+				</control>
+				<control type="radiobutton" id="6022">
+					<label>	Mostrar Titulo con Clearlogo en Flix</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(OcultarTituloInfoAudioVideo.504)</onclick>
+					<!--<onclick>Skin.setBool(MostrarClearLogo.10000,false)</onclick>-->
+					<selected>!Skin.HasSetting(OcultarTituloInfoAudioVideo.504)</selected>
+					<visible>!Skin.HasSetting(OcultarClearLogo.504)</visible>
+				</control>
+
+
+
+
+				<control type="label" id="603" description="Seasons">
+					<label>Vista Flix Seasons</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>encabezadosSettings</textcolor>			
+				</control>
+				<control type="radiobutton" id="6031">
+					<label>	Mostrar ClearLogo en Flix Seasons</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(OcultarClearLogo.505)</onclick>
+					<onclick>Skin.setBool(OcultarInfoAudioVideo.505,false)</onclick>
+					<selected>!Skin.HasSetting(OcultarClearLogo.505)</selected>
+				</control>
+				<control type="radiobutton" id="6032">
+					<label>	Mostrar Titulo con Clearlogo en Flix Seasons</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(OcultarTituloInfoAudioVideo.505)</onclick>
+					<selected>!Skin.HasSetting(OcultarTituloInfoAudioVideo.505)</selected>
+					<visible>!Skin.HasSetting(OcultarClearLogo.505)</visible>	
+				</control>
+
+				<control type="label" id="604" description="Seasons2">
+					<label>Vista Flix Seasons 2</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>encabezadosSettings</textcolor>			
+				</control>
+				<control type="radiobutton" id="6041">
+					<label>	Mostrar ClearLogo en Flix Seasons 2</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(OcultarClearLogo.507)</onclick>
+					<onclick>Skin.setBool(OcultarInfoAudioVideo.507,false)</onclick>
+					<selected>!Skin.HasSetting(OcultarClearLogo.507)</selected>
+				</control>
+				<control type="radiobutton" id="6042">
+					<label>	Mostrar Titulo con Clearlogo en Flix Seasons 2</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(OcultarTituloInfoAudioVideo.507)</onclick>
+					<selected>!Skin.HasSetting(OcultarTituloInfoAudioVideo.507)</selected>
+					<visible>!Skin.HasSetting(OcultarClearLogo.507)</visible>	
+				</control>
+
+
+				<control type="label" id="605" description="Otras">
+					<label>Otras Vistas</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>encabezadosSettings</textcolor>			
+				</control>
+				<control type="radiobutton" id="6051">
+					<label>	Mostrar ClearLogo en Vistas genéricas</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.ToggleSetting(MostrarClearlogoOtrasVistas)</onclick>
+					<selected>!Skin.HasSetting(MostrarClearlogoOtrasVistas)</selected>
+				</control>
+				<control type="button" id="6052">
+					<label>	Modo de mostrar la info en listas</label>
+					<label2>$VAR[InfoListado]</label2>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick condition="String.IsEqual(Skin.String(Infolistasgenericas),Estuary) | String.IsEmpty(Skin.String(Infolistasgenericas))">Skin.SetString(Infolistasgenericas,Alternativa)</onclick>
+					<onclick condition="String.IsEqual(Skin.String(Infolistasgenericas),Alternativa)">Skin.SetString(Infolistasgenericas,Estuary)</onclick>
+				</control>
+
+
+				<control type="label" id="606" description="Player">
+					<label>Reproductor</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="30" />
+					</include>
+					<textcolor>encabezadosSettings</textcolor>			
+				</control>
+				<control type="radiobutton" id="6061">
+					<label>	$LOCALIZE[31172]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<selected>Skin.HasSetting(OSDAutoClose)</selected>
+					<onclick>Skin.ToggleSetting(OSDAutoClose)</onclick>
+				</control>
+				<control type="button" id="60611">
+					<label>	 	$LOCALIZE[31173]</label>
+					<label2>$VAR[SkinSettingOSDAutoCloseTime]</label2>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<onclick>Skin.SetNumeric(OSDAutoCloseTime)</onclick>
+					<enable>Skin.HasSetting(OSDAutoClose)</enable>
+				</control>
+				<control type="radiobutton" id="6062">
+					<label>	Mostrar Info Extra OSD</label>
+					<visible>true</visible>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="50" />
+					</include>
+					<selected>!Skin.HasSetting(NoMostrarInfoExtraOSD)</selected>
+					<onclick>Skin.ToggleSetting(NoMostrarInfoExtraOSD)</onclick>
+				</control>
+			</control>
+
+			<!-- opciones 20 -->
+			<control type="grouplist" id="900">
+				<top>143</top>
+				<left>0</left>
+				<right>0</right>
+				<bottom>140</bottom>
+				<onleft>9000</onleft>
+				<onright>60</onright>
+				<onup>800</onup>
+				<ondown>700</ondown>
+				<visible>Container(9000).HasFocus(20)</visible>
+				<control type="button" id="901">
+					<label>Resetear ajustes del skin</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<textcolor>warnSettings</textcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="60" />
+					</include>
+					<onclick>notification(Estuary Palantir, Settings restablecidos)</onclick>
+					<onclick>Skin.ResetSettings</onclick>
+					<onclick>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;group=mainmenu)</onclick>
+				</control>
+				<control type="button" id="902">
+					<label>Resetear ajustes del skin y menu principal</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="60" />
+					</include>
+					<textcolor>warnSettings</textcolor>
+					<onclick>Skin.ResetSettings</onclick>
+					<onclick condition="!System.HasAddon(script.skinshortcuts)">InstallAddon(script.skinshortcuts)</onclick>
+					<onclick>Skin.Reset(widgetAnimation1)</onclick>
+					<onclick>Skin.Reset(widgetAnimation2)</onclick>
+					<onclick>Skin.Reset(widgetAnimation3)</onclick>
+					<onclick>Skin.Reset(widgetAnimation4)</onclick>
+					<onclick>Skin.Reset(widgetAnimation5)</onclick>
+					<onclick>Skin.Reset(widgetAnimation6)</onclick>
+					<onclick>Skin.Reset(widgetAnimation7)</onclick>
+					<onclick>Skin.Reset(widgetAnimation8)</onclick>
+					<onclick>Skin.Reset(widgetAnimation9)</onclick>
+					<onclick>Skin.Reset(HomeBanner)</onclick>
+					<onclick>RunScript(script.skinshortcuts,type=resetall)</onclick>
+					<onclick>notification(Estuary Palantir, Settings restablecidos)</onclick>
+				</control>
+				<!-- - botón Control Grid -->
+				<control type="radiobutton" id="903">
+					<label>$LOCALIZE[31177]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="60" />
+					</include>
+					<onclick>Skin.ToggleSetting(DebugGrid)</onclick>
+					<!-- <onclick>ActivateWindow(1194)</onclick> -->
+                    <selected>Skin.HasSetting(DebugGrid)</selected>
+					<visible>false</visible>
+				</control>
+				<!-- - botón Control Grid -->
+				<control type="radiobutton" id="904">
+					<label>$LOCALIZE[31178]</label>
+					<focusedcolor>button_focus</focusedcolor>
+					<include content="DefaultSettingButton">
+						<param name="texture" value="noop"/>
+						<param name="colordiffuse" value="noop" />
+						<param name="height" value="60" />
+					</include>
+					<onclick>Skin.ToggleSetting(DebugInfo)</onclick>
+                    <selected>Skin.HasSetting(DebugInfo)</selected>
+					<visible>false</visible>
+				</control>
+			</control>
+
+			
+			
+
+			<control type="image">
+				<description>Dialog Header image</description>
+				<left>0</left>
+				<top>130</top>
+				<right>0</right>
+				<height>3</height>
+				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+			<control type="image">
+				<description>Dialog Header image</description>
+				<left>0</left>
+				<bottom>134</bottom>
+				<right>0</right>
+				<height>3</height>
+				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+			</control>
+		</control>
+
+
+
+		<!-- lista principal -->
+		<control type="group">
+			<depth>DepthContentPanel</depth>
+			<left>0</left>
+			<include>OpenClose_Left</include>
+			<include>LogoSp</include>
+			<control type="list" id="9000">
+				<description>button area</description>
+				<left>3%</left>
+				<top>340</top>
+				<width>500</width>
+				<height>700</height>
+				<onleft>10000</onleft>
+				<onright>10000</onright>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+
+				<itemlayout height="60" width="500">
+					<control type="label">
+						<left>0</left>
+						<right>30</right>
+						<bottom>0</bottom>
+						<label>$INFO[Container(9000).ListItem.Label]</label>
+						<font>font25_title</font>
+						<aligny>center</aligny>
+					</control>
+                </itemlayout>
+	
+				<focusedlayout height="60" width="500">
+					<control type="button">
+						<focusedcolor>button_focus</focusedcolor>
+						<textcolor>button_focus</textcolor>
+						<label>$INFO[Container(9000).ListItem.Label]</label>
+						<include content="DefaultSettingButton">
+							<param name="texture" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffuse" value="button_focus_flix" />
+							<param name="height" value="60" />
+							<param name="textoffsetx" value="0" />
+							<param name="texturenofocus" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffusenofocus" value="button_focus_flix" />
+						</include>
+						<width max="420">auto</width>
+						<visible>Control.HasFocus(9000)</visible>
+					</control>
+
+					<control type="button">
+						<label>$INFO[Container(9000).ListItem.Label]</label>
+						<include content="DefaultSettingButton">
+							<param name="texture" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffuse" value="button_focus_flix" />
+							<param name="height" value="60" />
+							<param name="textoffsetx" value="0" />
+							<param name="texturenofocus" value="Palantir/lists/focus2.png"/>
+							<param name="colordiffusenofocus" value="button_focus_flix" />
+						</include>
+						<width max="420">auto</width>
+						<visible>!Control.HasFocus(9000)</visible>
+					</control>
+                </focusedlayout>
+
+				
+				<content>
+					<item id="1">
+						<label>Configuración General</label><!-- -$LOCALIZE[31159]</label>-->
+						<onclick>noop</onclick>
+					</item>
+					<item id="2">
+						<label>Menú Principal y Widgets</label> <!---$LOCALIZE[31061]</label>-->
+						<onclick>noop</onclick>
+					</item>
+					<item id="3">
+						<label>Asignación Vistas Palantir</label><!---$LOCALIZE[31170]</label>-->
+						<onclick>noop</onclick>
+					</item>					
+					<item id="4">
+						<label>Configuración de Vistas</label><!-- - $LOCALIZE[128]</label>-->
+						<onclick>noop</onclick>
+					</item>			
+					<item id="20">
+						<label>[COLOR warnSettings]RESETs[/COLOR]</label>
+						<onclick>noop</onclick>
+						
+					</item>
+				</content>
+			</control>
+		</control>
+		<control type="group">
+			<right>0</right>
+			<top>143</top>
+			<bottom>137</bottom>
+			<width>60</width>
+			<control type="scrollbar" id="60">
+				<right>0</right>
+				<top>0</top>
+				<bottom>0</bottom>
+				<width>12</width>
+				<orientation>vertical</orientation>
+				<texturesliderbackground />
+				<animation effect="slide" end="6,0" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(60)">conditional</animation>
+				<onleft condition="Control.IsVisible(600)">600</onleft>
+				<onleft condition="Control.IsVisible(650)">650</onleft>
+				<onleft condition="Control.IsVisible(750)">750</onleft>
+				<onleft condition="Control.IsVisible(610)">610</onleft>
+				<onright>9000</onright>
+				<animation effect="fade" start="0" end="100" time="200" delay="300">Visible</animation>
+				<animation effect="fade" start="100" end="0" time="200">Hidden</animation>
+				<animation effect="fade" start="0" end="100" delay="300" time="320">WindowOpen</animation>
+				<animation effect="fade" start="100" end="0" time="150">WindowClose</animation>
+				<hitrect x="0" y="0" w="60" h="100%" />
+				<visible>Control.IsVisible(650)</visible>
+			</control>
+		</control>
+		
+			<include content="TopBar2" condition="Skin.HasSetting(MostrarBarraSuperior)">
+				<param name="breadcrumbs_label" value="$LOCALIZE[5] / $LOCALIZE[20077]"  />
+			</include>
+		
+		<include>BottomBar</include>
+		<control type="textbox" id="6">
+			<include>OpenClose_Right</include>
+			<description>description area</description>
+			<left>510</left>
+			<bottom>27</bottom>
+			<width>1350</width>
+			<height>100</height>
+			<font>font12</font>
+			<align>justify</align>
+			<textcolor>button_focus</textcolor>
+			<label>$VAR[SkinSettingsHelpTextVar] [CR] [COLOR subencabezadosSettings]$VAR[SkinSettingsHelpTextVar2][/COLOR]</label>
+			<autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+		</control>
+	</controls>
+</window>

@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+	<include name="IncludeFlixSeasons">
+		<param name="focused" value="false"/>
+		<definition>
+			<control type="group">
+				<control type="image"> 
+					<left>30</left>
+					<top>0</top>
+					<width>50</width>
+					<height>50</height>
+					<texture colordiffuse="$VAR[ColorEtiquetaPoster]" background="true">Palantir/icons/back.png</texture>
+					<visible> String.IsEqual(ListItem.Label,..)</visible>
+				</control>
+
+				<control type="label">
+					<left>30</left>
+					<width>260</width>
+					<scroll>true</scroll>
+					<height>50</height>
+					<aligny>center</aligny>
+					<align>left</align>
+					<font>font20_title</font>
+					<label>$INFO[ListItem.Title]</label>
+					<visible>Container(505).Content(seasons)</visible>
+					<textcolor>titulosTemporadas</textcolor>
+				</control>
+				<control type="label">
+					<left>220</left>
+					<width>200</width>
+					<height>50</height>
+					<aligny>center</aligny>
+					<align>right</align>
+					<font>font20_title</font>
+					<label>$VAR[TemporadasFlixSeasons]</label>
+					<textcolor>grey</textcolor>
+					<visible>Container(505).Content(seasons)</visible>
+				</control>
+				<control type="textbox" id="1">
+					<right>0</right>
+					<width>250</width>
+					<height>50</height>
+					<visible>!String.IsEmpty(ListItem.Property(TotalEpisodes)) </visible>
+					<colordiffuse>FFFFFFFF</colordiffuse>
+					<font>font15_title</font>
+					<monofont>mono15</monofont>
+					<textcolor>FFFFFFFF</textcolor>
+					<pulseonselect></pulseonselect>
+					<scrolltime>200</scrolltime>
+					<aligny>center</aligny>
+					<autoscroll delay="2000" time="1000" repeat="10000">$PARAM[focused]</autoscroll>
+					<align>center</align>
+					<label>$VAR[episodios] en Palantir (Temporada:$INFO[ListItem.Property(TotalEpisodes)])</label>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+	<include name="FlixEpisodes">
+		<param name="focused" value="false" />
+		<definition>
+			<control type="image" description="seleccion">
+				<texture colordiffuse="button_focus">Palantir/masks/landscape.png</texture>
+				<height>260</height>
+				<width>410</width>
+				<aligny>center</aligny>
+				<top>-5</top>
+				<left>-5</left>
+				<visible>$PARAM[focused] + !String.IsEqual(ListItem.Label,..) + [Control.HasFocus(5025) | Control.HasFocus(506)]  </visible><!--+ String.IsEqual(system.CurrentControlId,5025) -->
+			</control>
+			<control type="image" description="seleccion2">
+				<texture colordiffuse="button_focus">Palantir/masks/landscape.png</texture>
+				<height>55</height>
+				<width>105</width>
+				<aligny>center</aligny>
+				<top>180</top>
+				<left>-5</left>
+				<visible>$PARAM[focused] + String.IsEqual(ListItem.Label,..) + [Control.HasFocus(5025) | Control.HasFocus(506)]  </visible><!--+ String.IsEqual(system.CurrentControlId,5025) -->
+			</control>
+			<control type="image" description="thumb">  
+				<texture diffuse="Palantir/masks/landscape.png">$INFO[ListItem.Thumb]</texture>
+				<height>250</height>
+				<width>400</width>
+				<aligny>center</aligny>
+				<top>0</top>
+				<left>0</left>
+				<visible>true</visible>
+			</control>
+			<control type="image"> 
+				<left>280</left>
+				<top>0</top>
+				<width>120</width>
+				<height>120</height>
+				<texture colordiffuse="$VAR[ColorEtiquetaPoster]" background="true">Palantir/overlays/overlaywatched.png</texture>
+				<visible>ListItem.IsResumable | Integer.IsGreater(ListItem.Playcount,0) | ListItem.Property(P3NewEpisodes)</visible>
+			</control>
+			<control type="label">
+				<left>273</left>
+				<top>12</top>
+				<align>center</align>
+				<label>$VAR[EtiquetaPoster]</label>
+				<width>120</width>
+				<height>120</height>
+				<font>font25_title</font>
+				<textcolor>black</textcolor>
+				<shadowcolor>sombra_texto</shadowcolor>
+				<animation effect="rotate" center="auto" time="0" end="-45" condition="true" loop="false">Conditional</animation>
+				<visible>ListItem.IsResumable | Integer.IsGreater(ListItem.Playcount,0) | ListItem.Property(P3NewEpisodes)</visible>
+			</control>
+			<control type="progress">
+				<left>20</left>
+				<top>208</top>
+				<width>276</width>
+				<height>3</height>
+				<texturebg></texturebg>
+				<midtexture colordiffuse="progress" border="3">progress/texturebg_alt_white.png</midtexture>
+				<info>ListItem.PercentPlayed</info>
+				<visible>$PARAM[focused] + !Integer.IsEqual(ListItem.PercentPlayed,0) + [Control.HasFocus(5025) | Control.HasFocus(506)]</visible><!--+ String.IsEqual(system.CurrentControlId,5025)-->
+			</control>
+			
+			<control type="label">
+				<label>$INFO[ListItem.Title]</label>
+				<height>10%</height>
+				<width max="650">auto</width>
+				<align>left</align>
+				<font>font14_title</font>
+				<top>0</top>
+				<left>410</left>
+				<align>center</align>
+				<aligny>center</aligny>
+				<visible>!String.IsEqual(ListItem.Label,..)</visible>
+				<scroll>true</scroll>
+				<textcolor>titulosEpisodios</textcolor>
+			</control>
+			<control type="image" description="seleccion2">
+				<texture colordiffuse="button_focus">Palantir/icons/back.png</texture>
+				<height>55</height>
+				<width>105</width>
+				<aligny>center</aligny>
+				<top>180</top>
+				<left>-5</left>
+				<visible>$PARAM[focused] + String.IsEqual(ListItem.Label,..) + [Control.HasFocus(5025) | Control.HasFocus(506)]  </visible><!--+ String.IsEqual(system.CurrentControlId,5025) -->
+			</control>
+
+			<control type="textbox" description="Plot">
+				<left>410</left>
+				<top>30</top>
+				<font>font25_title</font>
+				<width>60%</width>
+				<height max="140">auto</height> 
+				<font>font14_narrow</font>
+				<label>$INFO[ListItem.Plot]</label>
+				<shadowcolor>sombra_texto</shadowcolor>
+				<align>left</align>
+				<aligny>top</aligny>
+				<autoscroll delay="3000" time="2000" repeat="3000">$PARAM[focused]</autoscroll>
+				<visible>!String.IsEmpty(ListItem.Plot)</visible>
+			</control>
+			
+			<control type="label"> 	
+				<label>$INFO[ListItem.Duration(mins)] min</label>
+				<height>20%</height>
+				<width>100%</width>
+				<align>left</align>
+				<font>font14_title</font>
+				<top>200</top>
+				<left>410</left>
+				<aligny>center</aligny>
+				<shadowcolor>sombra_texto</shadowcolor>
+				<visible>!String.IsEmpty(ListItem.Duration)</visible>
+			</control>	
+			<control type="label"> 	
+				<label>$VAR[InfoVista505TempEpi]</label>
+				<height>20%</height>
+				<width>100%</width>
+				<align>left</align>
+				<font>font14</font>
+				<shadowcolor>black</shadowcolor>
+				<textcolor>temporadasEpisodios</textcolor>
+				<top>190</top>
+				<left>10</left>
+				<aligny>center</aligny>
+				<visible>!String.IsEmpty(ListItem.Season)</visible>
+			</control>
+		</definition>
+	</include>
+
+
+	<include name="InfolineSeries">
+		<param name="visible">false</param>
+		<param name="left">5%</param>
+		<param name="top">20%</param>
+		<param name="width">60%</param>
+		<param name="heigth">10%</param>
+		<param name="colordifus">button_focus</param>
+		<definition>
+			<control type="grouplist">
+				<visible>$PARAM[visible]</visible>
+				<height>$PARAM[height]</height>
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[width]</width>
+				<itemgap>30</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="group">
+					<width max="100">auto</width>
+					<visible>!String.IsEmpty(ListItem.year)</visible>						
+					<control type="image" description="img_year">
+						<texture colordiffuse="button_focus">Palantir/icons/calendar.png</texture>
+						<height>30</height>
+						<width>30</width>
+						<aligny>center</aligny>
+						<visible>!String.IsEmpty(ListItem.year)</visible>
+					</control>
+					<control type="label">
+						<label>$INFO[ListItem.Year]</label>
+						<height>30</height>
+						<top>-5</top>
+						<width>auto</width>
+						<align>left</align>
+						<font>font30_title</font>
+						<left>40</left>
+						<visible>!String.IsEmpty(ListItem.year)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<width max="150">auto</width>
+					<visible>!String.IsEmpty(ListItem.Premiered)</visible>
+					<control type="label">
+						<label>$INFO[ListItem.Premiered]</label>
+						<height>30</height>
+						<width>auto</width>
+						<top>-5</top>
+						<align>left</align>
+						<left>30</left>
+						<font>font30_title</font>
+						<visible>!String.IsEmpty(ListItem.Premiered)</visible>
+					</control>
+				</control>
+				<control type="group">
+					<width max="150">auto</width>
+					<visible>String.IsEqual(ListItem.dbType,season)</visible>
+					<control type="label">
+						<label>$VAR[temporadas]</label>
+						<height>30</height>
+						<width>auto</width>
+						<left>50</left>
+						<top>-5</top>
+						<font>font30_title</font>
+						<visible>String.IsEqual(ListItem.dbType,season)</visible>
+					</control>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+
+
+
+
+	<include name="View_505_PalantirFlixSeasons">
+		<onload condition="Control.IsVisible(505)">setFocus(505,1,absolute)</onload>
+		<control type="group">		
+			<include>OpenClose_Right</include>
+			<left>0</left>
+			<top>0</top>
+			<!-- <visible>Control.IsVisible(505)</visible> -->
+			 <visible>Control.IsVisible(505) + Container.Content(seasons)</visible>
+			<include>Visible_Right</include>
+			<control type="group" description="GeneralFlixSeasons">
+				<include>FullScreenDimensions</include>
+				
+
+				<control type="image" description="ArtFullonNonWidgetPalantir">
+					<texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+					<height>100%</height>
+					<width>100%</width>
+					<top>0</top>
+					<right>0</right>					
+				</control>
+				<control type="image" description="ArtFullonNonWidgetPalantir">
+					<texture>Palantir/overlays/menubgdiff.png</texture>
+					<height>100%</height>
+					<width>100%</width>
+					<top>0</top>
+					<right>0</right>		
+					<animation effect="fade" start="80" end="80" time="100" condition="true">conditional</animation>			
+				</control>
+
+
+				<include content="Clearlogo">
+					<param name="visible" value="Skin.HasSetting(OcultarClearLogo.505)" />
+				</include>
+
+				<control type="label">
+					<label>$INFO[ListItem.Property(P3Titulo)]</label> 
+					<height>10%</height>
+					<width max="35%">auto</width>
+					<font>font30_title</font>
+					<top>12%</top>
+					<left>5%</left>
+					<align>left</align>
+					<scroll>true</scroll>
+					<scrollspeed>30</scrollspeed>	
+					<scrollsuffix>       -</scrollsuffix>
+					<aligny>center</aligny>
+					<centerleft>20%</centerleft>
+					<visible>!String.IsEmpty(ListItem.Art(clearlogo)) + !Skin.HasSetting(OcultarClearLogo.505) + !Skin.HasSetting(OcultarTituloInfoAudioVideo.505)</visible>
+				</control>
+
+				<include content="InfolineSeries">
+					<param name="visible" value="!String.IsEmpty(ListItem.Season)" />
+				</include>			
+				
+				<control type="grouplist">
+					<description>Linea Info Encima Thumbs</description>
+					<left>40%</left>
+					<top>40</top>
+					<width>1000</width>
+					<height>40</height>
+					<itemgap>15</itemgap>
+					<visible>!String.IsEmpty(ListItem.Season)</visible>
+					<pagecontrol>25</pagecontrol>
+					<orientation>horizontal</orientation>
+					<control type="image" description="lineaTituloEpisodios">  
+						<texture>Palantir/color_red.png</texture>
+						<height>40</height>
+						<width>5</width>
+						<aligny>center</aligny>
+						<top>0</top>
+						<left>0</left>
+						<visible>true</visible>
+					</control>
+					<control type="label"> 	
+						<label>Temporada $INFO[ListItem.Season]</label> 
+						<height>40</height>
+						<width>auto</width>
+						<textcolor>amarillopalantir</textcolor>
+						<font>font37_title</font>
+					</control>
+					<control type="image" description="img_mpaa">
+						<texture>Palantir/mpaa/$INFO[ListItem.Mpaa].png</texture>
+						<height>40</height>
+						<width>50</width>
+						<top>30</top>
+						<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
+					</control>
+					<control type="label" description="Genero"> 
+						<label>$INFO[ListItem.Genre]</label>
+						<height>40</height>
+						<width>auto</width>
+						<textcolor>grey</textcolor>
+						<top>80</top>
+						<font>font25_title</font>
+						<aligny>center</aligny>	
+					</control>
+					
+				</control>
+		
+
+
+				<!-- left list seasons-->
+				<!-- <control type="panel" id="505"> -->
+				<control type="list" id="505">
+					<animation effect="fade" start="100" end="60" time="150" condition="!Control.HasFocus(505)">Conditional</animation>
+					<viewtype label="Palantir Flix Seasons">wide</viewtype>
+					<visible>$EXP[Vista505]</visible>
+					<left>3%</left>
+					<top>25%</top>
+					<width>665</width>
+					<preloaditems>1</preloaditems>
+					<orientation>vertical</orientation>
+					<onleft>9000</onleft>
+					<focusposition>1</focusposition>
+					<onload>setFocus(505,1,absolute)</onload>
+					<onright>setFocus(5025,0,absolute)</onright>
+					<onup>505</onup>
+					<ondown>505</ondown>
+					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<focusedlayout height="50" width="665" condition="!Control.HasFocus(505)">
+						<include>botonFocusedLayoutVARs</include>
+						<include content="IncludeFlixSeasons">
+							<param name="focused" value="false"/>
+						</include>
+						<control type="image">                         
+							<width>665</width>
+							<height>50</height>
+							<aligny>top</aligny>
+							<align>left</align>
+							<aspectratio align="left" aligny="top">stretch</aspectratio>
+							<colordiffuse>grey</colordiffuse>
+							<texture border="10" background="true" colordiffuse="">Palantir/overlays/slimframefo.png</texture>
+							<visible>Container(505).Content(seasons)</visible>
+						</control>
+					</focusedlayout>
+					<focusedlayout height="50" width="665" condition="Control.HasFocus(505)">
+						<include>botonFocusedLayoutVARs</include>
+						<include content="IncludeFlixSeasons">
+							<param name="focused" value="true"/>
+						</include>
+						<control type="image">                         
+								<width>665</width>
+								<height>50</height>
+								<aligny>top</aligny>
+								<align>left</align>
+								<aspectratio align="left" aligny="top">stretch</aspectratio>
+								<colordiffuse></colordiffuse>
+								<texture border="10" background="true" colordiffuse="button_focus">Palantir/overlays/slimframefo.png</texture>
+								<visible>Container(505).Content(seasons)</visible>
+							</control>
+					</focusedlayout>
+					<itemlayout height="50" width="665" condition="Control.HasFocus(505)">
+						<include content="IncludeFlixSeasons">
+							<param name="focused" value="false"/>
+						</include>			
+					</itemlayout>			
+				</control>	
+				
+			
+
+				<!-- right list -->
+				<control type="group">
+					<visible>Control.IsVisible(505)</visible>
+					<top>100</top>
+					<posx>781</posx>
+					<control type="fixedlist" id="5025">
+						<scrolltime tween="cubic" easing="out">500</scrolltime>
+						<visible>Control.IsVisible(505) + !Container(505).ListItem.IsParentFolder</visible>
+						<animation effect="fade" start="100" end="70" time="150" condition="Control.HasFocus(505)">Conditional</animation>
+						<animation effect="fade" start="100" end="0" condition="Container(5025).IsUpdating">Conditional</animation>
+						<top>0</top>
+						<left>0</left>
+						<height>100%</height>
+						<width>1100</width>
+						<orientation>vertical</orientation>
+						<pagecontrol>60</pagecontrol>
+						<onleft condition="Control.IsVisible(505)">505</onleft>
+						<onleft condition="!Control.IsVisible(505)">noop</onleft>
+						<onup>5025</onup>
+						<ondown>5025</ondown>
+						<onback>setfocus(504)</onback>
+						<onright>60</onright>
+						<onclick condition="Container(5025).ListItem.IsResumable">PlayMedia($INFO[ListItem.FileNameAndPath]&amp;resumable=true)</onclick>
+						<preloaditems>2</preloaditems>
+						<focusedlayout width="1050" height="270">
+							<include content="botonFocusedLayoutVARs">
+							<param name="id" value="5025"/>
+							</include>
+							<control type="group">
+								<top>10</top>
+								<left>10</left>
+								<include content="FlixEpisodes">
+									<param name="focused" value="true" />
+								</include>
+							</control>
+						</focusedlayout>
+						<itemlayout width="1050" height="270">
+							<control type="group">
+								<left>10</left>
+								<top>10</top>
+								<include content="FlixEpisodes">
+									<param name="focused" value="false" />
+								</include>
+							</control>
+						</itemlayout>
+						<content target="videos" sortby="episode" sortorder="ascending">$INFO[Container(505).ListItem.FolderPath]</content>
+					</control>
+				</control>
+				<include content="BusyListSpinner">
+					<param name="list_id" value="5025"/>
+					<param name="posy" value="550"/>
+					<param name="posx" value="1280" />
+					<!-- <param name="visible" value="Container(5025).IsUpdating + !Window.IsVisible(DialogBusy.xml)"/> -->
+					<param name="visible" value="Container(5025).IsUpdating + !Window.IsVisible(DialogBusy.xml)"/>
+				</include>
+			</control> <!--/GeneralFlixSeasons-->
+		</control> <!--control include-->
+	</include>
+
+	
+</includes>

@@ -1,0 +1,103 @@
+<shortcuts>
+	<shortcut>
+		<defaultID>menuhomepalantir</defaultID>
+		<label>Seguir viendo</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/icon.png</icon>
+		<thumb>special://skin/media/Palantir/iconsmenu/especial.png</thumb>
+		<action>ActivateWindow(Videos,"plugin://plugin.video.palantir3",return)</action>
+		<visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+		<lock>True</lock>
+		</shortcut>
+	<shortcut>
+		<defaultID>menupalantirEspeciales</defaultID>
+		<label>$VAR[p3NameEspeciales]</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/especial.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,$VAR[p3PathEspeciales],return)</action>
+		<visible>System.AddonIsEnabled(plugin.video.palantir3) + !String.IsEmpty(Window(home).Property(p3especialespath)) + !Skin.HasSetting(OcultarWidgetEspeciales)</visible>
+		<lock>True</lock>
+		</shortcut>
+	<shortcut>
+		<defaultID>menupalantirtop10</defaultID>
+		<label>Top10</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/top10.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,"plugin://plugin.video.palantir3",return)</action>
+		<visible>System.AddonIsEnabled(plugin.video.palantir3) + Addon.SettingBool(plugin.video.palantir3, trakt_enabled) + !String.IsEmpty(Addon.SettingStr(plugin.video.palantir3, trakt_slug)) + !Skin.HasSetting(OcultarWidgetTop10)</visible>
+		<lock>True</lock>
+		</shortcut>
+	<shortcut>
+		<defaultID>menupalantir2</defaultID>
+		<label>Películas</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/peliculas.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,$VAR[p3Peliculas],return)</action>
+		<visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+		</shortcut>
+	<shortcut>
+		<defaultID>menupalantir3</defaultID>
+		<label>Series</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/series.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,"$VAR[p3Series]",return)</action>
+		<visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+		</shortcut>
+	<shortcut>
+		<defaultID>menupalantir4</defaultID>
+		<label>Dibujos</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/dibujos.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,"$VAR[p3Dibujos]",return)</action>
+		<visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+		</shortcut>
+	<shortcut>
+		<defaultID>menupalantir5</defaultID>
+		<label>Anime</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/anime.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,"$VAR[p3Anime]",return)</action>
+		<visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+		</shortcut>
+	<shortcut>
+		<defaultID>menupalantirFavoritos</defaultID>
+		<label>Favoritos</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/favoritos2.png</icon>
+		<thumb />
+		<action>ActivateWindow(Videos,"$VAR[p3Favoritos]",return)</action>
+		<visible>System.AddonIsEnabled(plugin.video.palantir3) + [!String.IsEmpty(Window(home).Property(p3PelisFavoritasPath)) | !String.IsEmpty(Window(home).Property(p3SeriesFavoritasPath))] + !Skin.HasSetting(OcultarWidgetFavoritosPalantir)</visible>
+		<lock>True</lock>
+		</shortcut>
+	<shortcut>
+		<defaultID />
+		<label>[COLOR goldenrod]UFC[/COLOR]</label>
+		<label2>Add-on de Vídeo</label2>
+		<icon>DefaultShortcut.png</icon>
+		<thumb>special://skin/media/Palantir/iconsmenu/videos.png</thumb>
+		<action>ActivateWindow(Videos,"plugin://plugin.video.asgard/?mode=189&amp;iconimage=https%3A%2F%2Fmylostsoulspace.co.uk%2Fimages%2Fasg%2Ficon.png&amp;fanart=https%3A%2F%2Fmylostsoulspace.co.uk%2Fimages%2Fasg%2Ffanart.jpg&amp;description=Sports&amp;url=https%3A%2F%2Fmylostsoulspace.co.uk%2FAddon-1%2FAddon%2Ftext%2Fsport.xml&amp;name=%5BCOLOR+goldenrod%5DAsgard+Sports+Section%5B%2FCOLOR%5D&amp;image_master=&amp;heb_name=+&amp;last_id=&amp;dates=+&amp;data=+&amp;original_title=+&amp;id=+&amp;season=+&amp;episode=+&amp;tmdbid=+&amp;eng_name=+&amp;show_original_year=+&amp;isr=0&amp;fav_status=false&amp;all_w=%7B%7D&amp;search_db=&amp;mypass=&amp;iconimage=https%3A%2F%2Fmylostsoulspace.co.uk%2Fimages%2Fasg%2Ficon.png&amp;fanart=https%3A%2F%2Fmylostsoulspace.co.uk%2Fimages%2Fasg%2Ffanart.jpg&amp;description=Sports&amp;url=https%3A%2F%2Fmylostsoulspace.co.uk%2FAddon-1%2FAddon%2Ftext%2Fsport.xml&amp;name=%5BCOLOR+goldenrod%5DAsgard+Sports+Section%5B%2FCOLOR%5D&amp;image_master=&amp;heb_name=+&amp;last_id=&amp;dates=+&amp;data=+&amp;original_title=+&amp;id=+&amp;season=+&amp;episode=+&amp;tmdbid=+&amp;eng_name=+&amp;show_original_year=+&amp;fav_status=false&amp;all_w=%7B%7D&amp;search_db=&amp;mypass=&amp;video_data=%7B%22title%22%3A+%22%5BCOLOR+goldenrod%5DAsgard+Sports+Section%5B%2FCOLOR%5D%22%2C+%22mediatype%22%3A+%22movie%22%2C+%22TVshowtitle%22%3A+%22%22%2C+%22season%22%3A+0%2C+%22episode%22%3A+0%2C+%22OriginalTitle%22%3A+%22+%22%2C+%22rating%22%3A+%220%22%2C+%22plot%22%3A+%22Sports%22%2C+%22Tag%22%3A+%22None%22%2C+%22id%22%3A+%22+%22%7D&amp;video_data=%7B%22title%22%3A+%22%5BCOLOR+goldenrod%5DAsgard+Sports+Section%5B%2FCOLOR%5D%22%2C+%22mediatype%22%3A+%22movie%22%2C+%22TVshowtitle%22%3A+%22%22%2C+%22season%22%3A+0%2C+%22episode%22%3A+0%2C+%22OriginalTitle%22%3A+%22+%22%2C+%22rating%22%3A+%220%22%2C+%22plot%22%3A+%22Sports%22%2C+%22Tag%22%3A+%22None%22%2C+%22id%22%3A+%22+%22%7D",return)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID>plugin.video.balandro</defaultID>
+		<label>Balandro</label>
+		<label2>Add-on de Vídeo</label2>
+		<icon>DefaultShortcut.png</icon>
+		<thumb>thumb</thumb>
+		<action>ActivateWindow(Videos,"plugin://plugin.video.balandro",return)</action>
+		</shortcut>
+	<shortcut>
+		<defaultID>addons</defaultID>
+		<label>24001</label>
+		<label2>Common Shortcut</label2>
+		<icon>Palantir/iconsmenu/addons.png</icon>
+		<thumb />
+		<action>ActivateWindow(1100)</action>
+		<disabled>True</disabled>
+		</shortcut>
+	</shortcuts>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1192">
+	<defaultcontrol always="true">115000</defaultcontrol>
+	<include>Animation_DialogPopupOpenClose</include>
+	<include>FullScreenDimensions</include>
+	<coordinates>
+		<origin x="35%" y="30%"/>
+		<left>0</left>
+		<top>0</top>
+	</coordinates>
+	<controls> 
+		 <control type="image">
+			<left>-1920</left>
+			<top>-1080</top>
+			<width>5760</width>
+			<height>3240</height>
+			<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+			<texture colordiffuse="B0FFFFFF">colors/black.png</texture>
+		</control>
+		<control type="button">
+			<left>-1920</left>
+			<top>-1080</top>
+			<width>5760</width>
+			<height>3240</height>
+			<texturefocus />
+			<texturenofocus />
+			<onclick>Action(close)</onclick>
+		</control>
+		<control type="group">
+			<width>600</width>
+			<height>400</height>
+			<animation effect="slide" end="0,175" time="0" condition="Window.IsActive(home)">conditional</animation>
+			<control type="group">
+				<width>600</width>
+				<height>400</height>
+				<control type="image">
+					<texture diffuse="Palantir/masks/dialog-bg-squareish.png" colordiffuse="dialog_tint">Palantir/masks/dialog-bg-squareish.png</texture>
+					<width>600</width>
+					<height>400</height>
+				</control>
+				<control type="list" id="115000">
+					<width>80%</width>
+					<height>100%</height>
+					<centerleft>50%</centerleft>
+					<centertop>50%</centertop>
+					<scroll>true</scroll>
+					<usecontrolcoords>true</usecontrolcoords>
+					<orientation>vertical</orientation>
+					<focusposition>0</focusposition>
+					<itemlayout height="50" width="600">
+						<control type="label">
+							<left>0</left>
+							<bottom>0</bottom>
+							<label>$INFO[Container(115000).ListItem.Label]</label>
+							<font>font25_title</font>
+							<aligny>center</aligny>
+							<align>left</align> 
+							<width max="600">auto</width>
+						</control>
+					</itemlayout>
+					<focusedlayout height="50" width="600">
+							<control type="button">		
+								<description>button template</description>
+								<top></top>
+								<left>0</left>
+								<font>font25_title</font>
+								<width max="600">auto</width>
+								<height>50</height>
+								<focusedcolor>button_focus</focusedcolor>
+								<texturefocus colordiffuse="button_focus_flix">Palantir/lists/focus2.png</texturefocus>
+								<label>$INFO[Container(115000).ListItem.Label]</label>
+								<texturenofocus />
+								<align>left</align>
+							</control>
+					</focusedlayout>
+					<content>
+						<item>
+							<label>$LOCALIZE[31067]</label>
+							<onclick>close</onclick>
+							<onclick>ActivateWindow(eventlog)</onclick>
+							<icon>icons/settings/eventlog.png</icon>
+						</item>
+						<item>
+							<label>$LOCALIZE[138]</label>
+							<onclick>close</onclick>
+							<onclick>ActivateWindow(systeminfo)</onclick>
+							<icon>icons/settings/sysinfo.png</icon>
+						</item>
+						<item>
+							<label>LibreELEC</label>
+							<onclick>close</onclick>
+							<onclick>RunAddon(service.libreelec.settings)</onclick>
+							<icon>icons/settings/libreelec.png</icon>
+							<visible>System.AddonIsEnabled(service.libreelec.settings)</visible>
+						</item>
+						<item>
+							<label>$LOCALIZE[15016]</label>
+							<onclick>close</onclick>
+							<visible>System.GetBool(gamesgeneral.enable)</visible>
+							<onclick>ActivateWindow(GameSettings)</onclick>
+							<icon>icons/settings/games.png</icon>
+						</item>
+					</content>
+				</control>
+            </control>
+			
+			<include content="UpDownArrows">
+				<param name="container_id" value="100000" />
+				<param name="posx" value="260" />
+				<param name="up_posy" value="-30" />
+				<param name="down_posy" value="410" />
+			</include>			
+		</control> 
+		
+	</controls>
+</window>
+

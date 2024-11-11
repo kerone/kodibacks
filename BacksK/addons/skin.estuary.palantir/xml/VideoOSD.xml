@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+	<onload condition="!Player.PauseEnabled">SetFocus(603)</onload>
+	<onload>ClearProperty(botonOsd,home)</onload>
+	<onunload>SendClick(603)</onunload>
+	<defaultcontrol always="true">602</defaultcontrol>
+	<depth>DepthOSD</depth>
+	<controls>
+		<control type="button">
+			<description>background close area</description>
+			<left>0</left>
+			<top>0</top>
+			<width>100%</width>
+			<bottom>280</bottom>
+			<texturefocus />
+			<texturenofocus />
+			<onclick>Action(close)</onclick>
+		</control>
+		<include condition="Skin.HasSetting(touchmode)">TouchBackOSDButton</include>
+		<control type="group">
+			<include>Animation_BottomSlide</include>
+			<bottom>0</bottom>
+			<height>180</height>
+			<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(1110) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(osdvideosettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(playerprocessinfo) | Window.IsVisible(osdcmssettings) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(pvrchannelguide)]</visible>
+			<animation effect="fade" time="200">VisibleChange</animation>
+			<!--Texto encima botones ayuda grupo derecha-->
+			<control type="label"> 
+				<!-- <animation effect="slide" end="0,-20" time="150" condition="VideoPlayer.Content(LiveTV)">conditional</animation> -->
+				<centerright>230</centerright>
+				<top>130</top>
+				<font>font20_title</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<width max="350">auto</width>
+				<height>50</height>
+				<label>$VAR[OSDHelpTextVar]</label>
+				<shadowcolor>black</shadowcolor>
+			</control>
+		
+			<!--Grupo de Controles izq-->
+			<control type="group" id="200">
+				<include>Animation_BottomSlide</include>
+				<control type="grouplist" id="201">
+					<left>5%</left>
+					<top>80</top>
+					<width>100%</width>
+					<height>135</height>
+					<itemgap>10</itemgap>
+					<scrolltime tween="sine">200</scrolltime>
+					<orientation>horizontal</orientation>
+					<onup>87</onup>
+					<ondown>noop</ondown>
+					<onleft>70048</onleft>
+					<onright>804</onright>
+
+					<!--anterior-->
+					<control type="radiobutton" id="600"> 
+						<include content="OSDButton">
+							<param name="texturenofocus" value="Palantir/OSD/prevtrack.png"/>
+							<param name="texturefocus" value="Palantir/OSD/prevtrack.png" />
+							<param name="height">50</param>
+							<param name="width">50</param>
+						</include>
+						<onclick>PlayerControl(Previous)</onclick>
+						<visible>Player.HasSceneMarkers | Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | [Player.SeekEnabled + VideoPlayer.Content(livetv)]</visible>
+					</control>	
+
+
+					<!--hacia atras-->
+					<!-- <control type="radiobutton" id="600"> 
+						<include content="OSDButton">
+							<param name="texturenofocus" value="Palantir/OSD/rewind.png"/>
+							<param name="texturefocus" value="Palantir/OSD/rewind.png" />
+							<param name="height">50</param>
+							<param name="width">50</param>
+						</include>
+						<onclick>PlayerControl(Rewind)</onclick>
+						<enable>[Player.SeekEnabled + !VideoPlayer.Content(livetv)] + !Player.Paused</enable>
+					</control> -->
+
+					<!--seek -10 -->
+					<control type="radiobutton" id="601">
+						<include content="OSDButton">
+							<param name="texturenofocus" value="Palantir/OSD/10tempo.png"/>
+							<param name="texturefocus" value="Palantir/OSD/10tempo.png" />
+							<param name="height">50</param>
+							<param name="width">50</param>
+							<param name="radioposx">1</param>
+							<param name="radioposy">50</param>
+						</include>
+						<onclick>Seek(-10)</onclick>
+					</control>
+
+					<!--PLAY BOTON-->
+					<control type="group" id="698">
+						<width>100</width>
+						<height>100</height>
+						
+						<visible>Player.PauseEnabled</visible>
+						<!--play-->
+						<control type="button" id="602"> 
+							<left>0</left>
+							<top>-20</top>
+							<width>100</width>
+							<height>100</height>
+							<label></label>
+							<font></font>
+							<texturefocus colordiffuse="button_focus">Palantir/OSD/play.png</texturefocus>
+							<animation center="38,38" effect="zoom" end="100" reversible="false" start="95" time="480" tween="back" condition="Control.HasFocus(602)">Conditional</animation>
+							<texturenofocus>Palantir/OSD/play.png</texturenofocus>
+							<onleft>601</onleft>
+							<onright>603</onright>
+							<onup>87</onup>
+							<ondown>noop</ondown>
+							<onclick>PlayerControl(Play)</onclick>
+							<visible>Player.Paused</visible>
+						</control>
+						<!--pause-->
+						<control type="button" id="602"> 
+							<animation center="38,38" effect="zoom" end="100" reversible="false" start="95" time="480" tween="back" condition="Control.HasFocus(602)">Conditional</animation>
+							<left>0</left>
+							<top>-20</top>
+							<width>100</width>
+							<height>100</height>
+							<label></label>
+							<font></font>
+							<texturefocus colordiffuse="button_focus">Palantir/OSD/pause.png</texturefocus>
+							<texturenofocus>Palantir/OSD/pause.png</texturenofocus>
+							<onleft>601</onleft>
+							<onright>603</onright>
+							<onup>87</onup>
+							<ondown>noop</ondown>
+							<onclick>PlayerControl(Play)</onclick>
+							<visible>Player.Playing</visible>
+						</control>
+					</control>
+
+					<!--seek +10 -->
+					<control type="radiobutton" id="603">
+						<include content="OSDButton">
+							<param name="texturenofocus" value="Palantir/OSD/tempo10.png"/>
+							<param name="texturefocus" value="Palantir/OSD/tempo10.png" />
+							<param name="height">50</param>
+							<param name="width">50</param>
+							<param name="radioposx">1</param>
+							<param name="radioposy">50</param>
+							
+						</include>
+						<onclick>Seek(10)</onclick>
+					</control>
+
+
+					<!--stop-->
+					<control type="radiobutton" id="604"> 
+						<include content="OSDButton">
+							<param name="texturenofocus" value="Palantir/OSD/stop.png"/>
+							<param name="texturefocus" value="Palantir/OSD/stop.png" />
+							<param name="height">50</param>
+							<param name="width">50</param>
+							<param name="radioposx">1</param>
+							<param name="radioposy">50</param>
+							
+						</include>
+						<onclick>PlayerControl(Stop)</onclick>
+					</control>
+
+			
+
+					<!--posterior-->
+					<control type="radiobutton" id="607"> 
+						<include content="OSDButton">
+							<param name="texturenofocus" value="Palantir/OSD/nexttrack.png"/>
+							<param name="texturefocus" value="Palantir/OSD/nexttrack.png" />
+							<param name="height">50</param>
+							<param name="width">50</param>
+							<param name="radioposx">1</param>
+							<param name="radioposy">50</param>
+						</include>
+						<onclick>PlayerControl(Next)</onclick>
+						<visible>Player.HasSceneMarkers | Player.ChapterCount | Integer.IsGreater(Playlist.Length(video),1) | PVR.IsTimeShift</visible>
+					</control>
+					
+					<!--grabacion-->
+					
+					<control type="radiobutton" id="608"> 
+						<textureradioonfocus colordiffuse="button_focus_flix">Palantir/OSD/recordon_fo.png</textureradioonfocus>
+						<textureradioonnofocus>Palantir/OSD/recordon.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="white">Palantir/OSD/recordoff_fo.png</textureradioofffocus>
+						<textureradiooffnofocus>Palantir/OSD/recordoff.png</textureradiooffnofocus>
+						<texturefocus colordiffuse="button_focus_flix">osd/fullscreen/buttons/button-fo.png</texturefocus>
+						<width>50</width>
+						<animation center="38,38" effect="zoom" end="100" reversible="false" start="95" time="480" tween="back">Focus</animation>
+						<height>50</height>
+						<radiowidth>50</radiowidth>
+						<radioheight>50</radioheight>
+						<font></font>
+						<texturenofocus />
+						<radioposx>1</radioposx>
+						<radioposy>0</radioposy>
+						<selected>!PVR.IsRecordingPlayingChannel</selected>
+						<onclick>PVR.ToggleRecordPlayingChannel</onclick>
+						<visible>PVR.CanRecordPlayingChannel</visible>
+						<visible>VideoPlayer.Content(livetv)</visible>
+					</control>
+				</control>
+
+
+
+
+				<control type="grouplist" id="202">																
+					<right>70</right>
+					<top>80</top>
+					<width>100%</width>
+					<height>135</height>
+					<align>right</align>
+					<itemgap>10</itemgap>
+					<scrolltime tween="sine">200</scrolltime>
+					<orientation>horizontal</orientation>
+					<onup>87</onup>
+					<ondown condition="Control.HasFocus(70043)">11104</ondown>
+					<ondown condition="Control.HasFocus(704)">12104</ondown>
+					<ondown condition="Control.HasFocus(255)">13103</ondown>
+					<onleft>608</onleft>
+					<onright>602</onright>
+					<control type="radiobutton" id="804"> 
+						<include content="OSDButton">
+							<param name="texturenofocus" value="osd/fullscreen/buttons/home.png"/>
+							<param name="texturefocus" value="osd/fullscreen/buttons/home.png" />
+							<param name="height">50</param>
+							<param name="width">50</param>
+							<param name="radioposx">1</param>
+							<param name="radioposy">50</param>
+							
+						</include>
+						<onclick>PlayerControl(ShowVideoMenu)</onclick>
+						<visible>VideoPlayer.HasMenu</visible>
+					</control>
+					<control type="radiobutton" id="70040"> 
+						<include content="OSDButton">
+							<param name="texturenofocus" value="Palantir/OSD/channellist.png"/>
+							<param name="texturefocus" value="Palantir/OSD/channellist.png" />							
+						</include>
+						<onclick>Dialog.Close(VideoOSD)</onclick>
+						<onclick>ActivateWindow(PVROSDChannels)</onclick>
+						<visible>VideoPlayer.Content(livetv)</visible>
+					</control>
+
+					<control type="radiobutton" id="70041"> 
+						<include content="OSDButton">
+							<param name="texturenofocus" value="Palantir/OSD/epg.png"/>
+							<param name="texturefocus" value="Palantir/OSD/epg.png" />
+						</include>
+						<onclick>Dialog.Close(VideoOSD)</onclick>
+						<onclick>ActivateWindow(pvrchannelguide)</onclick>
+						<visible>VideoPlayer.Content(livetv) + VideoPlayer.HasEPG</visible>
+					</control>
+					
+					
+					
+					<control type="radiobutton" id="70042">
+						<include content="OSDButton">
+								<param name="texturenofocus" value="Palantir/OSD/playlist.png"/>
+							<param name="texturefocus" value="Palantir/OSD/playlist.png" />
+						</include>
+						<onclick>Dialog.Close(all, true)</onclick>
+						<onclick>ActivateWindow(videoplaylist)</onclick>
+						<visible>Integer.IsGreater(Playlist.Length(video),1)</visible>
+					</control>
+					<control type="radiobutton" id="70043">
+						<include content="OSDButton">
+								<param name="texturenofocus" value="Palantir/OSD/info.png"/>
+							<param name="texturefocus" value="Palantir/OSD/info.png" />
+						</include>
+						<onclick>ActivateWindow(PlayerProcessInfo)</onclick>
+					</control>
+					<control type="radiobutton" id="70044">
+						<include content="OSDButton">
+								<param name="texturenofocus" value="Palantir/OSD/bookmarks.png"/>
+							<param name="texturefocus" value="Palantir/OSD/bookmarks.png" />
+						</include>
+						<onclick>ActivateWindow(videobookmarks)</onclick>
+						<visible>!VideoPlayer.Content(livetv)</visible>
+					</control>
+					<control type="radiobutton" id="70045">
+						<include content="OSDButton">
+								<param name="texturenofocus" value="Palantir/OSD/teletext.png"/>
+							<param name="texturefocus" value="Palantir/OSD/teletext.png" />
+						</include>
+						<onclick>Dialog.Close(VideoOSD)</onclick>
+						<onclick>ActivateWindow(Teletext)</onclick>
+						<visible>VideoPlayer.HasTeletext</visible>
+					</control>
+					<control type="radiobutton" id="70046">
+					<onfocus>ClearProperty(botonOsd,home)</onfocus>
+						<include content="OSDButton">
+								<param name="texturenofocus" value="Palantir/OSD/subtitles.png"/>
+							<param name="texturefocus" value="Palantir/OSD/subtitles.png" />
+						</include>
+						<onclick>ActivateWindow(osdsubtitlesettings)</onclick>
+						<visible>!VideoPlayer.Content(LiveTV) | VideoPlayer.HasSubtitles</visible>
+					</control>
+					<control type="radiobutton" id="70047">
+						<onup>13100</onup>
+						<onfocus>ClearProperty(botonOsd,home)</onfocus>
+						<include content="OSDButton">
+								<param name="texturenofocus" value="Palantir/OSD/stereoscopic.png"/>
+							<param name="texturefocus" value="Palantir/OSD/stereoscopic.png" />
+						</include>
+						<visible>VideoPlayer.IsStereoscopic</visible>
+						<onclick>SetProperty(settingslist_content,3d,home)</onclick>
+						<onclick>SetProperty(settingslist_header,$LOCALIZE[36501],home)</onclick>
+						<onclick>ActivateWindow(1101)</onclick>
+					</control>
+					<control type="radiobutton" id="70048">
+						<onfocus>ClearProperty(botonOsd,home)</onfocus>
+						<onup>11100</onup>
+						<include content="OSDButton">
+								<param name="texturenofocus" value="Palantir/OSD/settings.png"/>
+							<param name="texturefocus" value="Palantir/OSD/settings.png" />
+						</include>
+						<onclick>SetProperty(settingslist_content,osd,home)</onclick>
+						<onclick>SetProperty(settingslist_header,$LOCALIZE[5],home)</onclick>
+						<onclick>ActivateWindow(1101)</onclick>
+					</control>
+				</control>
+			</control>
+
+			<!--barra seleccion deslizante-->
+			<control type="group" id="6000">
+				<top>60</top>
+				<animation type="WindowOpen" condition="!Window.IsVisible(fullscreeninfo)" reversible="False">
+					<effect type="fade" start="0" end="100" time="300"/>
+					<effect type="slide" start="0,200" end="0,0" time="300" tween="cubic" easing="out" />
+				</animation>
+				<animation type="WindowClose" condition="!Window.IsVisible(fullscreeninfo)" reversible="False">
+					<effect type="fade" start="100" end="0" time="300"/>
+					<effect type="slide" start="0,0" end="0,200" time="300" tween="cubic" easing="out" />
+				</animation>
+				<animation type="WindowOpen" condition="Window.IsVisible(fullscreeninfo)" reversible="False">
+					<effect type="fade" start="0" end="100" time="300"/>
+				</animation>
+				<animation type="WindowClose" condition="Window.IsVisible(fullscreeninfo)" reversible="False">
+					<effect type="fade" start="100" end="0" time="300"/>
+				</animation>
+				<visible>Player.SeekEnabled</visible>
+				<control type="button" id="87"> <!--control boton desplazamiento-->
+					<include>HiddenObject</include>
+					<onup>200</onup>
+					<ondown>200</ondown>
+					<onleft>StepBack</onleft>
+					<onright condition="!Player.Paused">StepForward</onright>
+					<onright condition="Player.Paused">PlayerControl(FrameAdvance(1))</onright>
+				</control>
+				<control type="slider"><!--icon barra izq principio barra sin focus-->
+					<top>-25</top>
+					<left>10%</left>
+					<width>80%</width>
+					<height>26</height>
+					<label>prueba</label>
+					<texturesliderbar colordiffuse="00FFFFFF">Palantir/OSD/seek.png</texturesliderbar>
+					<textureslidernib>Palantir/OSD/seek.png</textureslidernib>
+					<textureslidernibfocus colordiffuse="button_focus">Palantir/OSD/seek.png</textureslidernibfocus>
+					<info>Player.Progress</info>
+					<onup>200</onup>
+					<ondown>200</ondown>
+					<action>seek</action>
+					<visible>!Control.HasFocus(87) + !VideoPlayer.Content(LiveTV)</visible>
+				</control>
+				<control type="slider"> <!--icon barra izq principio barra con focus-->
+					<top>-25</top>
+					<left>10%</left>
+					<width>80%</width>
+					<height>26</height>
+					<texturesliderbar colordiffuse="00FFFFFF">Palantir/OSD/seek.png</texturesliderbar>
+					<textureslidernib colordiffuse="button_focus">Palantir/OSD/seek.png</textureslidernib>
+					<textureslidernibfocus colordiffuse="button_focus">Palantir/OSD/seek.png</textureslidernibfocus>
+					<info>Player.Progress</info>
+					<onup>200</onup>
+					<ondown>200</ondown>
+					<action>seek</action>
+					<visible>Control.HasFocus(87) + !VideoPlayer.Content(LiveTV)</visible>
+				</control>
+
+				<control type="slider"><!--icon barra izq principio barra sin focus + tv-->
+					<top>-25</top>
+					<left>10%</left>
+					<width>80%</width>
+					<height>26</height>
+					<label>prueba</label>
+					<texturesliderbar colordiffuse="00FFFFFF">Palantir/OSD/seek.png</texturesliderbar>
+					<textureslidernib>Palantir/OSD/seek.png</textureslidernib>
+					<textureslidernibfocus colordiffuse="button_focus">Palantir/OSD/seek.png</textureslidernibfocus>
+					<info>PVR.TimeshiftProgressPlayPos</info>
+					<onup>200</onup>
+					<ondown>200</ondown>
+					<action>pvr.seek</action>
+					<visible>!Control.HasFocus(87) + VideoPlayer.Content(LiveTV)</visible>
+				</control>
+				
+				<control type="slider"> <!--icon barra izq principio barra con focus + tv-->
+					<top>-25</top>
+					<left>10%</left>
+					<width>80%</width>
+					<height>26</height>
+					<texturesliderbar colordiffuse="00FFFFFF">Palantir/OSD/seek.png</texturesliderbar>
+					<textureslidernib colordiffuse="button_focus">Palantir/OSD/seek.png</textureslidernib>
+					<textureslidernibfocus colordiffuse="button_focus">Palantir/OSD/seek.png</textureslidernibfocus>
+					<info>PVR.TimeshiftProgressPlayPos</info>
+					<onup>200</onup>
+					<ondown>200</ondown>
+					<action>pvr.seek</action>
+					<visible>Control.HasFocus(87) + VideoPlayer.Content(LiveTV)</visible>
+				</control>
+				
+			</control>
+		</control>
+		
+	</controls>
+</window>

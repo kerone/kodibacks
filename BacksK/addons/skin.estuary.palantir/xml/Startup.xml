@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="startup">
+  <onload condition="$EXP[PalantirIsEnabled]">RunScript(plugin.video.palantir3, None, &amp;update=)</onload>
+  <onload>Setproperty(startup,si,home)</onload>
+  <controls>
+    <control type="videowindow" >
+        <visible>True</visible>
+        <include>FullScreenDimensions</include>
+    </control>
+    <control type="image">
+      <width>$INFO[System.ScreenWidth]</width>
+      <height>$INFO[System.ScreenHeight]</height>
+      <texture colordiffuse="BFFFFFFF">special://skin/media/Palantir/startup.png</texture>
+      <visible>Integer.IsGreater(Skin.TimerElapsedSecs(splashtimer),1) + !Player.Playing</visible>
+    </control>
+
+    <control type="group" description="debug">
+      <visible>false</visible>
+      <control type="label">
+        <label>$INFO[Skin.TimerElapsedSecs(splashtimer)]</label>
+        <top>200</top>
+        <left>10</left>
+      </control>
+      <control type="label">
+          <label>P3Updated == True</label>
+          <visible>String.IsEqual(Window(startup).Property(P3Updated),true)</visible>
+          <top>260</top>
+          <left>10</left>
+      </control>
+      <control type="label">
+          <label>P3Updated == False</label>
+          <visible>!String.IsEqual(Window(startup).Property(P3Updated),true)</visible>
+          <top>260</top>
+          <left>10</left>
+      </control>
+    </control>
+  </controls>
+</window>

@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">5000</defaultcontrol>
+	<onload>SetProperty(infobackground,$ESCINFO[ListItem.Art(fanart)],home)</onload>
+	<onload>RunScript(plugin.video.palantir3, None, &infoExtra=$INFO[ListItem.UniqueID(tmdb)]_$INFO[ListItem.DBTYPE])</onload>
+	<onunload>RunScript(plugin.video.palantir3, None, &infoExtra=clear)</onunload>
+	<onunload>ClearProperty(infobackground,home)</onunload>
+	<onunload>stop</onunload>
+	<controls>
+		<control type="group">
+			<centertop>50%</centertop>
+			<height>100%</height>
+			<centerleft>50%</centerleft>
+			<width>100%</width>
+			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="Window.IsVisible(script-embuary-video.xml) | Window.IsVisible(script-embuary-person.xml) | Window.IsVisible(script-embuary-image.xml)">Conditional</animation>
+			<include>Background_FlixArt</include>
+			<control type="group" description="Banner">
+				<animation effect="slide" start="0" end="-580" time="400" tween="cubic" easing="out" reversible="false" condition="Control.HasFocus(9805)">Conditional</animation>
+            	<animation effect="slide" end="0" start="-580" time="400" tween="cubic" easing="out" reversible="false" condition="!Control.HasFocus(9805)">Conditional</animation>
+				<top>14.8%</top>
+				<left>4%</left>
+				<include>OpenClose_Left</include>
+
+				<control type="image">
+					<top>-16</top>
+					<left>-16</left>
+					<width>526</width>
+					<height>780</height>
+					<texture>colors/black.png</texture>
+					<bordertexture border="21" infill="false">Palantir/overlays/shadow.png</bordertexture>
+					<bordersize>20</bordersize>
+					<visible>!String.IsEqual(ListItem.DBType,episode)</visible>
+				</control>
+				<control type="image">
+					<depth>DepthContentPopout</depth>
+					<left>4</left>
+					<top>4</top>
+					<width>486</width>
+					<height>740</height>
+					<aspectratio>scale</aspectratio>
+					<texture fallback="DefaultVideo.png" background="true">$INFO[ListItem.Art(season.poster)]</texture>
+					<visible>!String.IsEmpty(ListItem.Art(season.poster))</visible>
+				</control>
+				<control type="image">
+					<depth>DepthContentPopout</depth>
+					<left>4</left>
+					<top>4</top>
+					<width>486</width>
+					<height>740</height>
+					<aspectratio>scale</aspectratio>
+					<texture fallback="DefaultVideo.png" diffuse="Palantir/masks/poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+					<visible>String.IsEmpty(ListItem.Art(season.poster))</visible>
+				</control>
+				<control type="image">
+					<depth>DepthOSD+</depth>
+					<left>75%</left>
+					<top>35%</top>
+					<width>400</width>
+					<height>250</height>
+					<aspectratio aligny="bottom">keep</aspectratio>
+					<texture fallback="DefaultVideo.png" diffuse="Palantir/masks/landscape.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<bordertexture border="21" infill="false">overlays/shadow.png</bordertexture>
+					<bordersize>20</bordersize>
+					<include>OpenClose_Left</include>
+					<visible>!String.IsEmpty(ListItem.Art(season.poster)) + !String.IsEqual(ListItem.Art(season.poster),ListItem.Art(thumb))</visible>
+					<visible>!String.IsEmpty(ListItem.Art(thumb)) + !String.IsEqual(ListItem.Art(poster),ListItem.Art(thumb)) + !String.IsEqual(ListItem.Art(season.poster),ListItem.Art(thumb))</visible>
+				</control>
+
+				<control type="image" description="Etiqueta Vistos">
+					<left>370</left>
+					<top>4</top>
+					<width>120</width>
+					<height>120</height>
+					<texture colordiffuse="$VAR[ColorEtiquetaPoster]" background="true">Palantir/overlays/overlaywatched.png</texture>
+					<visible>ListItem.IsResumable | Integer.IsGreater(ListItem.Playcount,0) | ListItem.Property(P3NewEpisodes)</visible>
+				</control>
+				<control type="label">
+					<left>365</left>
+					<top>15</top>
+					<align>center</align>
+					<label>$VAR[EtiquetaPoster]</label>
+					<width>120</width>
+					<height>120</height>
+					<font>WatchedStates</font>
+					<textcolor>FFFFFFFF</textcolor>
+					<selectedcolor>FFD402AA</selectedcolor>
+					<animation effect="rotate" center="auto" time="0" end="-45" condition="true" loop="false">Conditional</animation>
+					<visible>ListItem.IsResumable | Integer.IsGreater(ListItem.Playcount,0) | ListItem.Property(P3NewEpisodes)</visible>
+				</control>
+
+			</control>
+
+			<control type="group">
+				<visible>!Control.HasFocus(9805)</visible>
+				<top>154</top>
+				<left>70</left>
+				<visible>String.IsEqual(ListItem.DBType,musicvideo) + !Skin.HasSetting(show_musicvideoposter)</visible>
+				<include>OpenClose_Left</include>
+				<control type="image">
+					<width>526</width>
+					<height>801</height>
+					<aspectratio>stretch</aspectratio>
+					<texture colordiffuse="FF555555">DefaultVideo.png</texture>
+				</control>
+				<control type="image">
+					<left>10</left>
+					<width>506</width>
+					<height>801</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$INFO[ListItem.Thumb]</texture>
+					<bordertexture border="21" infill="false">overlays/shadow.png</bordertexture>
+					<bordersize>20</bordersize>
+				</control>
+			</control>
+
+			<control type="group" description="Header Derecha">
+                <width>60</width>
+                <height>60</height>
+                <top>70</top>
+                <right>82</right>
+                <nested />
+                <control type="image">
+                    <left>-24</left>
+                    <right>-24</right>
+                    <top>-24</top>
+                    <bottom>-24</bottom>
+                    <texture colordiffuse="80000000" border="54">Palantir/background/shadow_cuadrado1.png</texture>
+                </control>
+                <control type="button">
+                    <texturefocus colordiffuse="FFcccccc" border="30">Palantir/background/caja1.png</texturefocus>
+                    <texturenofocus colordiffuse="FFcccccc" border="30">Palantir/background/caja1.png</texturenofocus>
+                    <onclick>Action(menu)</onclick>
+                </control>
+                <include content="Object_Control">
+                    <param name="control" value="image" />
+                    <texture colordiffuse="0cffffff" border="30">Palantir/background/caja1.png</texture>
+                </include>
+                <include content="Object_Control">
+                    <param name="control" value="image" />
+                    <aspectratio>keep</aspectratio>
+                    <bordersize>6</bordersize>
+                    <texture colordiffuse="B30f0f0f">Palantir/icons/mastermode.png</texture>
+                    <animation effect="fade" start="0" end="100" time="200" delay="1200" reversible="true">Visible</animation>
+                    <animation effect="fade" start="100" end="0" time="200" delay="400" reversible="true">Hidden</animation>
+                </include>
+            </control>
+            <control type="group">
+                <width>320</width>
+                <height>60</height>
+                <top>70</top>
+                <right>160</right>
+                <nested />
+                <include content="Object_Control">
+                    <param name="control" value="label" />
+                    <label>$INFO[System.Time]</label>
+                    <font>font37</font>
+                    <width>auto</width>
+                    <align>right</align>
+					<visible>Skin.HasSetting(MostrarReloj)</visible>
+                </include>
+            </control>
+			
+
+			<control type="group" description="Header izquierda">
+				<left>17</left>
+                <width>60</width>
+                <height>60</height>
+                <top>70</top>
+                <left>2</left>
+                <nested />
+                <include content="Object_Control">
+                    <param name="control" value="label" />
+                    <label>$VAR[tipo]</label>
+                    <font>font45</font>
+                    <top>-3</top>
+                    <width>auto</width>
+                    <align>left</align>
+                    <right>1</right>
+                </include>
+            </control>
+
+			<control type="grouplist" description="footer izquierdo">
+                <align>left</align>
+                <orientation>horizontal</orientation>
+                <itemgap>17</itemgap>
+                <height>40</height>
+                <bottom>80</bottom>
+                <left>80</left>
+
+                <include content="Object_Control" description="Solo en tvshows">
+                    <param name="control">image</param>
+                    <width>46</width>
+                    <height>40</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture>Palantir/icons/folder_temporadas.png</texture>
+                    <visible>String.IsEqual(ListItem.DBTYPE,tvshow)</visible>
+                </include>
+                <include content="Object_Control">
+                    <param name="control">label</param>
+                    <label>$VAR[temporadas]</label>
+                    <font>font27</font>
+                    <width>auto</width>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <top>-5</top>
+                    <visible>String.IsEqual(ListItem.DBTYPE,tvshow)</visible>
+                </include>
+
+                <include content="Object_Control" description="Separador">
+                    <param name="control">image</param>
+                    <width>11</width>
+                    <height>40</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture></texture>
+                    <visible>String.IsEqual(ListItem.DBTYPE,tvshow)</visible>
+                </include>
+                <include content="Object_Control">
+                    <param name="control">image</param>
+                    <width>46</width>
+                    <height>40</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture>Palantir/icons/folder_episodios.png</texture>
+                    <visible>String.IsEqual(ListItem.DBTYPE,tvshow)</visible>
+                </include>
+                <include content="Object_Control">
+                    <param name="control">label</param>
+                    <label>$VAR[episodios]</label>
+                    <font>font27</font>
+                    <width>auto</width>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <top>-5</top>
+                    <visible>String.IsEqual(ListItem.DBTYPE,tvshow)</visible>
+                </include> 
+
+                <include content="Object_Control" description="Temporadas y Episodios">
+                    <param name="control">image</param>
+                    <width>46</width>
+                    <height>40</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture>Palantir/icons/folder_temporadas.png</texture>
+                    <visible>String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)</visible>
+                </include>
+                <include content="Object_Control">
+                    <param name="control">label</param>
+					<label>Temporada $INFO[ListItem.Season]</label>
+                    <font>font27</font>
+                    <width>auto</width>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <top>-5</top>
+                    <visible>String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)</visible>
+                </include>
+
+                <include content="Object_Control" description="Separador">
+                    <param name="control">image</param>
+                    <width>11</width>
+                    <height>40</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture></texture>
+                    <visible>String.IsEqual(ListItem.DBTYPE,season) | String.IsEqual(ListItem.DBTYPE,episode)</visible>
+                </include>
+				<include content="Object_Control">
+                    <param name="control">image</param>
+                    <width>46</width>
+                    <height>40</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture>Palantir/icons/folder_episodios.png</texture>
+                    <visible>String.IsEqual(ListItem.DBTYPE,episode)</visible>
+                </include>
+                <include content="Object_Control">
+                    <param name="control">label</param>
+					<label>Capítulo $INFO[ListItem.Episode]</label>
+                    <font>font27</font>
+                    <width>auto</width>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <top>-5</top>
+                    <visible>String.IsEqual(ListItem.DBTYPE,episode)</visible>
+                </include>
+
+                <include content="Object_Control" description="Separador ">
+                    <param name="control">image</param>
+                    <width>11</width>
+                    <height>40</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture></texture>
+                    <visible>String.IsEqual(ListItem.DBTYPE,episode)</visible>
+                </include>
+
+				<include content="Object_Control" description="Episodios vistos. Solo en Temporadas. en episodes no tiene sentido y en tvshows no está la info ">
+                    <param name="control">image</param>
+                    <width>46</width>
+                    <height>40</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture>Palantir/icons/folder_vistos.png</texture>
+                    <visible>!String.IsEmpty(ListItem.Property(WatchedEpisodes)) + String.IsEqual(ListItem.DBTYPE,season)</visible>
+                </include>
+                <include content="Object_Control">
+                    <param name="control">label</param>
+                    <label>$VAR[series_vistos]</label>
+                    <font>font27</font>
+                    <width>auto</width>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <top>-5</top>
+                    <visible>!String.IsEmpty(ListItem.Property(WatchedEpisodes)) + String.IsEqual(ListItem.DBTYPE,season)</visible>
+                </include>
+				<include content="Object_Control">
+                    <param name="control">label</param>
+					<label>$VAR[series_por_ver]</label>
+                    <font>font27</font>
+                    <width>auto</width>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <top>-5</top>
+                    <visible>!String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + !String.IsEmpty(ListItem.Property(WatchedEpisodes)) + String.IsEqual(ListItem.DBTYPE,season)</visible>
+                </include>
+
+				<control type="group" description="Solo en movies">
+					<width max="60">auto</width>
+					<include content="Object_Control">
+						<param name="control">image</param>
+						<height>40</height>
+						<width>100%</width>
+						<aligny>center</aligny>
+						<aspectratio align="left">keep</aspectratio>
+						<texture>Palantir/iconsVideoaudio/$VAR[iconVideoInfoline]</texture>
+						<visible>!String.IsEmpty(ListItem.Property(P3Calidad)) + String.IsEqual(ListItem.DBTYPE,movie)</visible>
+					</include>
+				</control>
+                <include content="Object_Control">
+                    <param name="control">image</param>
+                    <height>40</height>
+                    <aligny>center</aligny>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture>Palantir/iconsIdioma/$INFO[ListItem.Property(P3IdiomaIco)].png</texture>
+					<visible>!String.IsEmpty(ListItem.Property(P3IdiomaStr)) + String.IsEqual(ListItem.DBTYPE,movie)</visible>
+                    <nested />
+                    <left>55</left>
+                </include>
+            </control>
+
+			<control type="grouplist" description="footer Derecho">
+				<align>right</align>
+				<orientation>horizontal</orientation>
+				<itemgap>30</itemgap>
+				<height>60</height>
+				<nested />
+				<bottom>65</bottom>
+				<right>80</right>
+				<include content="Object_Control">
+					<param name="control">image</param>
+					<width>240</width>
+					<height>60</height>
+					<aspectratio align="right">keep</aspectratio>
+					<texture>$INFO[Window(Home).Property(p3Info_productora_logo)]</texture>
+				</include>
+			</control>
+
+			<control type="group">
+				<include>OpenClose_Right</include>
+				<left>657</left>
+				<width>1080</width>
+				<control type="group" id="140">
+					<top>15.3%</top>
+
+					<control type="group">
+						<height>13%</height>
+						<visible>String.IsEmpty(ListItem.Art(clearlogo)) | Skin.HasSetting(PalantirNoClearlogo)</visible>
+						<animation effect="fade" start="0" end="100" time="200" delay="400" reversible="true">Visible</animation>
+						<animation effect="fade" start="100" end="0" delay="0" time="200" reversible="true">Hidden</animation>
+						<control type="label">
+							<align>left</align>
+							<aligny>top</aligny>
+							<width>1080</width>
+							<top>-15</top>
+							<label>$INFO[ListItem.Title]</label>
+							<textcolor>ffdedede</textcolor>
+							<font>font52_title</font>
+							<shadowcolor>text_shadow</shadowcolor>
+							<wrapmultiline>true</wrapmultiline>
+						</control>
+					</control>
+					<control type="group">
+						<top>0</top>
+						<animation effect="fade" start="0" end="100" time="200" delay="0" reversible="true">Visible</animation>
+						<animation effect="fade" start="100" end="0" delay="400" time="200" reversible="true">Hidden</animation>
+						<visible>!string.IsEmpty(ListItem.Art(clearlogo)) | !Skin.HasSetting(PalantirNoClearlogo)</visible>
+						<control type="image">
+							<height>13%</height>
+							<aligny>top</aligny>
+							<top>0</top>
+							<width max="1080">1080</width>
+							<aspectratio align="left">keep</aspectratio>
+							<fadetime>200</fadetime>
+							<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+						</control>
+					</control>
+
+					<include content="Object_Control">
+						<param name="control" value="textbox" />
+						<width>1080</width>
+						<height>12.9%</height>
+						<label>$INFO[ListItem.Plot]</label>
+						<aligny>top</aligny>
+						<visible>true</visible>
+						<font>font_30_narrow</font>
+						<shadowcolor>sombra_texto</shadowcolor>
+						<left>0</left>
+						<top>15.4%</top>
+						<autoscroll delay="10000" time="3000" repeat="1300"></autoscroll>
+					</include>
+
+					<control type="grouplist">
+						<hitrect x="0" y="0" w="0" h="0" />
+						<top>31.7%</top>
+						<nested />
+						<height>32</height>
+						<orientation>horizontal</orientation>
+						<align>left</align>
+						<itemgap>4</itemgap>
+						<usecontrolcoords>true</usecontrolcoords>
+
+						<include content="Info_Ratings_Item">
+							<param name="condicion">String.IsEmpty(ListItem.Rating(tmdb))</param>
+							<param name="diffuseColor">b3dedede</param>
+							<param name="icon">Palantir/icons/tmdb.png</param>
+							<param name="label">ListItem.Rating(tmdb)</param>
+							<param name="label_fallback">−.−</param>
+							<visible>!String.IsEmpty(ListItem.Rating(tmdb))</visible>
+						</include>
+
+						<include content="Info_Ratings_Item">
+							<param name="condicion">String.IsEmpty(ListItem.Rating(trakt))</param>
+							<param name="diffuseColor">b3dedede</param>
+							<param name="icon">Palantir/icons/trakt.png</param>
+							<param name="label">ListItem.Rating(trakt)</param>
+							<param name="label_fallback">−.−</param>
+							<visible>!String.IsEmpty(ListItem.Rating(trakt))</visible>
+						</include>
+
+						<include content="Info_Ratings_Item">
+							<param name="condicion">String.IsEmpty(ListItem.Premiered)</param>
+							<param name="diffuseColor">b3dedede</param>
+							<param name="icon">Palantir/icons/year.png</param>
+							<param name="label">ListItem.Premiered</param>
+							<param name="label_fallback">−.−</param>
+							<visible>!String.IsEmpty(ListItem.Premiered)</visible>
+						</include>
+
+						<include content="Info_Ratings_Item">
+							<param name="condicion">String.IsEmpty(ListItem.Duration)</param>
+							<param name="diffuseColor">b3dedede</param>
+							<param name="icon">Palantir/icons/tiempo.png</param>
+							<param name="label">ListItem.Duration</param>
+							<param name="label_fallback">−.−</param>
+							<visible>!String.IsEmpty(ListItem.Duration)</visible>
+						</include>
+
+						<include content="Info_Ratings_Item">
+							<param name="condicion">!String.IsEmpty(Window(home).Property(p3Info_status))</param>
+							<param name="diffuseColor">b3dedede</param>
+							<param name="icon">Palantir/icons/timeline.png</param>
+							<param name="label">Window(home).Property(p3Info_status)</param>
+							<param name="label_fallback">−.−</param>
+							<visible>!String.IsEmpty(Window(home).Property(p3Info_status))</visible>
+						</include>
+
+						<include content="Object_Control">
+							<visible>!String.IsEmpty(ListItem.Mpaa)</visible>
+							<param name="control" value="image" />
+							<top>1</top>
+							<fadetime>400</fadetime>
+							<height>32</height>
+							<width>55</width>
+							<align>left</align>
+							<aspectratio scalediffuse="true">scale</aspectratio>
+							<texture>Palantir/mpaa/$INFO[ListItem.Mpaa].png</texture>
+						</include>
+					</control>
+
+					<control type="grouplist">
+						<visible>!Control.HasFocus(9805)</visible>
+						<hitrect x="0" y="0" w="0" h="0" />
+						<top>36.7%</top>
+						<nested />
+						<orientation>vertical</orientation>
+						<align>left</align>
+						<itemgap>35</itemgap>
+						<usecontrolcoords>true</usecontrolcoords>
+						<include content="Object_Control">
+							<param name="control" value="label" />
+							<textcolor>b3dedede</textcolor>
+							<width>auto</width>
+							<align>left</align>
+							<font>font23_narrow</font>
+							<label>$INFO[Window(Home).Property(p3Info_cast),Reparto: ,]</label>
+							<visible>!String.IsEmpty(Window(Home).Property(p3Info_cast))</visible>
+							<nested />
+						</include>
+						<include content="Object_Control">
+							<param name="control" value="label" />
+							<textcolor>b3dedede</textcolor>
+							<width>auto</width>
+							<align>left</align>
+							<font>font23_narrow</font>
+							<label>$VAR[director]</label>
+							<visible>String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(Window(Home).Property(p3Info_director))</visible>
+							<nested />
+						</include>
+						<include content="Object_Control">
+							<param name="control" value="label" />
+							<textcolor>b3dedede</textcolor>
+							<width>auto</width>
+							<align>left</align>
+							<font>font23_narrow</font>
+							<label>$VAR[created_by]</label>
+							<visible>!String.IsEqual(ListItem.DBTYPE,movie) + !String.IsEmpty(Window(Home).Property(p3Info_created_by))</visible>
+							<nested />
+						</include>
+						<include content="Object_Control">
+							<param name="control" value="label" />
+							<textcolor>b3dedede</textcolor>
+							<width>auto</width>
+							<align>left</align>
+							<font>font23_narrow</font>
+							<label>Género: $INFO[ListItem.Genre]</label>
+							<visible>!String.IsEmpty(ListItem.Genre)</visible>
+							<nested />
+						</include>
+						<include content="Object_Control">
+							<param name="control" value="label" />
+							<textcolor>b3dedede</textcolor>
+							<width>auto</width>
+							<align>left</align>
+							<font>font23_narrow</font>
+							<label>$VAR[production_countries]</label>
+							<visible>!String.IsEmpty(Window(Home).Property(p3Info_production_countries))</visible>
+							<nested />
+						</include>
+						<include content="Object_Control">
+							<param name="control" value="label" />
+							<textcolor>b3dedede</textcolor>
+							<width>auto</width>
+							<align>left</align>
+							<font>font23_narrow</font>
+							<label>$VAR[revenue_budget]</label>
+							<visible>String.IsEqual(ListItem.DBTYPE,movie) + [[!String.IsEmpty(Window(Home).Property(p3Info_budget)) + !String.IsEqual(Window(Home).Property(p3Info_budget),0)] | [!String.IsEmpty(Window(Home).Property(p3Info_revenue)) + !String.IsEqual(Window(Home).Property(p3Info_revenue),0)]]</visible>
+							<nested />
+						</include>
+					</control>
+
+					<control type="grouplist" id="5000" description="Menú Vertical General">
+						<defaultcontrol>8</defaultcontrol>
+						<visible allowhiddenfocus="true">!ControlGroup(5200).HasFocus() + !Control.HasFocus(9805)</visible>
+						<left>0</left>
+						<top>59%</top>
+						<width>600</width>
+						<height>215</height>
+						<itemgap>5</itemgap>
+						<align>center</align>
+						<orientation>vertical</orientation>
+						<scrolltime tween="quadratic">200</scrolltime>
+						<animation effect="fade" reversible="false" start="0" end="100" time="100" delay="200">Visible</animation>
+            			<animation effect="fade" reversible="false" start="100" end="0" time="100" delay="0">Hidden</animation>
+
+						<include content="boton_info" description="Reproducir Peliculas/Series">
+							<param name="id" value="5001" />
+							<param name="groupid" value="5101" />
+							<param name="size_v" value="600" />
+							<param name="size_h" value="45" />
+							<param name="Label" value="$VAR[label_boton_Info_reproducir]" />
+							<param name="icono_colordiffuse" value="FF2c2c2c" />
+							<param name="fondo_colordiffuse" value="FFcccccc" />
+							<param name="icono" value="Palantir/icons/play2.png" />
+							<param name="click_1" value="PlayMedia($ESCINFO[ListItem.FileNameAndPath],noresume,playlist_type_hint=1)" />
+							<param name="click_1_condition" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode)" />
+							<param name="click_2" value="ActivateWindow(videos,$INFO[ListItem.FolderPath],return)" />
+							<param name="click_2_condition" value="String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)" />
+						</include>
+
+						<include content="boton_info" description="resume Peliculas">
+							<param name="id" value="9" />
+							<param name="groupid" value="5109" />
+							<param name="size_v" value="600" />
+							<param name="size_h" value="45" />
+							<param name="Label" value="$VAR[label_boton_Info_reanudar]" />
+							<param name="visible" value="ListItem.IsResumable + !String.IsEmpty(Window(Home).Property(p3Info_resume_time))" />
+							<param name="icono_colordiffuse" value="FF2c2c2c" />
+							<param name="fondo_colordiffuse" value="FFcccccc" />
+							<param name="icono" value="Palantir/icons/play_resume.png" />
+							<param name="reanudar" value="true" />
+						</include>
+						
+						<!--nclude content="boton_info">
+							<param name="id" value="5006" />
+							<param name="groupid" value="5106" />
+							<param name="size_v" value="600" />
+							<param name="size_h" value="45" />
+							<param name="Label" value="Trailers" />
+							<param name="visible" value="!String.IsEmpty(ListItem.Trailer) | System.AddonIsEnabled(plugin.video.youtube)" />
+							<param name="cerrar_dialog" value="false" />
+							<param name="icono_colordiffuse" value="FF2c2c2c" />
+							<param name="fondo_colordiffuse" value="FFcccccc" />
+							<param name="icono" value="Palantir/icons/trailers.png" />
+							<param name="click_1" value="SetFocus(5200)" />
+							<param name="click_1_condition" value="!String.IsEmpty(ListItem.Trailer)" />
+							<param name="click_2" value="SetFocus(9805)" />
+							<param name="click_2_condition" value="String.IsEmpty(ListItem.Trailer)" />
+						</include-->
+						<include content="boton_info">
+							<param name="id" value="5201" />
+							<param name="groupid" value="5211" />
+							<param name="size_v" value="600" />
+							<param name="size_h" value="45" />
+							<param name="Label" value="Reproducir trailer" />
+							<param name="visible" value="!String.IsEmpty(ListItem.Trailer)" />
+							<param name="icono_colordiffuse" value="FF2c2c2c" />
+							<param name="fondo_colordiffuse" value="FFcccccc" />
+							<param name="icono" value="Palantir/icons/youtube2.png" />
+							<param name="click_1" value="SetProperty(yt_trailer,Si,Home)" />
+							<param name="click_2" value="PlayMedia($ESCINFO[ListItem.Trailer],playlist_type_hint=1)" />
+						</include>
+
+						<include content="boton_info" condition="ListItem.Property(P3Titulo)">
+							<param name="id" value="5003" />
+							<param name="groupid" value="5103" />
+							<param name="size_v" value="600" />
+							<param name="size_h" value="45" />
+							<param name="cerrar_dialog" value="false" />
+							<param name="Label" value="Trakt Rating" />
+							<param name="icono_colordiffuse" value="FF2c2c2c" />
+							<param name="fondo_colordiffuse" value="FFcccccc" />
+							<param name="icono" value="Palantir/icons/trakttv.png" />
+							<param name="click_1" value="RunScript(plugin.video.palantir3, None, &addRating=$INFO[ListItem.DBTYPE]_$INFO[ListItem.Property(P3Titulo)]_$INFO[ListItem.UniqueID(tmdb)])"/>
+						</include>
+
+						<include content="boton_info">
+							<param name="id" value="5004" />
+							<param name="groupid" value="5104" />
+							<param name="size_v" value="600" />
+							<param name="size_h" value="45" />
+							<param name="cerrar_dialog" value="false" />
+							<param name="Label" value="Fanart" />
+							<param name="visible" value="!String.IsEmpty(ListItem.Art(fanart))" />
+							<param name="icono_colordiffuse" value="FF2c2c2c" />
+							<param name="fondo_colordiffuse" value="FFcccccc" />
+							<param name="icono" value="Palantir/icons/fanart.png" />
+							<param name="click_1" value="SetProperty(fanart,$ESCINFO[ListItem.Art(fanart)],home)" />
+							<param name="click_2" value="ActivateWindow(1104)" />
+						</include>
+
+					</control>
+
+					<!--control type="grouplist" id="5200" description="Menú Vertical Trailers">
+						<defaultcontrol>11</defaultcontrol>
+						<visible allowhiddenfocus="true">ControlGroup(5200).HasFocus() + !Control.HasFocus(9805)</visible>
+						<left>0</left>
+						<top>58.4%</top>
+						<width>600</width>
+						<height>115</height>
+						<aligny>top</aligny>
+						<itemgap>6</itemgap>
+						<align>center</align>
+						<orientation>vertical</orientation>
+						<scrolltime tween="quadratic">200</scrolltime>
+						<onback>5000</onback>
+						<onleft>5000</onleft>
+						<onright>5000</onright>
+						<animation effect="fade" reversible="false" start="0" end="100" time="100" delay="200">Visible</animation>
+            			<animation effect="fade" reversible="false" start="100" end="0" time="100" delay="0">Hidden</animation>
+
+						<include content="boton_info">
+							<param name="id" value="5201" />
+							<param name="groupid" value="5211" />
+							<param name="size_v" value="600" />
+							<param name="size_h" value="45" />
+							<param name="Label" value="Reproducir trailer" />
+							<param name="visible" value="!String.IsEmpty(ListItem.Trailer)" />
+							<param name="icono_colordiffuse" value="FF2c2c2c" />
+							<param name="fondo_colordiffuse" value="FFcccccc" />
+							<param name="icono" value="Palantir/icons/youtube2.png" />
+							<param name="click_1" value="SetProperty(yt_trailer,Si,Home)" />
+							<param name="click_2" value="PlayMedia($ESCINFO[ListItem.Trailer],playlist_type_hint=1)" />
+						</include>
+
+						<include content="boton_info">
+							<param name="id" value="5202" />
+							<param name="groupid" value="5212" />
+							<param name="size_v" value="600" />
+							<param name="size_h" value="45" />
+							<param name="cerrar_dialog" value="false" />
+							<param name="Label" value="Buscar mas trailers en Youtube" />
+							<param name="visible" value="System.HasAddon(plugin.video.youtube)" />
+							<param name="icono_colordiffuse" value="FF2c2c2c" />
+							<param name="fondo_colordiffuse" value="FFcccccc" />
+							<param name="icono" value="Palantir/icons/youtube2.png" />
+							<param name="click_1" value="SetFocus(9805)" />
+						</include>
+					</control>
+
+					<include content="Object_Control" description="flechas Menu Vertical">
+						<param name="control" value="image" />
+						<aspectratio>keep</aspectratio>
+						<width>42</width>
+						<height>42</height>
+						<top>59.3%</top>
+						<left>-5%</left>
+						<texture colordiffuse="FFcccccc">Palantir/icons/angles-up.png</texture>
+						<visible>Control.IsVisible(5000) + Container(5000).HasPrevious</visible>
+						<animation effect="fade" start="0" end="100" time="100" reversible="true">Visible</animation>
+						<animation effect="fade" start="100" end="0" time="100" reversible="true">Hidden</animation>
+					</include>
+					<include content="Object_Control">
+						<param name="control" value="image" />
+						<aspectratio>keep</aspectratio>
+						<width>42</width>
+						<height>42</height>
+						<top>77.3%</top>
+						<left>-5%</left>
+						<texture flipy="true" colordiffuse="FFcccccc">Palantir/icons/angles-up.png</texture>
+						<visible>Control.IsVisible(5000) + Container(5000).HasNext</visible>
+						<animation effect="fade" start="0" end="100" time="100" reversible="true" delay="200">Visible</animation>
+						<animation effect="fade" start="100" end="0" time="100" reversible="true" delay="0">Hidden</animation>
+					</include-->
+
+				</control>
+
+				<!-- Animacion si onfocus 9805  -->
+				<animation effect="slide" start="0" end="-580" time="400" tween="cubic" easing="out" reversible="false" condition="Control.HasFocus(9805)">Conditional</animation>
+            	<animation effect="slide" end="0" start="-580" time="400" tween="cubic" easing="out" reversible="false" condition="!Control.HasFocus(9805)">Conditional</animation>
+			</control>
+
+			<!-- youtube videos -->
+			<!--include condition="System.AddonIsEnabled(plugin.video.youtube)">Layout_YoutubeTrailers</include-->
+		</control>
+
+		<include condition="Skin.HasSetting(touchmode)">TouchBackButton</include>
+	</controls>
+</window>

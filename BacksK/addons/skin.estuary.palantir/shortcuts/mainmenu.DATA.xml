@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<shortcuts>
+   <shortcut>
+        <label>Home Palantir</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>menuhomepalantir</defaultID>
+        <icon>Palantir/iconsmenu/icon.png</icon>
+        <action>ActivateWindow(Videos,"plugin://plugin.video.palantir3",return)</action>
+        <visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+    </shortcut>
+    <shortcut>
+        <label>$VAR[p3NameEspeciales]</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>menupalantirEspeciales</defaultID>
+        <icon>Palantir/iconsmenu/especial.png</icon>
+        <action>ActivateWindow(Videos,$VAR[p3PathEspeciales],return)</action>
+        <visible>System.AddonIsEnabled(plugin.video.palantir3) + !String.IsEmpty(Window(home).Property(p3especialespath)) + !Skin.HasSetting(OcultarWidgetEspeciales)</visible>
+    </shortcut>
+    <shortcut>
+        <label>Top10 Palantir</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>menupalantirtop10</defaultID>
+        <icon>Palantir/iconsmenu/top10.png</icon>
+        <action>ActivateWindow(Videos,"plugin://plugin.video.palantir3",return)</action>
+        <visible>System.AddonIsEnabled(plugin.video.palantir3) + Addon.SettingBool(plugin.video.palantir3, trakt_enabled) + !String.IsEmpty(Addon.SettingStr(plugin.video.palantir3, trakt_slug)) + !Skin.HasSetting(OcultarWidgetTop10)</visible>
+    </shortcut>
+    <shortcut>
+        <label>Películas Palantir</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>menupalantir2</defaultID>
+        <icon>Palantir/iconsmenu/peliculas.png</icon>
+        <action>ActivateWindow(Videos,$VAR[p3Peliculas],return)</action>
+        <visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+    </shortcut>
+    <shortcut>
+        <label>Series Palantir</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>menupalantir3</defaultID>
+        <icon>Palantir/iconsmenu/series.png</icon>
+        <action>ActivateWindow(Videos,"$VAR[p3Series]",return)</action>
+        <visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+    </shortcut>
+    <shortcut>
+        <label>Dibujos Palantir</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>menupalantir4</defaultID>
+        <icon>Palantir/iconsmenu/dibujos.png</icon>
+        <action>ActivateWindow(Videos,"$VAR[p3Dibujos]",return)</action>     
+        <visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+    </shortcut>
+    <shortcut>
+        <label>Anime Palantir</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>menupalantir5</defaultID>
+        <icon>Palantir/iconsmenu/anime.png</icon>
+        <action>ActivateWindow(Videos,"$VAR[p3Anime]",return)</action>
+        <visible>System.AddonIsEnabled(plugin.video.palantir3)</visible>
+    </shortcut>
+    <shortcut>
+        <label>Favoritos Palantir</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>menupalantirFavoritos</defaultID>
+        <icon>Palantir/iconsmenu/favoritos2.png</icon>
+        <action>ActivateWindow(Videos,"$VAR[p3Favoritos]",return)</action>
+        <visible>System.AddonIsEnabled(plugin.video.palantir3) + [!String.IsEmpty(Window(home).Property(p3PelisFavoritasPath)) | !String.IsEmpty(Window(home).Property(p3SeriesFavoritasPath))] + !Skin.HasSetting(OcultarWidgetFavoritosPalantir)</visible>
+    </shortcut>
+    <shortcut>
+        <label>24001</label>
+        <label2>Common Shortcut</label2>
+        <defaultID>addons</defaultID>
+        <icon>Palantir/iconsmenu/addons.png</icon>
+        <action>ActivateWindow(1100)</action>
+    </shortcut>
+</shortcuts>

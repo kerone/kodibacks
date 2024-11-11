@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="View_56_AddonsView">
+	<include>LogoSp</include>
+		<control type="group">
+			<description>Poster Viewtype</description>
+			<centertop>50%</centertop>
+			<left>0</left>
+			<height>880</height>
+			<control type="group">
+				<visible>Control.IsVisible(56) + Control.HasFocus(56)</visible>
+				<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+				<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+				<animation effect="fade" time="200">VisibleChange</animation>
+			</control>
+			
+			<control type="group">
+				<visible>Control.IsVisible(56)</visible>
+				<include>Visible_Right</include>
+				<include>OpenClose_Right</include>
+				<top>160</top>
+				<control type="group">
+					<left>20%</left>
+					<top>-20</top>
+					<control type="label">
+						<label>$INFO[ListItem.Label]</label>
+						<font>font52_title</font>
+						<top>-70</top>
+					</control>	
+					<control type="label">
+						<label>[COLOR button_focus]Creador:[/COLOR] $INFO[ListItem.AddonCreator]</label>
+						<font>font25_title</font>
+						<visible>!String.IsEmpty(ListItem.AddonCreator)</visible>
+					</control>
+					<control type="label">
+						<label>[COLOR button_focus]Version:[/COLOR] $INFO[ListItem.AddonVersion]</label>
+						<font>font25_title</font>
+						<top>40</top>
+						<visible>!String.IsEmpty(ListItem.AddonVersion)</visible>
+					</control>
+				</control>
+				
+				
+				<control type="fixedlist" id="56">
+					<left>200</left>
+					<top>0</top>
+					<width>1500</width>
+					<height>600</height>
+					<focusposition>1</focusposition>
+					<movement>7</movement>
+					<pagecontrol>5199</pagecontrol>
+					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<orientation>horizontal</orientation>
+					<visible>$EXP[Vista56]</visible>
+					<onleft>56</onleft>
+					<onup>9000</onup>
+					<ondown>5199</ondown>
+					<onright>56</onright>
+					<preloaditems>1</preloaditems>
+					<viewtype label="AddonsPalantir">icon</viewtype>
+					<itemlayout width="270">
+
+						<control type="image">
+							<depth>DepthContentPopout</depth>
+							<left>0</left>
+							<top>90</top>
+							<width>170</width>
+							<height>280</height>
+							<aspectratio aligny="center">keep</aspectratio>
+							<texture fallback="Palantir/icon.png" background="true">$VAR[ShiftThumbVar]</texture>
+						</control>
+						<control type="textbox">
+							<left>0</left>
+							<top>303</top>
+							<width>170</width>
+							<height>105</height>
+							<align>center</align>
+							<aligny>center</aligny>
+								<font>font20_title</font>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</itemlayout>
+
+
+					<focusedlayout width="270">
+						<include>botonFocusedLayoutVARs</include>
+						<control type="image">
+							<left>0</left>
+							<top>330</top>
+							<width>170</width>
+							<height>110</height>
+							<visible>Control.HasFocus(56)</visible>
+							<animation effect="fade" time="200">VisibleChange</animation>
+							<texture colordiffuse="button_focus_flix">Palantir/lists/focus2.png</texture>
+						</control>
+						<control type="image">
+							<depth>DepthContentPopout</depth>
+							<left>0</left>
+							<top>90</top>
+							<width>170</width>
+							<height>280</height>
+							<aspectratio aligny="center">keep</aspectratio>
+							<texture fallback="Palantir/icon.png" background="true">$VAR[ShiftThumbVar]</texture>
+						</control>
+						<control type="textbox">
+							<left>0</left>
+							<top>303</top>
+							<width>170</width>
+							<height>105</height>
+							<align>center</align>
+							<aligny>center</aligny>
+							<font>font20_title</font>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>button_focus</textcolor>
+							<autoscroll time="3000" delay="3000" repeat="3000">True</autoscroll>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="textbox">
+					<label>$INFO[ListItem.AddonDescription]</label>
+					<font>font25_title</font>
+					<left>10%</left>
+					<top>500</top>
+					<width>1600</width>
+				</control>
+			</control>
+			<control type="group">
+				<visible>Control.IsVisible(56)</visible>
+				<include>Visible_Right</include>
+				<include>OpenClose_Right</include>
+				<control type="group">
+					<width>50%</width>
+					<include content="ShiftTextbox">
+						<param name="textbox_id" value="56200" />
+						<param name="textbox_content" value="$VAR[ShiftLeftTextBoxVar]" />
+					</include>
+				</control>
+				<control type="group">
+					<left>50%</left>
+					<width>50%</width>
+					<include content="ShiftTextbox">
+						<param name="textbox_id" value="56300" />
+						<param name="textbox_content" value="$VAR[ShiftRightTextBoxVar]" />
+					</include>
+				</control>
+				<control type="panel">
+					<left>20</left>
+					<top>48</top>
+					<width>940</width>
+					<height>180</height>
+					<orientation>horizontal</orientation>
+					<visible>ListItem.IsCollection</visible>
+					<animation effect="fade" time="200">VisibleChange</animation>
+					<focusedlayout height="40" width="470">
+						<control type="label">
+							<textoffsetx>10</textoffsetx>
+							<height>40</height>
+							<width>460</width>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Year,[COLOR button_focus],[/COLOR]  -  ]$INFO[ListItem.Title]</label>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+					</focusedlayout>
+					<itemlayout height="40" width="470">
+						<control type="label">
+							<textoffsetx>10</textoffsetx>
+							<height>40</height>
+							<width>460</width>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Year,[COLOR button_focus],[/COLOR]  -  ]$INFO[ListItem.Title]</label>
+							<shadowcolor>text_shadow</shadowcolor>
+						</control>
+					</itemlayout>
+					<content sortby="year" sortorder="ascending">$VAR[InfoListPathVar]</content>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="ShiftTextbox">
+		<control type="group">
+			<animation effect="fade" time="200" start="0" end="100" condition="!String.IsEmpty(Control.GetLabel($PARAM[textbox_id]))">Conditional</animation>
+			<animation effect="fade" time="200" start="100" end="0" condition="String.IsEmpty(Control.GetLabel($PARAM[textbox_id]))">Conditional</animation>
+			<control type="textbox" id="$PARAM[textbox_id]">
+				<left>30</left>
+				<top>45</top>
+				<right>30</right>
+				<height>163</height>
+				<label>$PARAM[textbox_content]</label>
+				<shadowcolor>text_shadow</shadowcolor>
+			</control>
+		</control>
+	</include>
+</includes>

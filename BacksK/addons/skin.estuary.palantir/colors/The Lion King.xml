@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<colors>
+	<color name="primary_background">FF000000</color>
+	<color name="secondary_background">FF000000</color>
+	<color name="dialog_tint">FF1A2123</color>
+	<color name="background">FF000000</color>
+	<color name="bg_image">FF909090</color>
+	<color name="bg_overlay">30FFFFFF</color>
+	<color name="black">FF000000</color>
+	<color name="white">FFF0F0F0</color>
+	<color name="grey">FFA0A0A0</color>
+	<color name="blue">FF7ACAFE</color>
+	<color name="red">ffee2d1e</color>
+	<color name="button_focus">ffff9b15</color>
+	<color name="text_shadow">22000000</color>
+	<color name="border_alpha">60FFFFFF</color>
+	<color name="disabled">40FFFFFF</color>
+	<color name="selected">FF11E7B1</color>
+	<color name="invalid">FFFF0000</color>
+
+	<!--Nuevos-->
+	<color name="IconsMenuNoFocus">E62D2E2E</color>
+	<color name="IconsMenuFocus">ffff9b15</color>
+	<color name="vistoProgressSeason2">ffe50914</color>
+	<color name="Visto">fff608d64</color>
+	<color name="Seguir">fffcf03c</color>
+	<color name="Nuevo">ffC44e42</color>
+	<color name="dorado">ffcfda05</color>
+	<color name="sombra_texto"></color>
+	<color name="amarillopalantir">fffcf03c</color>
+	<color name="amarilloProgressSeason2">fffcf03d</color>
+	<color name="malvapalantir">ffff9b15</color>
+	<color name="button_focus_flix">fffcf03c</color>
+	<color name="azulpalantir">fff95404</color>
+
+	<color name="encabezadosSettings">ffbb3d02</color>
+	<color name="subencabezadosSettings">ffff9b15</color>
+	<color name="warnSettings">ff6b120e</color>
+	<color name="titulosVideos">ffff9b15</color>
+	<color name="titulosEpisodios">ffbb3d02</color>
+	<color name="titulosTemporadas">fff95404</color>
+	<color name="temporadasEpisodios">fffcf03c</color>
+	<color name="progress">fff95404</color>
+</colors>

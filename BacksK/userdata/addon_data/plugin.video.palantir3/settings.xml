@@ -1,0 +1,39 @@
+<settings version="2">
+    <setting id="RemenberQuery" default="true">true</setting>
+    <setting id="IdiomaCalidad" default="true">true</setting>
+    <setting id="NextEpisode" default="true">true</setting>
+    <setting id="follow-up3" default="true">true</setting>
+    <setting id="hide_watched" default="true">true</setting>
+    <setting id="moviesUnfinished" default="true">true</setting>
+    <setting id="hideUnfinished" default="true">30</setting>
+    <setting id="conColor" default="true">true</setting>
+    <setting id="MenuColor">30344</setting>
+    <setting id="LabelColor">30344</setting>
+    <setting id="TituloColor" default="true">30344</setting>
+    <setting id="QltColor">30250</setting>
+    <setting id="AudioColor" default="true">30329</setting>
+    <setting id="DateColor" default="true">30329</setting>
+    <setting id="ServerColor" default="true">30344</setting>
+    <setting id="Alldebrid_enabled">true</setting>
+    <setting id="Alldebrid_apikey" default="true" />
+    <setting id="Alldebrid_info" default="true">true</setting>
+    <setting id="Realdebrid_enabled" default="true">false</setting>
+    <setting id="Realdebrid_token" default="true" />
+    <setting id="Realdebrid_refresh_token" default="true" />
+    <setting id="Realdebrid_info" default="true">true</setting>
+    <setting id="trakt_enabled">true</setting>
+    <setting id="trakt_user_lists" default="true">true</setting>
+    <setting id="probAddRanting" default="true">40</setting>
+    <setting id="trakt_access_token">c6553849c00f849167142345b7bb3ae4746a43192dae5575014fc4b3cc24f3d4</setting>
+    <setting id="parental_passw" default="true">24496a55ec9aa808b1154eb16a67a61e</setting>
+    <setting id="parental_enabled" default="true">true</setting>
+    <setting id="OrderNovedades" default="true"> order by fecha desc, updated desc</setting>
+    <setting id="OrderYear" default="true"> order by titulo COLLATE latin1</setting>
+    <setting id="OrderGenre" default="true"> order by titulo COLLATE latin1</setting>
+    <setting id="OrderQuality" default="true"> order by updated desc</setting>
+    <setting id="OrderSpecial" default="true"> order by titulo COLLATE latin1</setting>
+    <setting id="PalCO">2024-11-08T17:29:41.941646+00:00</setting>
+    <setting id="trakt_refresh_token" default="true">a28a9dd6fce974e6b7894167c5c6f7759045e37708df79d01e50f1009d681539</setting>
+    <setting id="trakt_slug" default="true">ker0n3</setting>
+    <setting id="trakt_token_expired_at" default="true">1738676767</setting>
+</settings>

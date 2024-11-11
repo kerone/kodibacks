@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    
+    <include name="Object_Control">
+        <control type="$PARAM[control]" id="$PARAM[id]">
+            <nested />
+        </control>
+    </include>
+    
+    <include name="Vert_Red_Line">
+        <control type="image">
+            <top>-1</top>
+            <height>1</height>
+            <texture colordiffuse="44ff0000">Palantir/background/white.png</texture>
+        </control>
+    </include>
+
+    <include name="Vert_Red_Line_5">
+        <include>Vert_Red_Line</include>
+        <include>Vert_Red_Line</include>
+        <include>Vert_Red_Line</include>
+        <include>Vert_Red_Line</include>
+        <include>Vert_Red_Line</include>
+    </include>
+
+    <include name="Horz_Red_Line">
+        <control type="image">
+            <left>-1</left>
+            <width>1</width>
+            <texture colordiffuse="44ff0000">Palantir/background/white.png</texture>
+        </control>
+    </include>
+
+    <include name="Horz_Red_Line_5">
+        <include>Horz_Red_Line</include>
+        <include>Horz_Red_Line</include>
+        <include>Horz_Red_Line</include>
+        <include>Horz_Red_Line</include>
+        <include>Horz_Red_Line</include>
+    </include>
+
+    <include name="Overlay_InfoLabel">
+        <definition>
+            <control type="button" id="$PARAM[id]">
+                <nested />
+                <texturenofocus colordiffuse="panel_bg">Palantir/background/white.png</texturenofocus>
+                <textoffsetx>0</textoffsetx>
+                <aligny>center</aligny>
+                <height>25</height>
+                <font>font_debug</font>
+                <align>left</align>
+                <textcolor>magenta</textcolor>
+                <width>auto</width>
+            </control>
+        </definition>
+    </include>
+
+
+    <include name="testers">
+        <left>300</left>
+        <control type="textbox">
+                      <!-- <visible>String.IsEqual(Container(28501).ListItemAbsolute(1).Label,Container(28500).ListItem.Label])</visible> -->
+                    <!-- <visible>Addon.SettingBool(plugin.video.palantir3, trakt_enabled)</visible> -->
+					<left>2%</left>
+					<top>2%</top>
+					<width>80%</width>
+					<height max="100%">auto</height> 
+					<font>font25_title</font>
+                    <color>Nuevo</color>
+					<label>
+                     videop aspect - $INFO[VideoPlayer.VideoAspect]
+                    [COLOR amarillopalantir]
+                          window idFocusID-$INFO[Window(home).Property(Control_HasFocusID)]
+                          window idFocusCCID-$INFO[Window(home).Property(Control_HasFocusCCID)]
+                           window idFocusFP-$INFO[Window(home).Property(Control_HasFocusFP)]
+                           window idFocusDBTYPE-$INFO[Window(home).Property(Control_HasFocusDBT)]
+                          window idFocusItem-[COLOR visto]$INFO[Window(home).Property(Control_HasFocusItem)][/COLOR]
+                          window ListPosition- [COLOR visto]$INFO[Window(home).Property(listposition),,     -Container.CurrentItem][/COLOR]
+                          window controlfocus-$INFO[system.currentcontrolid]
+                          window(home).Container(9000).ListItem(0).Property(widget) - $INFO[String.IsEqual(Window(10000).Property(WidgetRandom),WidgetRandom)]
+                          aasdadd- $INFO[Window(10000).Property(WidgetRandom)]
+                          especiales-$INFO[Window(home).Property(p3especialespath)]
+                          p3especialesname- $INFO[Window(home).Property(p3especialesname)]
+                          ELEMENTO column-$INFO[Container(system.currentcontrolid).Column]
+                          ELEMENTO row-$INFO[Container.Row]
+                          ELEMENTO position-$INFO[Container.Position]
+                          ELEMENTO --------$INFO[Container(system.currentcontrolid).FolderPath]
+                          <!-- &reload=$INFO[Window(home).Property(P3ReloadPeliculas)]
+                          GFSADGDSG $INFO[Container(28501).ListItemAbsolute(1).Label[CR]Container(28500).ListItem.Label]
+                          pelisNovedades-$INFO[Window(home).Property(P3ReloadPeliculasNovedades)]
+                          videoplayer audiocodec - $INFO[VideoPlayer.AudioCodec]
+                          videoplayer lang - $INFO[VideoPlayer.AudioLanguage]
+                          videoplayer hdrty - $INFO[VideoPlayer.HdrType]
+                          videop resolucion - $INFO[VideoPlayer.VideoResolution]
+                          visibility- $INFO[Window(home).Property(WidgetVisibility)]
+                          widget property - $INFO[Container(9000).ListItem.Property(widget)]
+                          widget propert2y - $INFO[Container(9000).ListItem.Property(widgetPath.1)]
+                          trakt -$INFO[Window(home).Property(p3Track)]
+                          aa - $INFO[Addon.SettingStr(plugin.video.palantir3, trakt_enabled)] -->
+                          <!-- window TimerTrailer-$INFO[Window(home).Property(TimerTrailer)] -->
+                          <!-- videoplayer content: $INFO[System.uptime(mm:ss)] -->
+
+                          aaa- $INFO[Window(home).Property(prueba)]
+                          
+                          [/COLOR]
+                          <!-- window trailerpath - $INFO[Window(home).Property(TrailerPath)]
+                          window trailerpath2 - $INFO[Window(home).Property(TrailerPath2)]
+                          player path - $INFO[Player.FileNameAndPath]
+                          TIEMPO ESPERA- $INFO[$VAR[TiempoEsperaTrailer]]
+                          SYSTEM IDLE - $INFO[System.IdleTime()]
+                          alarma trailer - $INFO[Window(home).Property(AlarmaTrailer)]
+                          [/COLOR]
+                    
+                            o	$INFO[ListItem.Property(TotalSeasons)]: Total de temporadas de la serie (sin contar especiales)
+                            o	$INFO[ListItem.Property(P3TotalSeasons)]: Total de temporadas de la serie en P3 (sin contar especiales)
+                            o	$INFO[ListItem.Property(TotalEpisodes)]: Total de episodios de la serie
+                            o	$INFO[ListItem.Property(P3TotalEpisodes)]: Total de episodios de la serie en P3
+                            o	$INFO[ListItem.Property(NumEpisodes)]: Numero de episodios de la temporada
+                            o	$INFO[ListItem.Property(P3NumEpisodes)]: Numero de episodios de la temporada en P3
+                            o	$INFO[ListItem.Property(WatchedEpisodes)]: Numero de episodios vistos de la temporada
+                            o	$INFO[ListItem.Property(P3NewEpisodes)]: True si existen nuevos episodios 
+                            o	$INFO[ListItem.Property(P3.Titulo)]: Titulo de la serie o película
+                            o	$INFO[ListItem.Property(Palantir.Idioma)]: Lista de idiomas incluidos en los enlaces -->
+
+                    </label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                  
+                <control type="textbox">
+                    <visible>$EXP[Vista51]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista51</label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                <control type="textbox">
+                    <visible>$EXP[Vista52]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista52
+                    </label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                <control type="textbox">
+                    <visible>$EXP[Vista53]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista53
+                    </label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                <control type="textbox">
+                    <visible>$EXP[Vista54]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista54
+                    </label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                <control type="textbox">
+                    <visible>$EXP[Vista500]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista500</label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                <control type="textbox">
+                    <visible>$EXP[Vista501]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista501
+                    </label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                <control type="textbox">
+                    <visible>$EXP[Vista502]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista502 
+                    </label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                <control type="textbox">
+                      <visible>$EXP[Vista504]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista504 
+                    </label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+                <control type="textbox">
+                      <visible>$EXP[Vista505]</visible>
+					<left>2%</left>
+					<top>2%</top>
+					<width>50%</width>
+					<height max="100%">auto</height> 
+					<font>font25_narrow</font>
+                    <color>Nuevo</color>
+					<label>vista505
+                    </label>
+					<shadowcolor>sombra_texto</shadowcolor>
+					<align>left</align>
+					<aligny>center</aligny>
+					<autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                    <zorder>9999</zorder>
+				</control>
+    </include>
+</includes>

@@ -1,0 +1,25 @@
+{
+    "addon_version": "4.0.12",
+    "files": {
+        "channels": [
+            "area51",
+            "cinedeantes",
+            "cinematteflix",
+            "dontorrentsin",
+            "mejortorrentapp",
+            "papayaseries",
+            "porntube",
+            "ppeliculas",
+            "sigloxx"
+        ],
+        "modules": [
+            "helper"
+        ],
+        "root dir": [
+            "dominios",
+            "version"
+        ]
+    },
+    "fix_version": 1,
+    "hash": "9f77080c35e8beec414f26f3b571aa24"
+}

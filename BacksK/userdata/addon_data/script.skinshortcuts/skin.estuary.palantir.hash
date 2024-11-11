@@ -1,0 +1,116 @@
+[
+    [
+        "::PROFILELIST::",
+        [
+            [
+                "/Users/calbiach/Library/Application Support/Kodi/userdata/",
+                "String.IsEqual(System.ProfileName,Master user)",
+                "Master user"
+            ]
+        ]
+    ],
+    [
+        "::SCRIPTVER::",
+        "2.0.3"
+    ],
+    [
+        "::XBMCVER::",
+        "21"
+    ],
+    [
+        "::HIDEPVR::",
+        "false"
+    ],
+    [
+        "::SHARED::",
+        "true"
+    ],
+    [
+        "::SKINDIR::",
+        "skin.estuary.palantir"
+    ],
+    [
+        "::FULLMENU::",
+        "True"
+    ],
+    [
+        "::SKINVER::",
+        "1.1.1"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/plugin-video-palantir3-0.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/plugin-video-balandro.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/peliculas.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/mainmenu.DATA.xml",
+        "0adde345a7dea3477a1af843edf25860"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/dibujos.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/addons/skin.estuary.palantir/shortcuts/mainmenu.DATA.xml",
+        "5a79e8f031fda8916059cfefec165a5d"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/colorgoldenrod-ufc-color.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/anime.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/24001.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/addons/skin.estuary.palantir/shortcuts/template.xml",
+        "c40cb9e56bdfda197056fe6dcc169c7d"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/addons/skin.estuary.palantir/xml/script-skinshortcuts-includes.xml",
+        "a727974c415589451b959f0847cdcbe5"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/addons/script.skinshortcuts/resources/shortcuts/mainmenu.DATA.xml",
+        "8523f5b50afc14f67af449ca99ee21f8"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/var-p3nameespeciales.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/addons/script.skinshortcuts/resources/shortcuts/overrides.xml",
+        "5d367b4cf434ffcb86069273d402dc28"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/favoritos.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/skin.estuary.palantir.properties",
+        "3de4f2e7d95b62c87c9dbbb2fca5dfdf"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/addons/skin.estuary.palantir/shortcuts/overrides.xml",
+        "28166e700dd0322667a158d18856ae7f"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/plugin-video-palantir3.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ],
+    [
+        "/Users/calbiach/Library/Application Support/Kodi/userdata/addon_data/script.skinshortcuts/series.DATA.xml",
+        "379c0cb0f0c8c3963235d19fe6e1308b"
+    ]
+]

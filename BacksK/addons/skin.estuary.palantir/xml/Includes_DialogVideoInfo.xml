@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="Background_FlixArt" description="Background estilo flixart arriba-derecha">
+        <definition>
+            <include content="Object_Control">
+                <param name="control" value="group" />
+                <include>animacion_fadeInOut_Background</include>
+                <include content="Object_Control">
+                    <param name="control">group</param>
+                    <include>animacion_fadeInOut</include>
+                    <control type="group">
+                        <animation effect="fade" start="0" end="100" time="1000">Visible</animation>
+                        <animation effect="fade" start="100" end="0" time="150">Hidden</animation>
+                        <include content="Object_Control">
+                            <param name="control" value="image" />
+                            <fadetime>400</fadetime>
+                            <height>70%</height>
+                            <width>70%</width>
+                            <top>0</top>
+                            <right>0</right>
+                            <!-- <aspectratio scalediffuse="true">scale</aspectratio> -->
+                            <aspectratio scalediffuse="true">stretch</aspectratio>
+                            <texture colordiffuse="ffa7a7a7" flipx="false" flipy="false" background="true" diffuse="Palantir/background/difusse_flixart_1.png">$VAR[imagen_flixart_fanart]</texture>
+                        </include>
+                    </control>
+                </include>
+                <nested />
+            </include>
+            <control type="image">
+                 <texture colordiffuse="ff181818">Palantir/overlays/netflix_diffuse1.png</texture>
+                <include>animacion_fadeInOut_Background</include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Info_Ratings_Item" description="Ratings individual DialogvideoInfo">
+        <param name="label_color">ffdedede</param>
+        <param name="condicion">false</param>
+        <param name="label_fallback"></param>
+        <param name="label_prefix">[COLOR=00ffffff].[/COLOR]</param>
+        <param name="label_suffix">[COLOR=00ffffff]....[/COLOR]</param>
+        <param name="icono_width">32</param>
+        <param name="icono_height">32</param>
+        <param name="icono_top">0</param>
+        <param name="icono_diffuseColor">ffffffff</param>
+        <definition>
+            <include content="Object_Control">
+                <param name="control" value="group" />
+                <top>$PARAM[icono_top]</top>
+                <width>$PARAM[icono_width]</width>
+                <height>$PARAM[icono_height]</height>
+                <control type="image">
+                    <texture diffuseColor="$PARAM[icono_diffuseColor]">$PARAM[icon]</texture>
+                </control>
+                <nested />
+            </include>
+            <include content="Object_Control" condition="!$PARAM[condicion]">
+                <param name="control" value="label" />
+                <textcolor>$PARAM[label_color]</textcolor>
+                <centertop>25%</centertop>
+                <width>auto</width>
+                <height>20</height>
+                <align>left</align>
+                <font>font27_narrow</font>
+                <label fallback="$PARAM[label_prefix]$PARAM[label_fallback]$PARAM[label_suffix]">$INFO[$PARAM[label],$PARAM[label_prefix],$PARAM[label_suffix]]</label>
+                <nested />
+            </include>
+            <include content="Object_Control" condition="$PARAM[condicion]">
+                <param name="control" value="label" />
+                <textcolor>$PARAM[label_color]</textcolor>
+                <centertop>50%</centertop>
+                <width>auto</width>
+                <height>20</height>
+                <align>left</align>
+                <font>font27_narrow</font>
+                <label>$PARAM[label_prefix]$PARAM[label_fallback]$PARAM[label_suffix]</label>
+                <nested />
+            </include>
+        </definition>
+    </include>
+
+    <include name="boton_info" description="Botón individual Menú Vertical dialogVideoInfo">
+        <param name="Label">Reproducir</param>
+        <param name="size_v" default="360" />
+        <param name="size_h" default="35" />
+        <param name="cerrar_dialog" default="true" />
+        <param name="icono">Palantir/icons/mastermode.png</param>
+        <param name="icono_colordiffuse" default="FF2c2c2c" />
+        <param name="fondo_colordiffuse" default="FFcccccc" />
+        <param name="tansparente_colordiffuse" default="00cccccc" />
+        <param name="reanudar" default="false" />
+        <definition>
+            <include content="Object_Control">
+                <param name="control" value="button" />
+                <param name="id" value="$PARAM[id]" />
+                <height>$PARAM[size_h]</height>
+                <width>$PARAM[size_v]</width>
+                <texturefocus colordiffuse="$PARAM[fondo_colordiffuse]">Palantir/background/caja2.png</texturefocus>
+                <texturenofocus colordiffuse="$PARAM[tansparente_colordiffuse]">Palantir/background/caja2.png</texturenofocus>
+                <font>font_flag_regular</font>
+                <textcolor>$PARAM[fondo_colordiffuse]</textcolor>
+                <focusedcolor>$PARAM[icono_colordiffuse]</focusedcolor>
+                <textoffsetx>70</textoffsetx>
+                <label>$PARAM[Label]</label>
+                <onup>$PARAM[onarriba]</onup>
+                <ondown>$PARAM[onabajo]</ondown>
+                <onclick condition="$PARAM[cerrar_dialog]">Dialog.Close(movieinformation)</onclick>
+                <onclick condition="$PARAM[click_1_condition]">$PARAM[click_1]</onclick>
+                <onclick condition="$PARAM[click_2_condition]">$PARAM[click_2]</onclick>
+                <onclick condition="$PARAM[click_3_condition]">$PARAM[click_3]</onclick>
+                <onclick condition="$PARAM[click_4_condition]">$PARAM[click_4]</onclick>
+                <visible>$PARAM[visible]</visible>
+            </include>
+            <control type="group" id="$PARAM[groupid]">
+                <visible>$PARAM[visible]</visible>
+                <include content="Object_Control">
+                    <param name="control" value="image" />
+                    <aspectratio>keep</aspectratio>
+                    <width>42</width>
+                    <height>42</height>
+                    <top>-48</top>
+                    <left>15</left>
+                    <texture colordiffuse="$PARAM[fondo_colordiffuse]">$PARAM[icono]</texture>
+                    <visible>!Control.HasFocus($PARAM[id])</visible>
+                    <animation effect="fade" start="0" end="100" time="200" reversible="true">Visible</animation>
+                    <animation effect="fade" start="100" end="0" time="200" reversible="true">Hidden</animation>
+                </include>
+                <include content="Object_Control">
+                    <param name="control" value="image" />
+                    <aspectratio>keep</aspectratio>
+                    <width>42</width>
+                    <height>42</height>
+                    <top>-48</top>
+                    <left>15</left>
+                    <texture colordiffuse="$PARAM[icono_colordiffuse]">$PARAM[icono]</texture>
+                    <visible>Control.HasFocus($PARAM[id])</visible>
+                    <animation effect="fade" start="0" end="100" time="200" reversible="true">Visible</animation>
+                    <animation effect="fade" start="100" end="0" time="200" reversible="true">Hidden</animation>
+                </include>
+                <include content="Object_Control">
+                    <param name="control" value="progress" />
+                    <right>20</right>
+                    <top>-29</top>
+                    <width>150</width>
+                    <height>5</height>
+                    <texturebg colordiffuse="ffb0b0b0">Palantir/background/caja_reanudar.png</texturebg>
+                    <midtexture colordiffuse="ff7d166c">Palantir/background/caja_reanudar.png</midtexture>
+                    <info>ListItem.PercentPlayed</info>
+                    <visible>$PARAM[reanudar] + Control.HasFocus(9) + ListItem.IsResumable + !String.IsEmpty(Window(Home).Property(p3Info_resume_time))</visible>
+                </include>
+            </control>
+        </definition>
+    </include>
+
+	<include name="Layout_Apaisado_G" description="Apaisado Grande">
+        <param name="selected">false</param>
+        <param name="fg_layer">true</param>
+        <param name="bg_layer">true</param>
+        <param name="diffuse">Palantir/background/diff_w560_h320.png</param>
+        <param name="icon">$VAR[Imagen_Apaisado]</param>
+        <param name="misc">0</param>
+        <definition>
+            <control type="group">
+                <nested />
+                <width>$PARAM[item_w]</width>
+                <height>$PARAM[item_h]</height>
+                <control type="group" description="Cuando focus, Resplandor blanco exterior y borde morado">
+                    <top>-$PARAM[misc]</top>
+                    <bottom>$PARAM[misc]</bottom>
+                    <animation effect="slide" end="0,$PARAM[misc]" condition="true">Conditional</animation>
+                    <nested />
+                    <animation type="Focus" reversible="false">
+                        <effect type="zoom" start="96.5" end="100" time="150" tween="sine" easing="inout" center="auto"/>
+                        <effect type="fade" start="20" end="100" time="150" tween="back" easing="out"/>
+                    </animation>
+                    <include content="Object_Control" condition="$PARAM[fg_layer] + $PARAM[selected]">
+                        <param name="control" value="group" />
+                        <left>-3</left>
+                        <right>-3</right>
+                        <top>-3</top>
+                        <bottom>-3</bottom>
+                        <control type="image">
+                            <left>-40</left>
+                            <right>-40</right>
+                            <top>-40</top>
+                            <bottom>-40</bottom>
+                            <texture border="25" colordiffuse="$PARAM[colordiffuse]">Palantir/background/shadow-40.png</texture>
+                            <nested />
+                        </control>
+                        <control type="image">
+                            <texture border="20">Palantir/background/selectbox_thin_v_4.png</texture>
+                        </control>
+                    </include>
+                </control>
+
+                <include content="Object_Control" condition="$PARAM[bg_layer]" description="Caratula Video/Serie">
+                    <param name="control">group</param>
+                    <control type="image">
+                        <texture background="true" diffuse="$PARAM[diffuse]">$PARAM[icon]</texture>
+                        <aspectratio scalediffuse="false">scale</aspectratio>
+                    </control>
+                </include>
+
+                <include content="Object_Control" description="Texto Bottom">
+                    <param name="control">group</param>
+                    <include content="Object_Control" condition="$PARAM[fg_layer]">
+                        <param name="control">group</param>
+                        <bottom>0</bottom>
+                        <height>120</height>
+                        <control type="label">
+                            <textcolor>ffdedede</textcolor>
+                            <shadowcolor>aa000000</shadowcolor>
+                            <label>$INFO[ListItem.Title]</label>
+                            <textoffsetx>30</textoffsetx>
+                            <align>left</align>
+                            <font>font25_title</font>
+                            <height>40</height>
+                            <bottom>-49</bottom>
+                            <left>-27</left>
+                        </control>
+                        <control type="label">
+                            <textcolor>b3dedede</textcolor>
+                            <shadowcolor>aa000000</shadowcolor>
+                            <label>$INFO[ListItem.Premiered]</label>
+                            <textoffsetx>30</textoffsetx>
+                            <align>left</align>
+                            <font>font10</font>
+                            <height>20</height>
+                            <bottom>-60</bottom>
+                            <left>-27</left>
+                        </control>
+                    </include>
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    
+    <!--include name="Layout_YoutubeTrailers">
+        <control type="group">
+            <control type="fixedlist" id="9805">
+                <height>560</height>
+                <bottom>75</bottom>
+                <preloaditems>2</preloaditems>
+                <focusposition>0</focusposition>
+                <orientation>horizontal</orientation>
+                <movement>2</movement>
+                <onload condition="String.IsEqual(Window(Home).Property(vista9805),Si)">ClearProperty(vista9805,Home)</onload>
+                <onclick>SetProperty(vista9805,Si,Home)</onclick>
+                <onclick>Dialog.Close(movieinformation)</onclick>
+                <onclick>PlayMedia($ESCINFO[ListItem.FileNameAndPath],playlist_type_hint=1)</onclick>
+                <onback>5000</onback>
+                <onup>5000</onup>
+                <ondown>5000</ondown>
+                <content target="videos">plugin://plugin.video.youtube/search/?q=$INFO[ListItem.Property(P3Titulo)] Trailer Español&amp;search_type=notvalid</content>
+                <animation effect="fade" start="100" end="10" time="200" delay="400" condition="Container(9805).IsUpdating">Conditional</animation>
+                <itemlayout width="600" height="360">
+                    <control type="group">
+                        <left>80</left>
+                        <right>-80</right>
+                        <top>80</top>
+                        <bottom>-80</bottom>
+                        <include content="Layout_Apaisado_G">
+                            <param name="selected">false</param>
+                            <param name="item_w">560</param>
+                            <param name="item_h">320</param>
+                            <param name="misc">0</param>
+                            <param name="id">9805</param>
+                            <param name="diffuse">Palantir/background/diff_w560_h320.png</param>
+                            <param name="icon">$VAR[Imagen_Apaisado]</param>
+                        </include>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="600" height="360" >
+                    <control type="group">
+                        <left>80</left>
+                        <right>-80</right>
+                        <top>80</top>
+                        <bottom>-80</bottom>
+                        <control type="group">
+                            <include content="Layout_Apaisado_G">
+                                <param name="selected">true</param>
+                                <param name="item_w">560</param>
+                                <param name="item_h">320</param>
+                                <param name="misc">0</param>
+                                <param name="id">9805</param>
+                                <param name="diffuse">Palantir/background/diff_w560_h320.png</param>
+                                <param name="icon">$VAR[Imagen_Apaisado]</param>
+                            </include>
+                        </control>
+                    </control>
+                </focusedlayout>
+                <animation effect="slide" end="0,-1500" time="2" delay="0" condition="!Control.HasFocus(9805)">Conditional</animation>
+                <animation effect="slide" end="0,0" time="2" delay="0" condition="Control.HasFocus(9805)">Conditional</animation>  
+                <animation effect="fade" start="1" end="100" time="400" delay="200" condition="Control.HasFocus(9805)">Conditional</animation> 
+            </control>
+
+            <include content="BusySpinner">
+                <param name="visible" value="Control.HasFocus(9805) + Container(9805).IsUpdating"/>
+                <param name="posy" value="550"/>
+                <param name="posx" value="850"/>
+            </include>
+
+        </control>
+    </include-->
+
+
+
+
+
+</includes>

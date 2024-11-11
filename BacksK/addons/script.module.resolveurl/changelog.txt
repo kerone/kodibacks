@@ -1,0 +1,19 @@
+Version 5.1.151 (November 4, 2024)
+- Code Base Changes:
+    - None
+
+- Resolvers Added:
+    - None
+
+- Resolvers Fixed/Updated:
+    - cda
+    - dailymotion
+    - moflix
+    - terabox
+    - vidguard
+
+- Resolvers Removed
+    - None
+
+- Languages Added/Updated
+    - None
